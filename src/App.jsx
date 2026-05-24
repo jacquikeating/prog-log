@@ -1,12 +1,17 @@
-import { useState } from 'react'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import OverviewPage from "./pages/OverviewPage/OverviewPage";
+import "./styles/index.scss";
 
 function App() {
-
   return (
     <>
-      <h1>ProgLog</h1>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<OverviewPage />}/>
+        </Routes>
+      </BrowserRouter>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
