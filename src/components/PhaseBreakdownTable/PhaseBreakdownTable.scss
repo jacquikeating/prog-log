@@ -1,0 +1,50 @@
+@use "/src/styles/__variables" as *;
+
+.phases-table {
+    border: 1px solid $borders;
+    border-radius: 3px;
+    margin: 1.5rem 0;
+    max-width: 500px;
+    width: 100%;
+
+    &__table {
+        border-collapse: collapse;
+        width: 100%;
+        font-weight: 500;
+        background: $bg-mid;
+        font-size: 17px;
+    }
+
+    &__row:nth-of-type(1) {
+        border-bottom: 1px solid $borders;
+    }
+    
+    &__header {
+        border-right: 1px solid $borders;
+        padding: 0.5rem 0 0.3rem;
+        vertical-align: top;
+        width: 30%;
+    }
+
+    &__cell {
+        padding: 0.5rem 0 0.3rem;
+        width: 10%;
+        text-align: center;
+    }
+
+    &__cell--old {
+        color: $grey;
+    }
+    &__cell--cleanup {
+        color: $green;
+    }
+    &__cell--target {
+        color: $blue;
+    }
+    &__cell--newphase {
+         color: $purple;
+    }
+    &__cell--null {
+        color: $grey;
+    }
+}
