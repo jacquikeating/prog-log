@@ -1,0 +1,37 @@
+@use "/src/styles/__variables" as *;
+
+@mixin icon-button() {
+    border: none;
+    background-color: transparent;
+    color: $grey;
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.1);
+        color: $text-mid;
+    }
+}
+
+@mixin input() {
+    border: 1px solid $borders;
+    border-radius: 2px;
+    padding: 1px 1px 1px 3px;
+    background-color: $bg-extralight;
+    font-size: 0.95em;
+    font-family: $font-body;
+    color: $text-light;
+
+    &:hover {
+        outline: 1px solid $blue;
+    }
+
+    &:focus {
+        outline: 1px solid $purple;
+    }
+}
+
+@mixin sub-text() {
+    font-size: 0.9em;
+    font-style: italic;
+    color: $text-mid;
+}

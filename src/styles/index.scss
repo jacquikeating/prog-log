@@ -1,0 +1,58 @@
+@use "/src/styles/__variables" as *;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  width: clamp(300px, 85vw, 1600px);
+  margin: 1.5rem auto;
+  color: $text-light;
+  padding-bottom: 5rem;
+}
+
+body {
+  background-color: $bg-dark;
+  height: 100vw;
+  font-weight: 300;
+  font-family: $font-body;
+}
+
+h1, h2, h3, th {
+  font-family: $font-display;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+p {
+  letter-spacing: 0.036em;
+}
+
+a {
+  color: $blue;
+  text-decoration: none;
+}
+
+a:visited {
+  color: $purple;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.empty-link {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  filter: grayscale(100%);
+  opacity: 0.7;
+  pointer-events: none;
+ 
+  &:hover {
+    text-decoration: line-through;
+    text-decoration-thickness: 2px;
+    cursor: not-allowed;
+  }
+}
