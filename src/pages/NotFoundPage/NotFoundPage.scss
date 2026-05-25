@@ -1,0 +1,28 @@
+@use "/src/styles/__variables" as *;
+@use "/src/styles/__mixins" as *;
+
+.not-found-page {
+    &__text {
+        margin: 1rem 0;
+    }
+
+    &__button {
+        background-color: $bg-light;
+        border: 1px solid $borders;
+        border-radius: 2px;
+        padding: 0.5rem 1.5rem;
+        font-weight: 500;
+        font-family: $font-display;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: $text-mid;
+        cursor: pointer;
+        transition: all 0.3s;
+
+        &:hover {
+            border: 1px solid $purple;
+            background-color: $bg-extralight;
+            color: $text-light;
+        }
+    }
+}
