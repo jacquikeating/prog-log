@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import OverviewPage from "./pages/OverviewPage/OverviewPage";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import "./styles/index.scss";
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
             path="/" 
             element={<OverviewPage sessions={[...sessionsData].reverse()} />}
           />
+          <Route path="/*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
     </>
