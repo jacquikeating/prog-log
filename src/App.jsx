@@ -17,7 +17,9 @@ function App() {
             prog_phase: 1,
             prog_mech: "Opener",
             fflogs_link: "http://fflogs.com",
-            twitch_links: "http://twitch.tv, http://twitch.tv"
+            twitch_links: "http://twitch.tv",
+            notes: "",
+            goal: "Do the fight"
         },
         {
             id: 2,
@@ -25,8 +27,10 @@ function App() {
             roster: "Player 1, Player 2, Player 3, Player 4, Player 5, Player 6, Player 7, Player 8",
             prog_phase: 1,
             prog_mech: "Opener",
-            fflogs_link: "http://fflogs.com",
-            twitch_links: "http://twitch.tv, http://twitch.tv"
+            fflogs_link: "",
+            twitch_links: "http://twitch.tv, http://twitch.tv",
+            notes: "",
+            goal: "WIN"
         }
     ]; 
 
