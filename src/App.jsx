@@ -3,6 +3,7 @@ import Header from "./components/Header/Header";
 import AboutPage from "./pages/AboutPage/AboutPage";
 import OverviewPage from "./pages/OverviewPage/OverviewPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import ReportPage from "./pages/ReportPage/ReportPage";
 import "./styles/index.scss";
 
 function App() {
@@ -39,6 +40,10 @@ function App() {
             element={<OverviewPage sessions={[...sessionsData].reverse()} />}
           />
           <Route path="/about" element={<AboutPage />} />
+          <Route
+              path="/report/:sessionID"
+              element={<ReportPage sessions={sessionsData} />}
+            />
           <Route path="/*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
