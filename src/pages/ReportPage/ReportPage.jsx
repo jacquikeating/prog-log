@@ -4,7 +4,7 @@ import { useState, useEffect, createContext } from "react";
 // import useGetPulls from "../../hooks/use-get-pulls.js";
 // import axios from "axios";
 // import PullsSection from "../../components/PullsSection/PullsSection.jsx";
-// import SessionInfo from "../../components/SessionInfo/SessionInfo.jsx";
+import SessionInfo from "../../components/SessionInfo/SessionInfo.jsx";
 // import SessionInfoEdit from "../../components/SessionInfo/SessionInfoEdit.jsx";
 import "./ReportPage.scss";
 
@@ -125,7 +125,7 @@ const ReportPage = ({ sessions }) => {
                     {session.id ? (
                         <>
                             {/* {!editMode ? <SessionInfo /> : <SessionInfoEdit />} */}
-
+                            <SessionInfo />
                             <PullsContext.Provider value={{ pullsCtx }}>
                                 {/* <PullsSection /> */}
                             </PullsContext.Provider>
