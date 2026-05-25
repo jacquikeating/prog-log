@@ -5,7 +5,7 @@ const AboutPage = () => {
         <main className="about-page">
             <h1 className="about-page__title">About</h1>
             <p className="about-page__text about-page__text--intro">
-                Hi, I'm Ella, amateur full-stack developer and worst player in my DSR
+                Hi, I'm Ella, amateur full-stack developer and worst player from my DSR
                 static — and I've got the data to back that up. I struggled hard during
                 DSR prog, which prompted me to start writing down my mistakes and the
                 causes of our wipes. I realized that since I was calling out myself more
