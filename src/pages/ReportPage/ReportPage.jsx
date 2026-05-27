@@ -5,7 +5,7 @@ import { useState, useEffect, createContext } from "react";
 // import axios from "axios";
 // import PullsSection from "../../components/PullsSection/PullsSection.jsx";
 import SessionInfo from "../../components/SessionInfo/SessionInfo.jsx";
-// import SessionInfoEdit from "../../components/SessionInfo/SessionInfoEdit.jsx";
+import SessionInfoEdit from "../../components/SessionInfo/SessionInfoEdit.jsx";
 import "./ReportPage.scss";
 
 // const API_URL = import.meta.env.VITE_API_URL;
@@ -19,8 +19,8 @@ const ReportPage = ({ sessions }) => {
         sessions.find((session) => session.id == sessionID)
     );
     const [pullsArray, setPullsArray] = useState([]);
-    const [editMode, setEditMode] = useState(false);
-    const [showEdit, setShowEdit] = useState(false);
+    const [editMode, setEditMode] = useState(true);
+    const [showEdit, setShowEdit] = useState(true);
     const [allowDelete, setAllowDelete] = useState(false);
     const [width, setWidth] = useState(window.innerWidth);
     const breakpoint = 1040;
@@ -124,8 +124,8 @@ const ReportPage = ({ sessions }) => {
                 <main className="report">
                     {session.id ? (
                         <>
-                            {/* {!editMode ? <SessionInfo /> : <SessionInfoEdit />} */}
-                            <SessionInfo />
+                            {!editMode ? <SessionInfo /> : <SessionInfoEdit />}
+                            {/* <SessionInfo /> */}
                             <PullsContext.Provider value={{ pullsCtx }}>
                                 {/* <PullsSection /> */}
                             </PullsContext.Provider>
