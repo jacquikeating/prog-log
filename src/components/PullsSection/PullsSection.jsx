@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import { SessionContext, PullsContext, EditContext } from "../../pages/ReportPage/ReportPage.jsx";
 import { getMechAfterProgMech } from "../../utils/shared-functions.js";
-// import PullsTable from "../PullsTable/PullsTable.jsx";
+import PullsTable from "../PullsTable/PullsTable.jsx";
 
 const PullsSection = () => {
   const { sessionCtx } = useContext(SessionContext);
@@ -96,7 +96,7 @@ const PullsSection = () => {
         </label>
       </div>
 
-      {/* <PullsTable
+      <PullsTable
         pullsArray={
           progPullsOnly ? getProgPulls(pullsToDisplay) : pullsToDisplay
         }
@@ -108,7 +108,7 @@ const PullsSection = () => {
         allowDelete={allowDelete}
         width={width}
         breakpoint={breakpoint}
-      /> */}
+      />
     </section>
   );
 };

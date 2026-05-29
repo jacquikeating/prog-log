@@ -1,0 +1,58 @@
+@use "/src/styles/__variables" as *;
+
+.pulls-table {
+    border: 1px solid $borders;
+    border-radius: 3px;
+    margin: 1.5rem 0;
+    background: #0b0b0f;
+
+    &__table {
+        border-collapse: collapse;
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    &__header-cell {
+        border-left: 1px solid $borders;
+        text-align: left;
+        padding: 0.7rem;
+
+        &:first-of-type {
+            border-left: none;
+            width: 3.5em;
+            text-align: center;
+        }
+
+        &--dur {
+            width: 3.6em;
+            text-align: center;
+        }
+
+        &--p {
+            width: 3.6em;
+            text-align: center;
+        }
+
+        &--mechanic {
+            width: 12%;
+            text-align: center;
+        }
+
+        &--cause {
+            width: 32%;
+        }
+
+        &--players {
+            width: 12%;
+        }
+
+        &--notes {
+            width: 44%;
+        }
+
+        &--edit {
+            width: 3.5em;
+            text-align: center;
+        }
+    }
+}
