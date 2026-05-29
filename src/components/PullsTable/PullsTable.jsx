@@ -1,5 +1,5 @@
 import { useState } from "react";
-// import Pull from "../Pull/Pull";
+import Pull from "../Pull/Pull";
 // import PullDiv from "../PullDiv/PullDiv";
 import "./PullsTable.scss";
 
@@ -71,7 +71,7 @@ const PullsTable = ({
                   ""
                 )}
               </tr>
-              {/* {pullsArray.map((pull, index) => {
+              {pullsArray.map((pull, index) => {
                 return (
                   <Pull
                     pullData={{ ...pull, index: index }}
@@ -84,7 +84,7 @@ const PullsTable = ({
                     allowDelete={allowDelete}
                   />
                 );
-              })} */}
+              })}
             </tbody>
           </table>
         </div>
