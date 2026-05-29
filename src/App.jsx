@@ -119,7 +119,7 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route
               path="/report/:sessionID"
-              element={<ReportPage sessions={dummySessionsData} />}
+              element={<ReportPage sessions={dummySessionsData} pulls={dummyPullsData} />}
             />
           <Route path="/*" element={<NotFoundPage />} />
         </Routes>

@@ -13,7 +13,7 @@ const SessionContext = createContext();
 const PullsContext = createContext();
 const EditContext = createContext();
 
-const ReportPage = ({ sessions }) => {
+const ReportPage = ({ sessions, pulls }) => {
     const { sessionID } = useParams();
     const [session, setSession] = useState(
         sessions.find((session) => session.id == sessionID)
@@ -29,12 +29,12 @@ const ReportPage = ({ sessions }) => {
     let pullToUpdate = {};
 
     // const { pulls, isPending } = useGetPulls(sessionID);
-    const pulls = []; // Temporarily hardcoded
     const isPending = false; // Temporarily hardcoded
 
     useEffect(() => {
         if (!isPending) {
-            setPullsArray(pulls);
+            console.log(pulls.filter((pull) => pull.session_id == sessionID))
+            setPullsArray(pulls.filter((pull) => pull.session_id == sessionID));
         }
     }, [isPending]);
 
