@@ -12,7 +12,7 @@ const Session = ({ sessionData }) => {
   return (
     <li className="session">
       <div className="session__header">
-        <Link to={`/`} className="session__title"> {/* Replace link when ReportPage is recreated */}
+        <Link to={`/report/${id}`} className="session__title">
           <h3>Session {id}</h3>
         </Link>
         <p className="session__date">{createReadableDate(date)}</p>
