@@ -19,7 +19,7 @@ const ReportPage = ({ sessions }) => {
         sessions.find((session) => session.id == sessionID)
     );
     const [pullsArray, setPullsArray] = useState([]);
-    const [editMode, setEditMode] = useState(true);
+    const [editMode, setEditMode] = useState(false);
     const [showEdit, setShowEdit] = useState(true);
     const [allowDelete, setAllowDelete] = useState(false);
     const [width, setWidth] = useState(window.innerWidth);
@@ -78,19 +78,20 @@ const ReportPage = ({ sessions }) => {
     //     }
     // }
 
-    // async function editSession() {
-    //     if (editMode === false) {
-    //         setEditMode(true);
-    //     } else if (editMode === true) {
-    //         const updatedSessionObj = { ...session };
-    //     try {
-    //         await axios.put(`${API_URL}/sessions/${sessionID}`, updatedSessionObj);
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    //     setEditMode(false);
-    //     }
-    // }
+    async function editSession() {
+        if (editMode === false) {
+            setEditMode(true);
+        } else if (editMode === true) {
+            const updatedSessionObj = { ...session };
+            console.log("This is where I'd put my edited session info. IF I HAD ONE");
+            // try {
+            //     await axios.put(`${API_URL}/sessions/${sessionID}`, updatedSessionObj);
+            // } catch (error) {
+            //     console.error(error);
+            // }
+            setEditMode(false);
+        }
+    }
 
     const sessionCtx = {
         session,
@@ -115,7 +116,7 @@ const ReportPage = ({ sessions }) => {
         // pullToUpdate,
         setPullsArray,
         setSession,
-        // editSession,
+        editSession,
     };
 
     return (
@@ -125,7 +126,6 @@ const ReportPage = ({ sessions }) => {
                     {session.id ? (
                         <>
                             {!editMode ? <SessionInfo /> : <SessionInfoEdit />}
-                            {/* <SessionInfo /> */}
                             <PullsContext.Provider value={{ pullsCtx }}>
                                 {/* <PullsSection /> */}
                             </PullsContext.Provider>
