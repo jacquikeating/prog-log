@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Pull from "../Pull/Pull";
-// import PullDiv from "../PullDiv/PullDiv";
+import PullDiv from "../PullDiv/PullDiv";
 import "./PullsTable.scss";
 
 const PullsTable = ({
@@ -29,18 +29,18 @@ const PullsTable = ({
     <>
       {width < breakpoint ? (
         pullsArray.map((pull, index) => {
-        //   return (
-        //     <PullDiv
-        //       pullData={{ ...pull, index: index }}
-        //       pullNumType={pullNumType}
-        //       showEdit={showEdit}
-        //       updatePull={updatePull}
-        //       deletePull={deletePull}
-        //       progPhase={progPhase}
-        //       key={pull.pull_num_today || index}
-        //       allowDelete={allowDelete}
-        //     />
-        //   );
+          return (
+            <PullDiv
+              pullData={{ ...pull, index: index }}
+              pullNumType={pullNumType}
+              showEdit={showEdit}
+              updatePull={updatePull}
+              deletePull={deletePull}
+              progPhase={progPhase}
+              key={pull.pull_num_today || index}
+              allowDelete={allowDelete}
+            />
+          );
         })
       ) : (
         <div className="pulls-table">

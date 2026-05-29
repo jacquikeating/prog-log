@@ -1,0 +1,107 @@
+@use "/src/styles/__variables" as *;
+@use "/src/styles/__mixins" as *;
+
+.pull-div {  
+    position: relative;  
+    margin: 1.5em 0;
+    border: 1px solid $borders;
+    border-radius: 2px;
+    padding: 0.75em;
+    background: $bg-mid;
+    display: flex;
+    gap: 1em;
+
+
+    &__pull-num {
+        font-size: 1.1em;
+        font-weight: bold;
+        font-family: $font-display;
+    }
+
+    &__info {
+        width: 100%;
+    }
+
+        &__top {
+            margin-bottom: 0.4em;
+            display: flex;
+            justify-content: space-between;
+            gap: 0.5em;
+            font-size: 1.1em;
+        }
+
+            &__divider {
+                margin: 0 0.4em;
+                color: $grey;
+            }
+
+        &__mid {
+            margin-bottom: 0.25em;
+        }
+
+        &__bottom {
+            display: flex;
+            justify-content: space-between;
+        }
+
+            &__button {
+                @include icon-button;
+                padding: 0.5em;
+            }
+
+        &__p {
+            &--mech {
+                font-family: $font-display;
+                font-weight: 500;
+                text-transform: uppercase;
+                letter-spacing: 0.03em;
+            }
+
+            &--players {
+                font-size: 0.9em;
+                font-style: italic;
+                color: $text-mid;
+            }
+        }
+
+        &__input {
+            &--number {
+                width: 0.9em;
+                margin-left: 0.1em;
+                // font-family: $font-display;
+                // font-weight: bold;
+                // font-size: 1.1em;
+                // height: 1em;
+            }
+
+            &--mech {
+                // font-family: $font-display;
+                // font-weight: bold;
+                // font-size: 1.1em;
+                // height: 1em;
+                // text-transform: uppercase;
+            }
+
+            &--cause, &--notes {
+                width: 90%;
+            }
+
+            &--players {
+                width: 1fr;
+            }
+
+            &::placeholder {
+                font-style: italic;
+                color: $grey;
+            }
+        }
+
+        &__bold {
+            font-weight: 500;
+        }
+
+        .pull-link__cell {
+            left: -19px;
+            top: 12px;
+        }
+}
