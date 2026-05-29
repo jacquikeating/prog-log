@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect, createContext } from "react";
 // import useGetPulls from "../../hooks/use-get-pulls.js";
 // import axios from "axios";
-// import PullsSection from "../../components/PullsSection/PullsSection.jsx";
+import PullsSection from "../../components/PullsSection/PullsSection.jsx";
 import SessionInfo from "../../components/SessionInfo/SessionInfo.jsx";
 import SessionInfoEdit from "../../components/SessionInfo/SessionInfoEdit.jsx";
 import "./ReportPage.scss";
@@ -127,7 +127,7 @@ const ReportPage = ({ sessions, pulls }) => {
                         <>
                             {!editMode ? <SessionInfo /> : <SessionInfoEdit />}
                             <PullsContext.Provider value={{ pullsCtx }}>
-                                {/* <PullsSection /> */}
+                                <PullsSection />
                             </PullsContext.Provider>
                         </>
                     ) : (
