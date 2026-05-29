@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { checkIfProgPointReached } from "../../utils/shared-functions";
-// import PullLink from "../PullLink/PullLink";
+import PullLink from "../PullLink/PullLink";
 import "./Pull.scss";
 // import useMutatePull from "../../hooks/use-mutation.js";
 
@@ -175,12 +175,12 @@ const Pull = ({
       ) : (
         ""
       )}
-      {/* <PullLink
+      <PullLink
         logLink={logLink}
         clipLink={clipLink}
         editMode={editMode}
         handleLinkModalData={handleLinkModalData}
-      /> */}
+      />
     </tr>
   );
 };

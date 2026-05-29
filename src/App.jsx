@@ -65,7 +65,7 @@ function App() {
       },
       {
         cause: "Char burnt strike; Hypatia wall KB",
-        clip_link: "",
+        clip_link: "x",
         id: 50,
         log_link: "",
         mech: "Utopian Sky",
