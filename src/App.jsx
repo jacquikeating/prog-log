@@ -114,7 +114,7 @@ function App() {
         <Routes>
           <Route 
             path="/" 
-            element={<OverviewPage sessions={[...dummySessionsData].reverse()} />}
+            element={<OverviewPage sessions={[...dummySessionsData].reverse()} pulls={dummyPullsData} />}
           />
           <Route path="/about" element={<AboutPage />} />
           <Route
