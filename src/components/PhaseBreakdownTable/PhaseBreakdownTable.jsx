@@ -1,14 +1,13 @@
+import { getTextColour } from "../../utils/shared-functions";
 import "./PhaseBreakdownTable.scss";
 
-const PhaseBreakdownTable = () => {
+const PhaseBreakdownTable = ({ progPhase, pulls }) => {
   function getPhaseBreakdown() {
-    // Normally, phasesReached will initialize as empty, then fill from the pulls array.
-    // Temporarily using hardcoded values.
-    let phasesReached = [1, 2, 3, 1, 2, 2, 1, 3];
+    let phasesReached = [];
 
-    // pulls.map((pull) => {
-    //   phasesReached.push(pull.phase);
-    // });
+    pulls.map((pull) => {
+      phasesReached.push(pull.phase);
+    });
 
     let phaseBreakdown = phasesReached.reduce((accumulator, phase) => {
       return (
@@ -21,7 +20,6 @@ const PhaseBreakdownTable = () => {
   }
 
   const phaseBreakdown = getPhaseBreakdown();
-  console.log(phaseBreakdown)
 
   let phasesArray = [
     phaseBreakdown[1] ? phaseBreakdown[1] : 0,
@@ -45,7 +43,8 @@ const PhaseBreakdownTable = () => {
               return (
                 <td
                   key={phaseNum}
-                  className={`phases-table__cell`}
+                  className={`phases-table__cell 
+                phases-table__cell--${getTextColour(progPhase, phaseNum)}`}
                 >
                   {phaseNum}
                 </td>
@@ -60,7 +59,8 @@ const PhaseBreakdownTable = () => {
               return (
                 <td
                   key={phaseNum}
-                  className={`phases-table__cell`}
+                  className={`phases-table__cell 
+                phases-table__cell--${getTextColour(progPhase, phaseNum)}`}
                 >
                   {numberOfWipes}
                 </td>

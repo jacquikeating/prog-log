@@ -7,7 +7,10 @@ const OverviewPage = ({ sessions, pulls }) => {
         <main className="overview-page">
         <h1 className="overview-page__title">Overview</h1>
         <OverviewStats sessions={sessions} pulls={pulls} />
-        <PhaseBreakdownTable />
+        <PhaseBreakdownTable
+            progPhase={sessions[0].prog_phase}
+            pulls={pulls} 
+        />
         <SessionsList sessions={sessions} />
         </main>
     );
