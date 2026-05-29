@@ -1,0 +1,23 @@
+@use "/src/styles/__variables" as *;
+
+.link-modal {
+    position: absolute;
+    top: -90px;
+    left: 0px;
+    padding: 0.8em 1em 0.3em 1em;
+    background-color: $bg-light;
+    border: 1px solid $purple;
+    border-radius: 2px;
+
+    &__label {
+        display: flex;
+        gap: 0.5em;
+        margin-bottom: 0.7em;
+    }
+
+    &__icon {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+    }
+}

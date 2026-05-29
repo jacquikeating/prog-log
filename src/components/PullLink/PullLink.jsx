@@ -1,5 +1,5 @@
 import { useState } from "react";
-// import EditLinkModal from "../EditLinkModal/EditLinkModal";
+import EditLinkModal from "../EditLinkModal/EditLinkModal";
 import "./PullLink.scss";
 
 const PullLink = ({ logLink, clipLink, editMode, handleLinkModalData }) => {
@@ -55,7 +55,7 @@ const PullLink = ({ logLink, clipLink, editMode, handleLinkModalData }) => {
         </button>
       )}
 
-      {/* {editMode && showModal ? (
+      {editMode && showModal ? (
         <EditLinkModal
           logLink={logLink}
           clipLink={clipLink}
@@ -63,7 +63,7 @@ const PullLink = ({ logLink, clipLink, editMode, handleLinkModalData }) => {
         />
       ) : (
         ""
-      )} */}
+      )}
     </div>
   );
 };
