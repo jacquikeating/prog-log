@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./Header.scss";
 
-const Header = () => {
+const Header = ({ latestSession }) => {
   return (
     <header className="header">
       <nav className="nav">
@@ -17,8 +17,8 @@ const Header = () => {
               </Link>
             </li>
             <li className="nav__list-item">
-              {/* <Link to={`/report/${latestSession}`} className="nav__link"> */}
-              <Link to={`/report/x`} className="nav__link"> {/* Temp */}
+              <Link to={`/report/${latestSession}`} className="nav__link">
+              {/* <Link to={`/report/x`} className="nav__link"> */}
                 Latest
               </Link>
             </li>

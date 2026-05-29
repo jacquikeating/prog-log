@@ -110,7 +110,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Header />
+        <Header latestSession={dummySessionsData.length} />
         <Routes>
           <Route 
             path="/" 
