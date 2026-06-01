@@ -1,15 +1,10 @@
 import { useState, useEffect } from "react";
-// import axios from "axios";
 import { createReadableDate } from "../../utils/shared-functions.js";
 import NewSessionForm from "../../components/NewSessionForm/NewSessionForm";
 import NewPullForm from "../../components/NewPullForm/NewPullForm";
 import PullsTable from "../../components/PullsTable/PullsTable";
 
-// const API_URL = import.meta.env.VITE_API_URL;
-
 const AddDataPage = ({ sessions }) => {
-        // localStorage.removeItem("sessionInProgress")
-
     const [sessionInProgress, setSessionInProgress] = useState(false);
     const [sessionData, setSessionData] = useState({});
     const [lastSession, setLastSession] = useState(null);
@@ -32,6 +27,7 @@ const AddDataPage = ({ sessions }) => {
                 const placeholder = {
                     id: 0,
                     static: "",
+                    ulti: "",
                     num: 0,
                     date: "",
                     roster: "",
@@ -44,17 +40,6 @@ const AddDataPage = ({ sessions }) => {
                 };
                 setLastSession(placeholder);
             }     
-            
-            //   async function getLastSessionData() {
-            //     try {
-            //       let result = await axios.get(`${API_URL}/sessions/`);
-            //       let mostRecentSession = result.data.reverse()[0];
-            //       setLastSession(mostRecentSession);
-            //     } catch (error) {
-            //       console.error(error);
-            //     }
-            //   }
-            //   getLastSessionData();
         }
     }, []);
 
@@ -64,39 +49,30 @@ const AddDataPage = ({ sessions }) => {
         setSessionInProgress(true);
     }
 
-  function handlePullFormData(data) {
-    let copyOfPullsArray = [...pullsArray];
-    if (data.indexToInsert == 0) {
-      copyOfPullsArray.push(data);
-    } else {
-      copyOfPullsArray.splice(data.indexToInsert - 1, 0, data);
+    function handlePullFormData(data) {
+        let copyOfPullsArray = [...pullsArray];
+        if (data.indexToInsert == 0) {
+            copyOfPullsArray.push(data);
+        } else {
+            copyOfPullsArray.splice(data.indexToInsert - 1, 0, data);
+        }
+        setPullsArray(copyOfPullsArray);
+        localStorage.setItem("pullsFromNewSession", JSON.stringify(copyOfPullsArray));
     }
-    setPullsArray(copyOfPullsArray);
-    localStorage.setItem(
-      "pullsFromNewSession",
-      JSON.stringify(copyOfPullsArray)
-    );
-  }
 
-  function updatePull(pullData) {
-    let copyOfPullsArray = [...pullsArray];
-    copyOfPullsArray[pullData.index] = pullData;
-    localStorage.setItem(
-      "pullsFromNewSession",
-      JSON.stringify(copyOfPullsArray)
-    );
-    setPullsArray(copyOfPullsArray);
-  }
+    function updatePull(pullData) {
+        let copyOfPullsArray = [...pullsArray];
+        copyOfPullsArray[pullData.index] = pullData;
+        localStorage.setItem("pullsFromNewSession", JSON.stringify(copyOfPullsArray));
+        setPullsArray(copyOfPullsArray);
+    }
 
-  function deletePull(pullData) {
-    let copyOfPullsArray = [...pullsArray];
-    copyOfPullsArray.splice(pullData.index, 1);
-    localStorage.setItem(
-      "pullsFromNewSession",
-      JSON.stringify(copyOfPullsArray)
-    );
-    setPullsArray(copyOfPullsArray);
-  }
+    function deletePull(pullData) {
+        let copyOfPullsArray = [...pullsArray];
+        copyOfPullsArray.splice(pullData.index, 1);
+        localStorage.setItem("pullsFromNewSession", JSON.stringify(copyOfPullsArray));
+        setPullsArray(copyOfPullsArray);
+    }
 
     async function handleSubmit() {
         let counter = Number(localStorage.getItem("counter"));
@@ -107,9 +83,9 @@ const AddDataPage = ({ sessions }) => {
             delete pull.index;
             delete pull.indexToInsert;
             try {
-            await axios.post(`${API_URL}/pulls/`, pull);
+                await axios.post(`${API_URL}/pulls/`, pull);
             } catch (error) {
-            console.error(error);
+                console.error(error);
             }
         });
 
