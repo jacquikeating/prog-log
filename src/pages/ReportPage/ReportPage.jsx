@@ -16,7 +16,7 @@ const EditContext = createContext();
 const ReportPage = ({ sessions, pulls }) => {
     const { sessionID } = useParams();
     const [session, setSession] = useState(
-        sessions.find((session) => session.id == sessionID)
+        sessions.find((session) => session.num == sessionID)
     );
     const [pullsArray, setPullsArray] = useState([]);
     const [editMode, setEditMode] = useState(false);
@@ -33,7 +33,7 @@ const ReportPage = ({ sessions, pulls }) => {
 
     useEffect(() => {
         if (!isPending) {
-            setPullsArray(pulls.filter((pull) => pull.session_id == sessionID));
+            setPullsArray(pulls.filter((pull) => pull.session_num == sessionID));
         }
     }, [isPending]);
 

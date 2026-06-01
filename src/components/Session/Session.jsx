@@ -6,14 +6,14 @@ import {
 import "./Session.scss";
 
 const Session = ({ sessionData }) => {
-  const { id, date, roster, prog_phase, prog_mech, fflogs_link, twitch_links } = sessionData;
+  const { num, date, roster, prog_phase, prog_mech, fflogs_link, twitch_links } = sessionData;
   const twitchLinksArray = twitch_links.split(", ");
 
   return (
     <li className="session">
       <div className="session__header">
-        <Link to={`/report/${id}`} className="session__title">
-          <h3>Session {id}</h3>
+        <Link to={`/report/${num}`} className="session__title">
+          <h3>Session {num}</h3>
         </Link>
         <p className="session__date">{createReadableDate(date)}</p>
       </div>

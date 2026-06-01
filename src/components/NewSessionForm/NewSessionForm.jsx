@@ -5,7 +5,7 @@ import "./NewSessionForm.scss";
 // const API_URL = import.meta.env.VITE_API_URL;
 
 const NewSessionForm = ({ lastSession, handleSessionFormData }) => {
-  const [num, setNum] = useState(lastSession.id + 1);
+  const [num, setNum] = useState(lastSession.num + 1);
   const [date, setDate] = useState("");
   const [roster, setRoster] = useState(lastSession.roster);
   const [progPhase, setProgPhase] = useState(lastSession.prog_phase);

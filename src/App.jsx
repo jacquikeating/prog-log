@@ -13,6 +13,8 @@ function App() {
     const dummySessionsData = [
         {
             id: 1,
+            static: "Wall is Safe",
+            num: 1,
             date: "2024-11-26",
             roster: "Chro, Sophia, Ruv, Ella, Quil, Tori, Char, Laveera",
             prog_phase: 1,
@@ -24,6 +26,8 @@ function App() {
         },
         {
             id: 2,
+            static: "Wall is Safe",
+            num: 2,
             date: "2024-12-04",
             roster: "Chro, Sophia, Ruv, Ella, Quil, Hypatia, Char, Laveera",
             prog_phase: 1,
@@ -118,7 +122,7 @@ function App() {
             element={<OverviewPage sessions={[...dummySessionsData].reverse()} pulls={dummyPullsData} />}
           />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/add-data" element={<AddDataPage />} />
+          <Route path="/add-data" element={<AddDataPage sessions={[...dummySessionsData].reverse()} />} />
           <Route
               path="/report/:sessionID"
               element={<ReportPage sessions={dummySessionsData} pulls={dummyPullsData} />}
