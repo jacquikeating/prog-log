@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import AboutPage from "./pages/AboutPage/AboutPage";
+import AddDataPage from "./pages/AddDataPage/AddDataPage";
 import OverviewPage from "./pages/OverviewPage/OverviewPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import ReportPage from "./pages/ReportPage/ReportPage";
@@ -117,6 +118,7 @@ function App() {
             element={<OverviewPage sessions={[...dummySessionsData].reverse()} pulls={dummyPullsData} />}
           />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/add-data" element={<AddDataPage />} />
           <Route
               path="/report/:sessionID"
               element={<ReportPage sessions={dummySessionsData} pulls={dummyPullsData} />}
