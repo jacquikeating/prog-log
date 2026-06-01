@@ -1,4 +1,6 @@
+import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { supabase } from "./supabase-client";
 import Header from "./components/Header/Header";
 import AboutPage from "./pages/AboutPage/AboutPage";
 import AddDataPage from "./pages/AddDataPage/AddDataPage";
@@ -8,6 +10,24 @@ import ReportPage from "./pages/ReportPage/ReportPage";
 import "./styles/index.scss";
 
 function App() {
+  const [loading, setLoading] = useState(true);
+  const [sessions, setSessions] = useState([]);
+
+  async function fetchSessions() {
+    const { error, data } = await supabase.from("sessions").select("*");
+
+    if (error) { 
+      console.error("Error fetching sessions: ", error.message);
+      return;
+    } else {
+      setSessions(data);
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    fetchSessions();
+  }, []);
 
   // Temporary dummy data taken from archive 
     const dummySessionsData = [
@@ -112,14 +132,14 @@ function App() {
       // }
     ];
 
-  return (
-    <>
+  if (!loading) {
+    return (
       <BrowserRouter>
         <Header latestSession={dummySessionsData.length} />
         <Routes>
           <Route 
             path="/" 
-            element={<OverviewPage sessions={[...dummySessionsData].reverse()} pulls={dummyPullsData} />}
+            element={<OverviewPage sessions={[...sessions].reverse()} pulls={dummyPullsData} />}
           />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/add-data" element={<AddDataPage sessions={[...dummySessionsData].reverse()} />} />
@@ -130,8 +150,10 @@ function App() {
           <Route path="/*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
-    </>
-  );
+    );
+  } else {
+    return <p>Loading...</p>
+  }
 }
 
 export default App;
