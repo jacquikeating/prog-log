@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 // import axios from "axios";
 import { createReadableDate } from "../../utils/shared-functions.js";
-// import NewSessionForm from "../../components/NewSessionForm/NewSessionForm";
+import NewSessionForm from "../../components/NewSessionForm/NewSessionForm";
 // import NewPullForm from "../../components/NewPullForm/NewPullForm";
 import PullsTable from "../../components/PullsTable/PullsTable";
 
@@ -10,7 +10,9 @@ import PullsTable from "../../components/PullsTable/PullsTable";
 const AddDataPage = () => {
   const [sessionInProgress, setSessionInProgress] = useState(false);
   const [sessionData, setSessionData] = useState({});
-  const [lastSession, setLastSession] = useState({});
+  const [lastSession, setLastSession] = useState({
+    id: 1
+  });
 //   const lsPullsArray = JSON.parse(localStorage.getItem("pullsFromNewSession"));
 //   const [pullsArray, setPullsArray] = useState(lsPullsArray || []);
 
@@ -102,11 +104,11 @@ const AddDataPage = () => {
         <section className="add-data__section">
           <h2 className="add-data__section-heading">New Session</h2>
           {lastSession.id > 0 ? (
-            // <NewSessionForm
-            //   lastSession={lastSession}
-            //   handleSessionFormData={handleSessionFormData}
-            // />
-            <p>New session form goes here</p>
+            <NewSessionForm
+              lastSession={lastSession}
+              handleSessionFormData={handleSessionFormData}
+            />
+            // <p>New session form goes here</p>
           ) : (
             ""
           )}

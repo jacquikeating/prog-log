@@ -1,0 +1,42 @@
+@use "/src/styles/__variables" as *;
+@use "/src/styles/__mixins" as *;
+
+.session-form {
+    margin-top: 1rem;
+    
+    &__container {
+        margin-top: 1rem;
+        display: flex;
+        width: 80%;
+    }
+
+    &__labels-column {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        line-height: 1.75;
+        width: 15%;
+    }
+
+    &__inputs-column {
+        display: flex;
+        flex-direction: column;
+        width: 45%;
+        gap: 1rem;
+    }
+
+    &__label {
+        width: 100%;
+    }
+
+    &__input {
+        @include input;
+        margin-left: 1rem;
+    }
+
+    &__button {
+        width: 100px;
+        margin-top: 2rem;
+    }
+    
+}
