@@ -122,7 +122,7 @@ const ReportPage = ({ sessions, pulls }) => {
         <SessionContext.Provider value={{ sessionCtx }}>
             <EditContext.Provider value={{ editCtx }}>
                 <main className="report">
-                    {session.id ? (
+                    {session ? (
                         <>
                             {!editMode ? <SessionInfo /> : <SessionInfoEdit />}
                             <PullsContext.Provider value={{ pullsCtx }}>
