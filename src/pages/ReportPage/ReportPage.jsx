@@ -33,7 +33,6 @@ const ReportPage = ({ sessions, pulls }) => {
 
     useEffect(() => {
         if (!isPending) {
-            console.log(pulls.filter((pull) => pull.session_id == sessionID))
             setPullsArray(pulls.filter((pull) => pull.session_id == sessionID));
         }
     }, [isPending]);
