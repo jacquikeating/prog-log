@@ -10,9 +10,22 @@ import PullsTable from "../../components/PullsTable/PullsTable";
 const AddDataPage = () => {
   const [sessionInProgress, setSessionInProgress] = useState(false);
   const [sessionData, setSessionData] = useState({});
-  const [lastSession, setLastSession] = useState({
-    id: 1
-  });
+  const [lastSession, setLastSession] = useState(
+    // Placeholder
+    {
+        id: 0,
+        static: "",
+        num: 0,
+        date: "",
+        roster: "",
+        prog_phase: 1,
+        prog_mech: "Opener",
+        fflogs_link: "",
+        twitch_links: "",
+        goal: "",
+        notes: ""
+    }
+  );
 //   const lsPullsArray = JSON.parse(localStorage.getItem("pullsFromNewSession"));
 //   const [pullsArray, setPullsArray] = useState(lsPullsArray || []);
 
@@ -103,15 +116,10 @@ const AddDataPage = () => {
       {!sessionInProgress ? (
         <section className="add-data__section">
           <h2 className="add-data__section-heading">New Session</h2>
-          {lastSession.id > 0 ? (
             <NewSessionForm
               lastSession={lastSession}
               handleSessionFormData={handleSessionFormData}
             />
-            // <p>New session form goes here</p>
-          ) : (
-            ""
-          )}
         </section>
       ) : (
         <>
