@@ -2,12 +2,14 @@ import { useState, useEffect } from "react";
 // import axios from "axios";
 import { createReadableDate } from "../../utils/shared-functions.js";
 import NewSessionForm from "../../components/NewSessionForm/NewSessionForm";
-// import NewPullForm from "../../components/NewPullForm/NewPullForm";
+import NewPullForm from "../../components/NewPullForm/NewPullForm";
 import PullsTable from "../../components/PullsTable/PullsTable";
 
 // const API_URL = import.meta.env.VITE_API_URL;
 
 const AddDataPage = ({ sessions }) => {
+        // localStorage.removeItem("sessionInProgress")
+
     const [sessionInProgress, setSessionInProgress] = useState(false);
     const [sessionData, setSessionData] = useState({});
     const [lastSession, setLastSession] = useState(null);
@@ -56,44 +58,45 @@ const AddDataPage = ({ sessions }) => {
         }
     }, []);
 
+
     function handleSessionFormData(data) {
         setSessionData(data);
         setSessionInProgress(true);
     }
 
-//   function handlePullFormData(data) {
-//     let copyOfPullsArray = [...pullsArray];
-//     if (data.indexToInsert == 0) {
-//       copyOfPullsArray.push(data);
-//     } else {
-//       copyOfPullsArray.splice(data.indexToInsert - 1, 0, data);
-//     }
-//     setPullsArray(copyOfPullsArray);
-//     localStorage.setItem(
-//       "pullsFromNewSession",
-//       JSON.stringify(copyOfPullsArray)
-//     );
-//   }
+  function handlePullFormData(data) {
+    let copyOfPullsArray = [...pullsArray];
+    if (data.indexToInsert == 0) {
+      copyOfPullsArray.push(data);
+    } else {
+      copyOfPullsArray.splice(data.indexToInsert - 1, 0, data);
+    }
+    setPullsArray(copyOfPullsArray);
+    localStorage.setItem(
+      "pullsFromNewSession",
+      JSON.stringify(copyOfPullsArray)
+    );
+  }
 
-//   function updatePull(pullData) {
-//     let copyOfPullsArray = [...pullsArray];
-//     copyOfPullsArray[pullData.index] = pullData;
-//     localStorage.setItem(
-//       "pullsFromNewSession",
-//       JSON.stringify(copyOfPullsArray)
-//     );
-//     setPullsArray(copyOfPullsArray);
-//   }
+  function updatePull(pullData) {
+    let copyOfPullsArray = [...pullsArray];
+    copyOfPullsArray[pullData.index] = pullData;
+    localStorage.setItem(
+      "pullsFromNewSession",
+      JSON.stringify(copyOfPullsArray)
+    );
+    setPullsArray(copyOfPullsArray);
+  }
 
-//   function deletePull(pullData) {
-//     let copyOfPullsArray = [...pullsArray];
-//     copyOfPullsArray.splice(pullData.index, 1);
-//     localStorage.setItem(
-//       "pullsFromNewSession",
-//       JSON.stringify(copyOfPullsArray)
-//     );
-//     setPullsArray(copyOfPullsArray);
-//   }
+  function deletePull(pullData) {
+    let copyOfPullsArray = [...pullsArray];
+    copyOfPullsArray.splice(pullData.index, 1);
+    localStorage.setItem(
+      "pullsFromNewSession",
+      JSON.stringify(copyOfPullsArray)
+    );
+    setPullsArray(copyOfPullsArray);
+  }
 
     async function handleSubmit() {
         let counter = Number(localStorage.getItem("counter"));
@@ -146,12 +149,11 @@ const AddDataPage = ({ sessions }) => {
                     </section>
                     <section className="add-data__section">
                         <h2 className="add-data__section-heading">Add a Pull</h2>
-                        {/* <NewPullForm
-                        sessionData={sessionData}
-                        pullsArray={pullsArray}
-                        handlePullFormData={handlePullFormData}
-                        /> */}
-                        <p>New pull form goes here</p>
+                        <NewPullForm
+                            sessionData={sessionData}
+                            pullsArray={pullsArray}
+                            handlePullFormData={handlePullFormData}
+                        />
                     </section>
                     <section className="add-data__section">
                         <h2 className="add-data__section-heading">Pulls</h2>

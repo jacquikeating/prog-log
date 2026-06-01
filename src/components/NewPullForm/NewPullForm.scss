@@ -1,0 +1,38 @@
+@use "/src/styles/__variables" as *;
+@use "/src/styles/__mixins" as *;
+
+.form {
+
+    &__label {
+        display: block;
+    }
+
+    &__pickers-container {
+        display: flex;
+        width: 80%;
+        margin: 1rem auto;
+        border: 1px solid $borders;
+        border-radius: 2px;
+        background-color: $bg-mid;
+
+        & *div {
+            width: 300px;
+        }
+    }
+
+    &__fieldset {
+        display: flex;
+        justify-content: space-evenly;
+        gap: 1rem;
+        padding: 0.5rem;
+    }
+
+    &__checkbox {
+        @include input;
+        margin-right: 0.5rem;
+    }
+
+    &__input {
+        @include input;
+    }
+}
