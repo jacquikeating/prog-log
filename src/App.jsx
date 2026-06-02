@@ -34,7 +34,7 @@ function App() {
   async function fetchPulls() {
     const { error, data } = await supabase.from("pulls").select("*");
     if (error) { 
-      console.error("Error fetching sessions: ", error.message);
+      console.error("Error fetching pulls: ", error.message);
       return;
     } else {
       console.log(data);
