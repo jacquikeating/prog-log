@@ -56,7 +56,7 @@ const PullsSection = () => {
   return (
     <section className="report__section">
       <div className="report__pulls-heading">
-        <h2 className="report__subheading">Pulls ({pullsArray.length})</h2>
+        <h2 className="report__subheading">Pulls ({pullsToDisplay.length})</h2>
 
         <label className="report__filter-label" htmlFor="progOnlyCheckbox">
           <input

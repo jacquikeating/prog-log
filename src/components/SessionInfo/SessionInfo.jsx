@@ -22,7 +22,7 @@ const SessionInfo = () => {
       </h1>
 
       <p className="report__subtitle">
-        Session {session.id}
+        Session {session.num}
         <span className="report__divider"> • </span>
         {session.prog_mech === "Reclears" && sessionID !== "37"
           ? "Reclears"
