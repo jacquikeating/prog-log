@@ -63,24 +63,26 @@ function App() {
     )
   }
 
-  return (
-    <BrowserRouter>
-      <Header latestSession={sessions.length} />
-      <Routes>
-        <Route 
-          path="/" 
-          element={<OverviewPage sessions={[...sessions].reverse()} pulls={pulls} />}
-        />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/add-data" element={<AddDataPage sessions={[...sessions].reverse()} />} />
-        <Route
-            path="/report/:sessionID"
-            element={<ReportPage sessions={sessions} pulls={pulls} />}
+  if (sessions.length > 0) {
+    return (
+      <BrowserRouter>
+        <Header latestSession={sessions.length} />
+        <Routes>
+          <Route 
+            path="/" 
+            element={<OverviewPage sessions={[...sessions].reverse()} pulls={pulls} />}
           />
-        <Route path="/*" element={<NotFoundPage />} />
-      </Routes>
-    </BrowserRouter>
-  );
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/add-data" element={<AddDataPage sessions={[...sessions].reverse()} />} />
+          <Route
+              path="/report/:sessionID"
+              element={<ReportPage sessions={sessions} pulls={pulls} />}
+            />
+          <Route path="/*" element={<NotFoundPage />} />
+        </Routes>
+      </BrowserRouter>
+    );
+  }
 }
 
 export default App;
