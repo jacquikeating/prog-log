@@ -27,7 +27,6 @@ function App() {
       return;
     } else {
       setSessions(data);
-      setLoading(false);
     }
   }
 
@@ -37,7 +36,6 @@ function App() {
       console.error("Error fetching pulls: ", error.message);
       return;
     } else {
-      console.log(data);
       setPulls(data);
       setLoading(false);
     }
