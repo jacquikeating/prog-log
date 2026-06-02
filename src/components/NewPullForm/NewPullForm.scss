@@ -20,6 +20,11 @@
         }
     }
 
+    &__selects-container {
+        display: flex;
+        gap: 1rem;
+    }
+
     &__fieldset {
         display: flex;
         justify-content: space-evenly;
