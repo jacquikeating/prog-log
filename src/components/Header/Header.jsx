@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import SelectStaticUlti from "../../components/SelectStaticUlti/SelectStaticUlti";
 import "./Header.scss";
 
 const Header = ({ latestSession }) => {
@@ -36,6 +37,8 @@ const Header = ({ latestSession }) => {
                 Timeline
               </Link>
             </li>
+              <SelectStaticUlti />
+
             {/* {role === "admin" ? (
               <li className="nav__list-item">
                 <Link to="/add-data" className="nav__link">

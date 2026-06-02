@@ -1,0 +1,13 @@
+@use "/src/styles/__variables" as *;
+@use "/src/styles/__mixins" as *;
+
+.select-static-ulti {
+    color: $text-light;
+    opacity: 0.7;
+    font-family: $font-display;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    font-weight: 400;
+    line-height: 1;
+    cursor: pointer;
+}
