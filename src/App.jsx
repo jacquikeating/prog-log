@@ -12,12 +12,16 @@ import "./styles/index.scss";
 function App() {
   const [loading, setLoading] = useState(true);
   const [sessions, setSessions] = useState([]);
+  const [pulls, setPulls] = useState([]);
 
   async function fetchSessions() {
     const { error, data } = await supabase.from("sessions").select("*");
     // Query filter for future reference:
-    // const { error, data } = await supabase.from("sessions").select("*").eq("static", "Wall is Safe");
-
+    /* const { error, data } = await supabase.from("sessions")
+        .select("*")
+        .eq("static", "Wall is Safe")
+        .order("num", { ascending: false });
+    */
     if (error) { 
       console.error("Error fetching sessions: ", error.message);
       return;
@@ -27,8 +31,21 @@ function App() {
     }
   }
 
+  async function fetchPulls() {
+    const { error, data } = await supabase.from("pulls").select("*");
+    if (error) { 
+      console.error("Error fetching sessions: ", error.message);
+      return;
+    } else {
+      console.log(data);
+      setPulls(data);
+      setLoading(false);
+    }
+  }
+
   useEffect(() => {
     fetchSessions();
+    fetchPulls();
   }, []);
 
   // Temporary dummy data taken from archive 
