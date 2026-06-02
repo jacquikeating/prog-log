@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { supabase } from "../../supabase-client";
 import { createReadableDate } from "../../utils/shared-functions.js";
 import NewSessionForm from "../../components/NewSessionForm/NewSessionForm";
 import NewPullForm from "../../components/NewPullForm/NewPullForm";
@@ -82,10 +83,9 @@ const AddDataPage = ({ sessions }) => {
             pull.pull_num_overall = counter + pull.pull_num_today;
             delete pull.index;
             delete pull.indexToInsert;
-            try {
-                await axios.post(`${API_URL}/pulls/`, pull);
-            } catch (error) {
-                console.error(error);
+            const {error} = await supabase.from("pulls").insert(pull).single();
+            if (error) { 
+                console.error("Error adding session: ", error.message);
             }
         });
 
