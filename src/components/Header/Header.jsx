@@ -27,7 +27,7 @@ const Header = ({ latestSession }) => {
                 About
               </Link>
             </li>
-            <li className="nav__list-item">
+            {/* <li className="nav__list-item">
               <Link to="/clips" className="nav__link">
                 Clips
               </Link>
@@ -36,8 +36,8 @@ const Header = ({ latestSession }) => {
               <Link to="/timeline" className="nav__link">
                 Timeline
               </Link>
-            </li>
-              <SelectStaticUlti />
+            </li> */}
+              {/* <SelectStaticUlti /> */}
 
             {/* {role === "admin" ? (
               <li className="nav__list-item">
