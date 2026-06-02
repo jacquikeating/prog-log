@@ -26,7 +26,7 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
     setSelectedMech(e.mech);
   }
 
-  const phaseAndMechOptions = [
+  const fruPhaseAndMechOptions = [
     ["N/A"],
     ["Opener", "Utopian Sky", "Fall of Faith", "Towers", "P1 Enrage"],
     ["Diamond Dust", "Mirrors", "Light Rampant", "P2 Enrage", "Intermission"],
@@ -40,6 +40,23 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
       "Clear",
     ],
   ];
+
+  const umadPhaseAndMechOptions = [
+    ["N/A"],
+    ["Dancing", "Mad", "(Ultimate)"],
+    ["Don't", "Get", "Bamboozled"],
+    ["Idk", "What the Mechanics Are", "Maybe Fivesaken", "Or Something"],
+    ["The Real", "World Race", "Is Clearing"],
+    ["Before", "Xeno", "Clears P1"]
+  ]
+
+  let options;
+  if (sessionData.ulti == "FRU") {
+    options = fruPhaseAndMechOptions
+  } else if (sessionData.ulti == "UMAD") {
+    options = umadPhaseAndMechOptions
+  }
+
 
   const handleCheckboxChange = (position) => {
     const updatedCheckedState = checkedState.map((item, index) =>
@@ -105,7 +122,7 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
           className="form__picker"
         >
           <Picker.Column key="phase" name="phase">
-            {phaseAndMechOptions.map((_phase, index) => (
+            {options.map((_phase, index) => (
               <Picker.Item
                 key={index}
                 value={index}
@@ -133,7 +150,7 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
           className="form__picker"
         >
           <Picker.Column key="mech" name="mech">
-            {phaseAndMechOptions[selectedPhase].map((mech) => (
+            {options[selectedPhase].map((mech) => (
               <Picker.Item
                 key={mech}
                 value={mech}
