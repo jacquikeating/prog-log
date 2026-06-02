@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Picker from "react-mobile-picker";
 import { checkIfProgPointReached } from "../../utils/shared-functions";
+import { getPhaseAndMechOptions } from "../../utils/static-values";
 import "./NewPullForm.scss";
 
 const NewPullForm = ({ sessionData, handlePullFormData }) => {
@@ -15,6 +16,7 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
     const [notes, setNotes] = useState("");
     const [insertMode, setInsertMode] = useState(false);
     const [indexToInsert, setIndexToInsert] = useState(0);
+    const phaseAndMechOptions = getPhaseAndMechOptions(sessionData.ulti);
 
     function handlePhaseChange(e) {
         setSelectedPhase(e.phase);
@@ -27,31 +29,6 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
     function handleInsert(e) {
         e.preventDefault();
         setInsertMode(true);
-    }
-
-    const fruPhaseAndMechOptions = [
-        ["N/A"],
-        ["Opener", "Utopian Sky", "Fall of Faith", "Towers", "P1 Enrage"],
-        ["Diamond Dust", "Mirrors", "Light Rampant", "P2 Enrage", "Intermission"],
-        ["Ultimate Relativity", "Apocalypse", "P3 Enrage"],
-        ["Darklit Dragonsong", "Crystalize Time", "P4 Enrage"],
-        ["Fulgent Blade", "Wings Dark and Light", "Polarizing Strikes", "P5 Enrage", "Clear"],
-    ];
-
-    const umadPhaseAndMechOptions = [
-        ["N/A"],
-        ["Dancing", "Mad", "(Ultimate)"],
-        ["Don't", "Get", "Bamboozled"],
-        ["Idk", "What the Mechs Are", "Maybe Fivesaken", "Or Something"],
-        ["The Real", "World Race", "Is Clearing"],
-        ["Before", "Xeno", "Clears P1"]
-    ]
-
-    let options;
-    if (sessionData.ulti == "FRU") {
-        options = fruPhaseAndMechOptions
-    } else if (sessionData.ulti == "UMAD") {
-        options = umadPhaseAndMechOptions
     }
 
     const handleCheckboxChange = (position) => {
@@ -112,7 +89,7 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
                 className="form__picker"
             >
                 <Picker.Column key="phase" name="phase">
-                    {options.map((_phase, index) => (
+                    {phaseAndMechOptions.map((_phase, index) => (
                         <Picker.Item
                             key={index}
                             value={index}
@@ -134,7 +111,7 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
                 className="form__picker"
             >
                 <Picker.Column key="mech" name="mech">
-                    {options[selectedPhase].map((mech) => (
+                    {phaseAndMechOptions[selectedPhase].map((mech) => (
                     <Picker.Item
                         key={mech}
                         value={mech}
