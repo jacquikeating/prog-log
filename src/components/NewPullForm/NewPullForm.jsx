@@ -17,6 +17,7 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
     const [insertMode, setInsertMode] = useState(false);
     const [indexToInsert, setIndexToInsert] = useState(0);
     const phaseAndMechOptions = getPhaseAndMechOptions(sessionData.ulti);
+    const [usePicker, setUsePicker] = useState(true);
 
     function handlePhaseChange(e) {
         setSelectedPhase(e.target.value);
@@ -75,86 +76,92 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
 
     return (
         <form className="form">
-            {/* <label className="form__label" htmlFor="phase">
-                Phase & Mechanic
-            </label> */}
+            {usePicker ? (
+                <>
+                    <label className="form__label" htmlFor="phase">
+                        Phase & Mechanic
+                    </label> 
 
-            {/* <div className="form__pickers-container">
-                <Picker
-                    value={selectedPhase}
-                    onChange={handlePhaseChange}
-                    wheelMode="natural"
-                    height={90}
-                    itemHeight={30}
-                    className="form__picker"
-                >
-                    <Picker.Column key="phase" name="phase">
-                        {phaseAndMechOptions.map((_phase, index) => (
-                            <Picker.Item
-                                key={index}
-                                value={index}
-                                className="form__picker-option"
-                                style={selectedPhase == index && {color: "#b38cff"}}
-                            >
-                                {index}
-                            </Picker.Item>
-                        ))}
-                    </Picker.Column>
-                </Picker>
+                    <div className="form__pickers-container">
+                        <Picker
+                            value={selectedPhase}
+                            onChange={handlePhaseChange}
+                            wheelMode="natural"
+                            height={90}
+                            itemHeight={30}
+                            className="form__picker"
+                        >
+                            <Picker.Column key="phase" name="phase">
+                                {phaseAndMechOptions.map((_phase, index) => (
+                                    <Picker.Item
+                                        key={index}
+                                        value={index}
+                                        className="form__picker-option"
+                                        style={selectedPhase == index && {color: "#b38cff"}}
+                                    >
+                                        {index}
+                                    </Picker.Item>
+                                ))}
+                            </Picker.Column>
+                        </Picker>
 
-                <Picker
-                    value={selectedMech}
-                    onChange={handleMechChange}
-                    wheelMode="natural"
-                    height={90}
-                    itemHeight={30}
-                    className="form__picker"
-                >
-                    <Picker.Column key="mech" name="mech">
-                        {phaseAndMechOptions[selectedPhase].map((mech) => (
-                            <Picker.Item
-                                key={mech}
-                                value={mech}
-                                className="form__picker-option"
-                                style={selectedMech == mech && {color: "#b38cff"}}
-                            >
-                                {mech}
-                            </Picker.Item>
-                        ))}
-                    </Picker.Column>
-                </Picker>
-            </div> */}
+                        <Picker
+                            value={selectedMech}
+                            onChange={handleMechChange}
+                            wheelMode="natural"
+                            height={90}
+                            itemHeight={30}
+                            className="form__picker"
+                        >
+                            <Picker.Column key="mech" name="mech">
+                                {phaseAndMechOptions[selectedPhase].map((mech) => (
+                                    <Picker.Item
+                                        key={mech}
+                                        value={mech}
+                                        className="form__picker-option"
+                                        style={selectedMech == mech && {color: "#b38cff"}}
+                                    >
+                                        {mech}
+                                    </Picker.Item>
+                                ))}
+                            </Picker.Column>
+                        </Picker>
+                    </div> 
+                </>
+            ) : (
+                <div className="form__selects-container">
+                    <label className="form__label" htmlFor="phase">
+                        Phase
+                    </label>
+                    <select className="form__select" name="phase" id="phase" onChange={handlePhaseChange} value={selectedPhase}>
+                        {phaseAndMechOptions.map((_phase, index) => {
+                            if (!index == 0) { 
+                                return (
+                                    <option value={index} className="form__option">
+                                        {index}
+                                    </option>
+                                )
+                            } 
+                        })}
+                    </select>
 
-            <div className="form__selects-container">
-                <label className="form__label" htmlFor="phase">
-                    Phase
-                </label>
-                <select className="form__select" name="phase" id="phase" onChange={handlePhaseChange} value={selectedPhase}>
-                    {phaseAndMechOptions.map((_phase, index) => {
-                        if (!index == 0) { 
+                    <label className="form__label" htmlFor="mech">
+                        Mechanic
+                    </label>
+                    <select className="form__select" name="mech" id="mech"  onChange={handleMechChange} value={selectedMech}>
+                        {phaseAndMechOptions[selectedPhase].map((mech) => {
                             return (
-                                <option value={index} className="form__option">
-                                    {index}
+                                <option value={mech} className="form__option">
+                                    {mech}
                                 </option>
-                            )
-                        } 
-                    })}
-                </select>
+                            ) 
+                        })}
+                    </select>
+             </div>
+            )}
 
-                <label className="form__label" htmlFor="mech">
-                    Mechanic
-                </label>
-                <select className="form__select" name="mech" id="mech"  onChange={handleMechChange} value={selectedMech}>
-                    {phaseAndMechOptions[selectedPhase].map((mech) => {
-                        return (
-                            <option value={mech} className="form__option">
-                                {mech}
-                            </option>
-                        ) 
-                    })}
-                </select>
-            </div>
-
+            <button onClick={() => setUsePicker(!usePicker)}>Switch phase select</button>
+            
             <label className="form__label" htmlFor="cause">
                 Cause of Wipe
             </label>
