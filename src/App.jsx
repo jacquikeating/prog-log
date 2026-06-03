@@ -73,7 +73,7 @@ function App() {
             element={<OverviewPage sessions={[...sessions].reverse()} pulls={pulls} />}
           />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/add-data" element={<AddDataPage sessions={[...sessions].reverse()} />} />
+          <Route path="/add" element={<AddDataPage sessions={[...sessions].reverse()} />} />
           <Route
               path="/report/:sessionID"
               element={<ReportPage sessions={sessions} pulls={pulls} />}
