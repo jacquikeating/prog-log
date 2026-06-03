@@ -66,16 +66,17 @@ function App() {
   if (sessions.length > 0) {
     return (
       <BrowserRouter>
-        <Header latestSession={sessions.length} />
+        {/* <Header latestSession={sessions.length} /> */}
+        <Header latestSession={1} /> {/* Temporarily hardcoded */}
         <Routes>
           <Route 
-            path="/" 
-            element={<OverviewPage sessions={[...sessions].reverse()} pulls={pulls} />}
+            path="/:staticNick/:ulti" 
+            element={<OverviewPage sessions={sessions} pulls={pulls} />}
           />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/add" element={<AddDataPage sessions={[...sessions].reverse()} />} />
+          <Route path="/add/:static/:ulti" element={<AddDataPage sessions={sessions} />} />
           <Route
-              path="/report/:sessionID"
+              path="/report/:static/:ulti/:sessionID"
               element={<ReportPage sessions={sessions} pulls={pulls} />}
             />
           <Route path="/*" element={<NotFoundPage />} />
