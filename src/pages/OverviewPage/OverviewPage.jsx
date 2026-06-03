@@ -6,8 +6,7 @@ import SessionsList from "../../components/SessionsList/SessionsList";
 const OverviewPage = ({ sessions, pulls }) => {
     const { staticNick, ulti } = useParams();
 
-    const staticSessions = sessions.filter((session) => session.static == staticNick);
-    const filteredSessions = staticSessions.filter((session) => session.ulti.toLowerCase() == ulti);
+    const filteredSessions = sessions.filter((session) => session.static == staticNick && session.ulti.toLowerCase() == ulti );
 
     return (
         <main className="overview-page">
