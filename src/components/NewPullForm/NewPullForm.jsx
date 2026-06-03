@@ -2,6 +2,7 @@ import { useState } from "react";
 import Picker from "react-mobile-picker";
 import { checkIfProgPointReached } from "../../utils/shared-functions";
 import { getPhaseAndMechOptions } from "../../utils/static-values";
+import ScrollPicker from "../ScrollPicker/ScrollPicker";
 import "./NewPullForm.scss";
 
 const NewPullForm = ({ sessionData, handlePullFormData }) => {
@@ -81,6 +82,8 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
                     <label className="form__label" htmlFor="phase">
                         Phase & Mechanic
                     </label> 
+
+                    <ScrollPicker />
 
                     <div className="form__pickers-container">
                         <Picker
