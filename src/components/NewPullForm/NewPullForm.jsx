@@ -18,7 +18,7 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
     const [insertMode, setInsertMode] = useState(false);
     const [indexToInsert, setIndexToInsert] = useState(0);
     const phaseAndMechOptions = getPhaseAndMechOptions(sessionData.ulti);
-    const [usePicker, setUsePicker] = useState(true);
+    const [usePicker, setUsePicker] = useState(false);
 
     function handlePhaseChange(e) {
         setSelectedPhase(e.target.value);
@@ -82,9 +82,7 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
                     <label className="form__label" htmlFor="phase">
                         Phase & Mechanic
                     </label> 
-
-                    <ScrollPicker />
-
+                    
                     <div className="form__pickers-container">
                         <Picker
                             value={selectedPhase}
@@ -163,7 +161,7 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
              </div>
             )}
 
-            <button onClick={() => setUsePicker(!usePicker)}>Switch phase select</button>
+            {/* <button onClick={() => setUsePicker(!usePicker)}>Switch phase select</button> */}
             
             <label className="form__label" htmlFor="cause">
                 Cause of Wipe
