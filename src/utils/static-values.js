@@ -10,7 +10,7 @@ const fruPhaseAndMechOptions = [
 
 const umadPhaseAndMechOptions = [
     ["N/A"],
-    ["Dancing", "Mad", "(Ultimate)"],
+    ["Opener", "Graven 1", "Graven 2", "Graven 3"],
     ["Don't", "Get", "Bamboozled"],
     ["Idk", "What the Mechs Are", "Maybe Fivesaken", "Or Something"],
     ["The Real", "World Race", "Is Clearing"],
