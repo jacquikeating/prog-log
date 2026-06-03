@@ -3,6 +3,8 @@ import { supabase } from "../../supabase-client";
 import "./NewSessionForm.scss";
 
 const NewSessionForm = ({ lastSession, handleSessionFormData }) => {
+    const [staticName, setStaticName] = useState(lastSession.static);
+    const [ulti, setUlti] = useState(lastSession.ulti);
     const [num, setNum] = useState(lastSession.num + 1);
     const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
     const [roster, setRoster] = useState(lastSession.roster);
@@ -15,8 +17,8 @@ const NewSessionForm = ({ lastSession, handleSessionFormData }) => {
 
     async function handleSubmit() {
         const sessionObj = {
-            static: "Test Static", // Temporarily hardcoded
-            ulti: "UMAD", // Temporarily hardcoded
+            static: staticName,
+            ulti: ulti,
             num: Number(num),
             date: date,
             prog_phase: Number(progPhase),
@@ -40,6 +42,12 @@ const NewSessionForm = ({ lastSession, handleSessionFormData }) => {
         <div className="session-form">
             <div className="session-form__container">
                 <div className="session-form__labels-column">
+                    <label className="session-form__label" htmlFor="static">
+                        Static
+                    </label>
+                    <label className="session-form__label" htmlFor="ulti">
+                        Ulti
+                    </label>
                     <label className="session-form__label" htmlFor="session-num">
                         Session #
                     </label>
@@ -70,6 +78,22 @@ const NewSessionForm = ({ lastSession, handleSessionFormData }) => {
                 </div>
 
                 <div className="session-form__inputs-column">
+                    <input
+                        className="session-form__input session-form__input--number"
+                        type="text"
+                        name="static"
+                        id="static"
+                        value={staticName}
+                        onChange={(e) => setStaticName(e.target.value)}
+                    />
+                    <input
+                        className="session-form__input session-form__input--number"
+                        type="text"
+                        name="ulti"
+                        id="ulti"
+                        value={ulti}
+                        onChange={(e) => setUlti(e.target.value)}
+                    />
                     <input
                         className="session-form__input session-form__input--number"
                         type="number"
