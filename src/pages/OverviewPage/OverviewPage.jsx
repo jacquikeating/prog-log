@@ -5,6 +5,8 @@ import SessionsList from "../../components/SessionsList/SessionsList";
 
 const OverviewPage = ({ sessions, pulls }) => {
     const { staticNick, ulti } = useParams();
+    const urlParamsString = `${staticNick}/${ulti}`
+    localStorage.setItem("urlParams", urlParamsString);
 
     const filteredSessions = sessions.filter((session) => session.static == staticNick && session.ulti.toLowerCase() == ulti );
     const filteredPulls = pulls.filter((pull) => pull.static == staticNick && pull.ulti.toLowerCase() == ulti );
