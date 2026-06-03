@@ -12,12 +12,19 @@ const OverviewPage = ({ sessions, pulls }) => {
     return (
         <main className="overview-page">
             <h1 className="overview-page__title">Overview</h1>
-            <OverviewStats sessions={filteredSessions} pulls={filteredPulls} />
-            <PhaseBreakdownTable
-                progPhase={filteredSessions[0].prog_phase}
-                pulls={filteredPulls} 
-            />
-            <SessionsList sessions={filteredSessions} />
+            {filteredSessions.length > 0 && filteredPulls.length > 0 ? (
+                <>
+                    <OverviewStats sessions={filteredSessions} pulls={filteredPulls} />
+                    <PhaseBreakdownTable
+                        progPhase={filteredSessions[0].prog_phase}
+                        pulls={filteredPulls} 
+                    />
+                    <SessionsList sessions={filteredSessions} />
+                </>
+            ) : (
+                <p>No data found for this static and ultimate. </p>
+            )}
+            
         </main>
     );
 };
