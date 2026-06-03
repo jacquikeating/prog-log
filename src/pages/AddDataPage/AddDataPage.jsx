@@ -114,7 +114,7 @@ const AddDataPage = ({ sessions }) => {
                 <>
                     <section className="add-data__section">
                         <h2 className="add-data__section-heading">Session Info</h2>
-                        <p>Static: {sessionData.staticName}</p>
+                        <p>Static: {sessionData.static}</p>
                         <p>Ulti: {sessionData.ulti}</p>
                         <p>Session: {sessionData.num}</p>
                         <p>Date: {createReadableDate(sessionData.date)}</p>
