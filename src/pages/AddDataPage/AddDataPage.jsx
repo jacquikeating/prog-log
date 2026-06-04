@@ -78,11 +78,11 @@ const AddDataPage = ({ sessions }) => {
     }
 
     async function handleSubmit() {
-        let counter = Number(localStorage.getItem("counter"));
+        let existingPullsCount = Number(localStorage.getItem("existingPullsCount")) || 0;
 
         pullsArray.map(async (pull, index) => {
             pull.pull_num_today = Number(index + 1);
-            pull.pull_num_overall = counter + pull.pull_num_today;
+            pull.pull_num_overall = existingPullsCount + pull.pull_num_today;
             delete pull.index;
             delete pull.indexToInsert;
             const {error} = await supabase.from("pulls").insert(pull).single();
@@ -92,7 +92,7 @@ const AddDataPage = ({ sessions }) => {
         });
 
         const lastPullNumOverall = pullsArray[pullsArray.length - 1].pull_num_overall;
-        localStorage.setItem("counter", lastPullNumOverall);
+        localStorage.setItem("existingPullsCount", lastPullNumOverall);
         navigator.clipboard.writeText(localStorage.getItem("pullsFromNewSession"));
         localStorage.removeItem("pullsFromNewSession");
         localStorage.removeItem("sessionInProgress");
