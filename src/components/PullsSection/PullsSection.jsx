@@ -58,7 +58,7 @@ const PullsSection = () => {
       <div className="report__pulls-heading">
         <h2 className="report__subheading">Pulls ({pulls.length})</h2>
 
-        <label className="report__filter-label" htmlFor="progOnlyCheckbox">
+        {/* <label className="report__filter-label" htmlFor="progOnlyCheckbox">
           <input
             type="checkbox"
             name="progOnlyCheckbox"
@@ -93,7 +93,7 @@ const PullsSection = () => {
             })}
           </select>
           Filter by player
-        </label>
+        </label> */}
       </div>
 
       <PullsTable
