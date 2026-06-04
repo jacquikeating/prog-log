@@ -5,7 +5,7 @@ import PullsTable from "../PullsTable/PullsTable.jsx";
 
 const PullsSection = () => {
   const { sessionCtx } = useContext(SessionContext);
-  const { session, sessionID, pullsArray } = sessionCtx;
+  const { session, sessionNum, pullsArray } = sessionCtx;
   const { editCtx } = useContext(EditContext);
   const {
     editMode,
@@ -25,7 +25,7 @@ const PullsSection = () => {
 
   useEffect(() => {
     if (!isPending) {
-      setPullsToDisplay(pulls.filter((pull) => pull.session_num == sessionID));
+      setPullsToDisplay(pulls.filter((pull) => pull.session_num == sessionNum));
     }
   }, [isPending]);
 

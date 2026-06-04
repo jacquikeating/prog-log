@@ -6,7 +6,7 @@ import PhaseBreakdownTable from "../PhaseBreakdownTable/PhaseBreakdownTable";
 
 const SessionInfo = () => {
   const { sessionCtx } = useContext(SessionContext);
-  const { session, pullsArray, sessionID } = sessionCtx;
+  const { session, pullsArray, sessionNum } = sessionCtx;
   const { editCtx } = useContext(EditContext);
   const { editSession, setSession, showEdit } = editCtx;
 
@@ -24,7 +24,7 @@ const SessionInfo = () => {
       <p className="report__subtitle">
         Session {session.num}
         <span className="report__divider"> • </span>
-        {session.prog_mech === "Reclears" && sessionID !== "37"
+        {session.prog_mech === "Reclears" && sessionNum !== "37"
           ? "Reclears"
           : `Phase ${session.prog_phase} ${session.prog_mech} Prog`}
         <span className="report__divider"> • </span>

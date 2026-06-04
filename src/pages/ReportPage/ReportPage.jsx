@@ -1,22 +1,20 @@
 import { useParams } from "react-router-dom";
+import { supabase } from "../../supabase-client";
 // import { useAuth0 } from "@auth0/auth0-react";
 import { useState, useEffect, createContext } from "react";
-// import useGetPulls from "../../hooks/use-get-pulls.js";
-// import axios from "axios";
 import PullsSection from "../../components/PullsSection/PullsSection.jsx";
 import SessionInfo from "../../components/SessionInfo/SessionInfo.jsx";
 import SessionInfoEdit from "../../components/SessionInfo/SessionInfoEdit.jsx";
 import "./ReportPage.scss";
 
-// const API_URL = import.meta.env.VITE_API_URL;
 const SessionContext = createContext();
 const PullsContext = createContext();
 const EditContext = createContext();
 
 const ReportPage = ({ sessions, pulls }) => {
-    const { sessionID } = useParams();
+    const { sessionNum } = useParams();
     const [session, setSession] = useState(
-        sessions.find((session) => session.num == sessionID)
+        sessions.find((session) => session.num == sessionNum)
     );
     const [pullsArray, setPullsArray] = useState(pulls);
     const [editMode, setEditMode] = useState(false);
@@ -28,14 +26,9 @@ const ReportPage = ({ sessions, pulls }) => {
     let role = "none";
     let pullToUpdate = {};
 
-    // const { pulls, isPending } = useGetPulls(sessionID);
-    const isPending = false; // Temporarily hardcoded
-
     useEffect(() => {
-        if (!isPending) {
-            setPullsArray(pulls.filter((pull) => pull.session_num == sessionID));
-        }
-    }, [isPending]);
+            setPullsArray(pulls.filter((pull) => pull.session_num == sessionNum));
+    }, []);
 
     useEffect(() => {
         // if (isAuthenticated) {
@@ -51,7 +44,7 @@ const ReportPage = ({ sessions, pulls }) => {
         const handleWindowResize = () => setWidth(window.innerWidth);
         window.addEventListener("resize", handleWindowResize);
         return () => window.removeEventListener("resize"), handleWindowResize;
-    }, [sessionID]);
+    }, [sessionNum]);
 
     // async function updatePull(pull) {
     //     delete pull.index;
@@ -82,27 +75,28 @@ const ReportPage = ({ sessions, pulls }) => {
             setEditMode(true);
         } else if (editMode === true) {
             const updatedSessionObj = { ...session };
-            console.log("This is where I'd put my edited session info. IF I HAD ONE");
+
+            // console.log("This is where I'd put my edited session info. IF I HAD ONE");
             // try {
-            //     await axios.put(`${API_URL}/sessions/${sessionID}`, updatedSessionObj);
+            //     await axios.put(`${API_URL}/sessions/${sessionNum}`, updatedSessionObj);
             // } catch (error) {
             //     console.error(error);
+            // } finally {
+            //     setEditMode(false);
             // }
-            setEditMode(false);
         }
     }
 
     const sessionCtx = {
         session,
         pullsArray,
-        sessionID,
+        sessionNum,
     };
 
     const pullsCtx = {
         pulls,
         width,
         breakpoint,
-        isPending,
     };
 
     const editCtx = {
@@ -130,7 +124,7 @@ const ReportPage = ({ sessions, pulls }) => {
                             </PullsContext.Provider>
                         </>
                     ) : (
-                        <p>Could not retrieve data for session #{sessionID}</p>
+                        <p>Could not retrieve data for session #{sessionNum}</p>
                     )}
                 </main>
             </EditContext.Provider>

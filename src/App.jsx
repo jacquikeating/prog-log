@@ -21,7 +21,7 @@ function App() {
     // Query filter for future reference:
     /* const { error, data } = await supabase.from("sessions")
         .select("*")
-        .eq("static", "Wall is Safe")
+        .match({ static: "Wall is Safe", ulti: "umad" })
         .order("num", { ascending: false });
     */
     if (error) { 
@@ -77,7 +77,7 @@ function App() {
           <Route path="/add" element={<AddDataPage sessions={[...sessions].reverse()} />} />
           <Route path="/admin" element={<AdminPage />} />
           <Route
-              path="/report/:sessionID"
+              path="/report/:sessionNum"
               element={<ReportPage sessions={sessions} pulls={pulls} />}
             />
           <Route path="/*" element={<NotFoundPage />} />
