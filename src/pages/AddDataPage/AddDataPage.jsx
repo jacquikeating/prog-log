@@ -52,12 +52,14 @@ const AddDataPage = ({ sessions }) => {
         setSessionInProgress(true);
     }
 
-    function handlePullFormData(data) {
+    function handlePullFormData(newPull) {
+        let insertAt = newPull.indexToInsert
+        delete newPull.indexToInsert
         let copyOfPullsArray = [...pullsArray];
-        if (data.indexToInsert == 0) {
-            copyOfPullsArray.push(data);
+        if (insertAt == 0) {
+            copyOfPullsArray.push(newPull);
         } else {
-            copyOfPullsArray.splice(data.indexToInsert - 1, 0, data);
+            copyOfPullsArray.splice(insertAt - 1, 0, newPull);
         }
         setPullsArray(copyOfPullsArray);
         localStorage.setItem("pullsFromNewSession", JSON.stringify(copyOfPullsArray));
@@ -77,20 +79,30 @@ const AddDataPage = ({ sessions }) => {
         setPullsArray(copyOfPullsArray);
     }
 
-    async function handleSubmit() {
+    function handleSubmit() {
         let existingPullsCount = Number(localStorage.getItem("existingPullsCount")) || 0;
 
-        pullsArray.map(async (pull, index) => {
-            pull.pull_num_today = Number(index + 1);
-            pull.pull_num_overall = existingPullsCount + pull.pull_num_today;
-            delete pull.index;
-            delete pull.indexToInsert;
-            const {error} = await supabase.from("pulls").insert(pull).single();
-            if (error) { 
-                console.error("Error adding session: ", error.message);
+        function preparePullsForBackend() {
+            const copyArray = [...pullsArray]
+            const numberedPulls = copyArray.map((pull, index) => (
+                {
+                    ...pull,
+                    pull_num_today: Number(index + 1),
+                    pull_num_overall: Number(index + 1) + existingPullsCount,
+                }));
+                return numberedPulls;
             }
-        });
 
+        const preparedPulls = preparePullsForBackend()
+       
+        async function insertPulls(){
+            const {error} = await supabase.from("pulls").insert(preparedPulls);
+            if (error) { 
+                console.error("Error adding pulls: ", error);
+            }
+        }
+
+        insertPulls();
         const lastPullNumOverall = pullsArray[pullsArray.length - 1].pull_num_overall;
         localStorage.setItem("existingPullsCount", lastPullNumOverall);
         navigator.clipboard.writeText(localStorage.getItem("pullsFromNewSession"));

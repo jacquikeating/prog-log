@@ -19,7 +19,6 @@ const PullsSection = () => {
   } = editCtx;
   const { pullsCtx } = useContext(PullsContext);
   const { width, breakpoint, pulls, isPending } = pullsCtx;
-  console.log(pulls)
 
   const [progPullsOnly, setProgPullsOnly] = useState(false);
   const [pullsToDisplay, setPullsToDisplay] = useState(pulls);
