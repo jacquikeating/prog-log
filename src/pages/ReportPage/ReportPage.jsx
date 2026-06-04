@@ -14,7 +14,7 @@ const PullsContext = createContext();
 const EditContext = createContext();
 
 const ReportPage = ({ sessions, pulls }) => {
-    const { sessionID } = useParams();
+    const { staticNick, ulti, sessionID } = useParams();
     const [session, setSession] = useState(
         sessions.find((session) => session.num == sessionID)
     );
