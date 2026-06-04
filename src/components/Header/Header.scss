@@ -27,12 +27,15 @@
     &__site-logo {
         display: flex;
         align-items: center;
+        * {
+            transition: all 0.25s ease;
+        }
 
         &:hover {
             text-decoration: none;
 
-            img {
-                transform: rotate(15deg);
+            div {
+                transform: rotate(-25deg);
             }
         }
     }
