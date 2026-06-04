@@ -24,7 +24,7 @@ const AddDataPage = ({ sessions }) => {
             setSessionData(lsSessionData);
             setSessionInProgress(true); 
         } else { 
-            const prevSessions = []; // Temporarily hardcoded. Supabase data-fetching function goes here.
+            const prevSessions = sessions;
             if (prevSessions.length > 0) {
                 setLastSession(prevSessions[0]);
             } else {
