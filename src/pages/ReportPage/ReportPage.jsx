@@ -14,7 +14,7 @@ const EditContext = createContext();
 
 const ReportPage = ({ sessions, pulls }) => {
     const { sessionNum } = useParams();
-    const originalSession =  sessions.find((session) => session.num == sessionNum);
+    const originalSession = sessions.find((session) => session.num == sessionNum);
     const [session, setSession] = useState(originalSession);
     const [pullsArray, setPullsArray] = useState(pulls);
     const [editMode, setEditMode] = useState(false);
@@ -70,12 +70,12 @@ const ReportPage = ({ sessions, pulls }) => {
     //     }
     // }
 
-    async function editSession() {
+    function editSession() {
         if (editMode == false) {
             setEditMode(true);
         } else if (editMode == true) {
             const updatedSessionObj = { ...session };
-            console.log(diff(originalSession, updatedSessionObj))
+                        
             async function updateSession() {
                 const { error } = await supabase.from("sessions")
                     .update(diff(originalSession, updatedSessionObj)) // diff function returns an object with only the properties that don't match
@@ -86,10 +86,10 @@ const ReportPage = ({ sessions, pulls }) => {
                 };
             };
 
-            updateSession()
+            updateSession();
             setEditMode(false);
-        }
-    }
+        };
+    };
 
     const sessionCtx = {
         session,
