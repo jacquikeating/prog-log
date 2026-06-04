@@ -1,7 +1,8 @@
+import { useState, useEffect, createContext } from "react";
 import { useParams } from "react-router-dom";
 import { supabase } from "../../supabase-client";
+import { diff } from 'deep-object-diff';
 // import { useAuth0 } from "@auth0/auth0-react";
-import { useState, useEffect, createContext } from "react";
 import PullsSection from "../../components/PullsSection/PullsSection.jsx";
 import SessionInfo from "../../components/SessionInfo/SessionInfo.jsx";
 import SessionInfoEdit from "../../components/SessionInfo/SessionInfoEdit.jsx";
@@ -13,9 +14,8 @@ const EditContext = createContext();
 
 const ReportPage = ({ sessions, pulls }) => {
     const { sessionNum } = useParams();
-    const [session, setSession] = useState(
-        sessions.find((session) => session.num == sessionNum)
-    );
+    const originalSession =  sessions.find((session) => session.num == sessionNum);
+    const [session, setSession] = useState(originalSession);
     const [pullsArray, setPullsArray] = useState(pulls);
     const [editMode, setEditMode] = useState(false);
     const [showEdit, setShowEdit] = useState(true);
@@ -27,7 +27,7 @@ const ReportPage = ({ sessions, pulls }) => {
     let pullToUpdate = {};
 
     useEffect(() => {
-            setPullsArray(pulls.filter((pull) => pull.session_num == sessionNum));
+        setPullsArray(pulls.filter((pull) => pull.session_num == sessionNum));
     }, []);
 
     useEffect(() => {
@@ -75,18 +75,10 @@ const ReportPage = ({ sessions, pulls }) => {
             setEditMode(true);
         } else if (editMode == true) {
             const updatedSessionObj = { ...session };
-            console.log(session.id)
+            console.log(diff(originalSession, updatedSessionObj))
             async function updateSession() {
-                const { error } = await supabase.from("sessions").update({
-                    date: updatedSessionObj.date,
-                    prog_phase: updatedSessionObj.prog_phase,
-                    prog_mech: updatedSessionObj.prog_mech,
-                    roster: updatedSessionObj.roster,
-                    fflogs_link: updatedSessionObj.fflogs_link,
-                    twitch_links: updatedSessionObj.twitch_links,
-                    goal: updatedSessionObj.goal,
-                    notes: updatedSessionObj.notes
-                })
+                const { error } = await supabase.from("sessions")
+                    .update(diff(originalSession, updatedSessionObj)) // diff function returns an object with only the properties that don't match
                     .eq("id", session.id);
                 if (error) {
                     console.error("Error updating session: ", error.message);
