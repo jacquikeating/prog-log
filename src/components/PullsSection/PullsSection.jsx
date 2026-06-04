@@ -19,9 +19,10 @@ const PullsSection = () => {
   } = editCtx;
   const { pullsCtx } = useContext(PullsContext);
   const { width, breakpoint, pulls, isPending } = pullsCtx;
+  console.log(pulls)
 
   const [progPullsOnly, setProgPullsOnly] = useState(false);
-  const [pullsToDisplay, setPullsToDisplay] = useState([]);
+  const [pullsToDisplay, setPullsToDisplay] = useState(pulls);
 
   useEffect(() => {
     if (!isPending) {
@@ -56,7 +57,7 @@ const PullsSection = () => {
   return (
     <section className="report__section">
       <div className="report__pulls-heading">
-        <h2 className="report__subheading">Pulls ({pullsToDisplay.length})</h2>
+        <h2 className="report__subheading">Pulls ({pulls.length})</h2>
 
         <label className="report__filter-label" htmlFor="progOnlyCheckbox">
           <input
@@ -97,9 +98,10 @@ const PullsSection = () => {
       </div>
 
       <PullsTable
-        pullsArray={
-          progPullsOnly ? getProgPulls(pullsToDisplay) : pullsToDisplay
-        }
+        // pullsArray={
+        //   progPullsOnly ? getProgPulls(pullsToDisplay) : pullsToDisplay
+        // }
+        pullsArray={pullsArray}
         showEdit={showEdit}
         updatePull={updatePull}
         deletePull={deletePull}

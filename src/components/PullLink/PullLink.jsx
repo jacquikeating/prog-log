@@ -11,7 +11,7 @@ const PullLink = ({ logLink, clipLink, editMode, handleLinkModalData }) => {
 
   return (
     <div className="pull-link__cell">
-      {logLink.length > 0 ? (
+      {logLink ? (
         <a
           className="pull-link__link"
           href={logLink}
@@ -27,7 +27,7 @@ const PullLink = ({ logLink, clipLink, editMode, handleLinkModalData }) => {
         ""
       )}
 
-      {clipLink.length > 0 ? (
+      {clipLink  ? (
         <a
           className="pull-link__link"
           href={clipLink}

@@ -18,7 +18,7 @@ const ReportPage = ({ sessions, pulls }) => {
     const [session, setSession] = useState(
         sessions.find((session) => session.num == sessionID)
     );
-    const [pullsArray, setPullsArray] = useState([]);
+    const [pullsArray, setPullsArray] = useState(pulls);
     const [editMode, setEditMode] = useState(false);
     const [showEdit, setShowEdit] = useState(true);
     const [allowDelete, setAllowDelete] = useState(false);
