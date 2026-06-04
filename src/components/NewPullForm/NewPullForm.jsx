@@ -17,7 +17,7 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
     const [notes, setNotes] = useState("");
     const [insertMode, setInsertMode] = useState(false);
     const [indexToInsert, setIndexToInsert] = useState(0);
-    const phaseAndMechOptions = getPhaseAndMechOptions(sessionData.ulti);
+    const phaseAndMechOptions = getPhaseAndMechOptions("UMAD");
     const [usePicker, setUsePicker] = useState(false);
 
     function handlePhaseChange(e) {
