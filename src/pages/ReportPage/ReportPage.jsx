@@ -16,7 +16,11 @@ const EditContext = createContext();
 const ReportPage = ({ sessions, pulls }) => {
     const { staticNick, ulti, sessionID } = useParams();
     const [session, setSession] = useState(
-        sessions.find((session) => session.num == sessionID)
+        sessions.find((session) => 
+            session.static == staticNick && 
+            session.ulti.toLowerCase() == ulti &&
+            session.num == sessionID 
+        )
     );
     const [pullsArray, setPullsArray] = useState([]);
     const [editMode, setEditMode] = useState(false);
