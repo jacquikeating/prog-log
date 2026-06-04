@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import { supabase } from "../../supabase-client";
 import { createReadableDate } from "../../utils/shared-functions.js";
 import NewSessionForm from "../../components/NewSessionForm/NewSessionForm";
@@ -11,6 +12,7 @@ const AddDataPage = ({ sessions }) => {
     const [lastSession, setLastSession] = useState(null);
     const lsPullsArray = JSON.parse(localStorage.getItem("pullsFromNewSession"));
     const [pullsArray, setPullsArray] = useState(lsPullsArray || []);
+    const navigate = useNavigate();
 
     useEffect(() => {
         // ON RENDER: Check local storage for data from an unfinished session.
@@ -94,7 +96,7 @@ const AddDataPage = ({ sessions }) => {
         navigator.clipboard.writeText(localStorage.getItem("pullsFromNewSession"));
         localStorage.removeItem("pullsFromNewSession");
         localStorage.removeItem("sessionInProgress");
-        // navigate(`/report/${sessionData.num}`);
+        navigate(`/report/${sessionData.num}`);
     }
 
     return (
