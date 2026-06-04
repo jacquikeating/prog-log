@@ -5,6 +5,7 @@ import { createReadableDate } from "../../utils/shared-functions.js";
 import NewSessionForm from "../../components/NewSessionForm/NewSessionForm";
 import NewPullForm from "../../components/NewPullForm/NewPullForm";
 import PullsTable from "../../components/PullsTable/PullsTable";
+import "./AddDataPage.scss";
 
 const AddDataPage = ({ sessions }) => {
     const [sessionInProgress, setSessionInProgress] = useState(false);
@@ -111,6 +112,13 @@ const AddDataPage = ({ sessions }) => {
         navigate(`/report/${sessionData.num}`);
     }
 
+    function cancelNewSession() {
+        localStorage.removeItem("pullsFromNewSession");
+        localStorage.removeItem("sessionInProgress");
+        navigate("/");
+        // TO DO: Add delete function
+    }
+
     return (
         <main className="add-data">
             <h1 className="add-data__heading">Add Data</h1>
@@ -161,6 +169,9 @@ const AddDataPage = ({ sessions }) => {
                     <section className="add-data__section">
                         <button className="add-data__button" onClick={handleSubmit}>
                             Complete Session
+                        </button>
+                        <button className="add-data__button" onClick={cancelNewSession}>
+                            Cancel
                         </button>
                     </section>
                 </>
