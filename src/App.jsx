@@ -4,6 +4,7 @@ import { supabase } from "./supabase-client";
 import Header from "./components/Header/Header";
 import AboutPage from "./pages/AboutPage/AboutPage";
 import AddDataPage from "./pages/AddDataPage/AddDataPage";
+import AdminPage from "./pages/AdminPage/AdminPage";
 import OverviewPage from "./pages/OverviewPage/OverviewPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import ReportPage from "./pages/ReportPage/ReportPage";
@@ -74,6 +75,7 @@ function App() {
           />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/add" element={<AddDataPage sessions={[...sessions].reverse()} />} />
+          <Route path="/admin" element={<AdminPage />} />
           <Route
               path="/report/:sessionID"
               element={<ReportPage sessions={sessions} pulls={pulls} />}
