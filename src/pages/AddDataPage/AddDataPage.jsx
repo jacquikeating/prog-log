@@ -43,10 +43,9 @@ const AddDataPage = ({ sessions }) => {
                     notes: ""
                 };
                 setLastSession(placeholder);
-            }     
-        }
+            };
+        };
     }, []);
-
 
     function handleSessionFormData(data) {
         setSessionData(data);
@@ -54,14 +53,14 @@ const AddDataPage = ({ sessions }) => {
     }
 
     function handlePullFormData(newPull) {
-        let insertAt = newPull.indexToInsert
-        delete newPull.indexToInsert
+        let insertAt = newPull.indexToInsert;
+        delete newPull.indexToInsert;
         let copyOfPullsArray = [...pullsArray];
         if (insertAt == 0) {
             copyOfPullsArray.push(newPull);
         } else {
             copyOfPullsArray.splice(insertAt - 1, 0, newPull);
-        }
+        };
         setPullsArray(copyOfPullsArray);
         localStorage.setItem("pullsFromNewSession", JSON.stringify(copyOfPullsArray));
     }
@@ -84,7 +83,7 @@ const AddDataPage = ({ sessions }) => {
         let existingPullsCount = Number(localStorage.getItem("existingPullsCount")) || 0;
 
         function preparePullsForBackend() {
-            const copyArray = [...pullsArray]
+            const copyArray = [...pullsArray];
             const numberedPulls = copyArray.map((pull, index) => (
                 {
                     ...pull,
@@ -92,16 +91,16 @@ const AddDataPage = ({ sessions }) => {
                     pull_num_overall: Number(index + 1) + existingPullsCount,
                 }));
                 return numberedPulls;
-            }
+            };
 
-        const preparedPulls = preparePullsForBackend()
+        const preparedPulls = preparePullsForBackend();
        
         async function insertPulls(){
             const {error} = await supabase.from("pulls").insert(preparedPulls);
             if (error) { 
                 console.error("Error adding pulls: ", error);
-            }
-        }
+            };
+        };
 
         insertPulls();
         const lastPullNumOverall = pullsArray[pullsArray.length - 1].pull_num_overall;
@@ -115,9 +114,23 @@ const AddDataPage = ({ sessions }) => {
     function cancelNewSession() {
         localStorage.removeItem("pullsFromNewSession");
         localStorage.removeItem("sessionInProgress");
+
+        async function deleteSession() {
+            const { error } = await supabase.from("sessions").delete().match({ 
+                num: sessionData.num, 
+                static: sessionData.static, 
+                ulti: sessionData.ulti 
+            });
+
+            if (error) {
+                console.error("Error deleting session: ", error.message);
+                return;
+            };
+        };
+
+        deleteSession();
         navigate("/");
-        // TO DO: Add delete function
-    }
+    };
 
     return (
         <main className="add-data">
