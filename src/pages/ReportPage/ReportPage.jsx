@@ -71,19 +71,31 @@ const ReportPage = ({ sessions, pulls }) => {
     // }
 
     async function editSession() {
-        if (editMode === false) {
+        if (editMode == false) {
             setEditMode(true);
-        } else if (editMode === true) {
+        } else if (editMode == true) {
             const updatedSessionObj = { ...session };
+            console.log(session.id)
+            async function updateSession() {
+                const { error } = await supabase.from("sessions").update({
+                    date: updatedSessionObj.date,
+                    prog_phase: updatedSessionObj.prog_phase,
+                    prog_mech: updatedSessionObj.prog_mech,
+                    roster: updatedSessionObj.roster,
+                    fflogs_link: updatedSessionObj.fflogs_link,
+                    twitch_links: updatedSessionObj.twitch_links,
+                    goal: updatedSessionObj.goal,
+                    notes: updatedSessionObj.notes
+                })
+                    .eq("id", session.id);
+                if (error) {
+                    console.error("Error updating session: ", error.message);
+                    return;
+                };
+            };
 
-            // console.log("This is where I'd put my edited session info. IF I HAD ONE");
-            // try {
-            //     await axios.put(`${API_URL}/sessions/${sessionNum}`, updatedSessionObj);
-            // } catch (error) {
-            //     console.error(error);
-            // } finally {
-            //     setEditMode(false);
-            // }
+            updateSession()
+            setEditMode(false);
         }
     }
 
