@@ -143,9 +143,9 @@ const PullDiv = ({
               {allowDelete ? (
                 <button
                   className="pull-div__button"
-                  //   onClick={() => {
-                  //     deletePull(pullData);
-                  //   }}
+                  onClick={() => {
+                    deletePull(pullData);
+                  }}
                 >
                   <i className="fa-regular fa-trash-can"></i>
                 </button>

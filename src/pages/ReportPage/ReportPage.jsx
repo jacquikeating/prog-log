@@ -19,7 +19,7 @@ const ReportPage = ({ sessions, pulls }) => {
     const [pullsArray, setPullsArray] = useState(pulls);
     const [editMode, setEditMode] = useState(false);
     const [showEdit, setShowEdit] = useState(true);
-    const [allowDelete, setAllowDelete] = useState(false);
+    const [allowDelete, setAllowDelete] = useState(true);
     const [width, setWidth] = useState(window.innerWidth);
     const breakpoint = 1040;
     // const { isAuthenticated, user } = useAuth0();
@@ -58,18 +58,14 @@ const ReportPage = ({ sessions, pulls }) => {
         };
     }
 
-    // async function deletePull(pullToDelete) {
-    //     try {
-    //     const response = await axios.delete(
-    //         `${API_URL}/pulls/${pullToDelete.id}`
-    //     );
-    //     if (response.status === 204) {
-    //         setPullsArray(pullsArray.filter((pull) => pull.id !== pullToDelete.id));
-    //     }
-    //     } catch (err) {
-    //         console.error("Error deleting pull:", err);
-    //     }
-    // }
+    async function deletePull(pullToDelete) {
+        const { error } = await supabase.from("pulls").delete().eq("id", pullToDelete.id);
+        if (error) {
+            console.error("Error deleting pull: ", error.message);
+            return;
+        };
+        // TO DO: Add functions to remove from state (unrender from UI) and update other pulls' pull nums
+    }
 
     function editSession() {
         if (editMode == false) {
@@ -110,7 +106,7 @@ const ReportPage = ({ sessions, pulls }) => {
         showEdit,
         allowDelete,
         updatePull,
-        // deletePull,
+        deletePull,
         pullToUpdate,
         setPullsArray,
         setSession,
