@@ -116,12 +116,7 @@ const AddDataPage = ({ sessions }) => {
         localStorage.removeItem("sessionInProgress");
 
         async function deleteSession() {
-            const { error } = await supabase.from("sessions").delete().match({ 
-                num: sessionData.num, 
-                static: sessionData.static, 
-                ulti: sessionData.ulti 
-            });
-
+            const { error } = await supabase.from("sessions").delete().eq("id", sessionData.id);
             if (error) {
                 console.error("Error deleting session: ", error.message);
                 return;
