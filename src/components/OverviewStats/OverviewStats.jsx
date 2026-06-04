@@ -17,7 +17,9 @@ const OverviewStats = ({ sessions, pulls }) => {
                             ${sessions[0]?.prog_mech}`}
                     </p>
                     <p className="overview-page__info">
-                        Pulls at prog point: {getPullsAtProgPoint(pulls, sessions[0])}
+                        {/* Pulls at prog point: {getPullsAtProgPoint(pulls, sessions[0])} */}
+                        Pulls at prog point: 46 
+                        {/* Temporarily hardcoded */}
                     </p>
                 </>
             )}
