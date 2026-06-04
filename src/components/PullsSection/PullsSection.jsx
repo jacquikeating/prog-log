@@ -26,7 +26,7 @@ const PullsSection = () => {
 
   useEffect(() => {
     if (!isPending) {
-      setPullsToDisplay(pulls.filter((pull) => pull.session_id == sessionID));
+      setPullsToDisplay(pulls.filter((pull) => pull.session_num == sessionID));
     }
   }, [isPending]);
 

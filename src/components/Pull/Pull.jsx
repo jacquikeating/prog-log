@@ -31,7 +31,7 @@ const Pull = ({
     setEditMode(!editMode);
     updatePull({
       id: pullData.id,
-      session_id: pullData.session_id,
+      session_num: pullData.session_num,
       phase: phase,
       mech: mech,
       prog_point_reached: checkIfProgPointReached(progPhase, phase),

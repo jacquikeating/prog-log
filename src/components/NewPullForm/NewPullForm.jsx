@@ -53,7 +53,7 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
         const pullObj = {
             static: sessionData.static,
             ulti: sessionData.ulti,
-            session_id: Number(sessionData.num),
+            session_num: Number(sessionData.num),
             phase: selectedPhase,
             mech: selectedMech,
             prog_point_reached: checkIfProgPointReached(sessionData.prog_phase, selectedPhase),
