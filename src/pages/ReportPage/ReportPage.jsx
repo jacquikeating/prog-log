@@ -19,7 +19,7 @@ const ReportPage = ({ sessions, pulls }) => {
     const [pullsArray, setPullsArray] = useState(pulls);
     const [editMode, setEditMode] = useState(false);
     const [showEdit, setShowEdit] = useState(true);
-    const [allowDelete, setAllowDelete] = useState(true);
+    const [allowDelete, setAllowDelete] = useState(false);
     const [width, setWidth] = useState(window.innerWidth);
     const breakpoint = 1040;
     // const { isAuthenticated, user } = useAuth0();
