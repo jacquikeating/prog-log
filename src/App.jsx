@@ -73,12 +73,15 @@ function App() {
             path="/:staticNick/:ulti" 
             element={<OverviewPage sessions={sessions} pulls={pulls} />}
           />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/add/:static/:ulti" element={<AddDataPage sessions={sessions} />} />
+          <Route 
+            path=":static/:ulti/add" 
+            element={<AddDataPage sessions={sessions} />} 
+          />
           <Route
-              path="/report/:static/:ulti/:sessionID"
+              path="/:staticNick/:ulti/report/:sessionID"
               element={<ReportPage sessions={sessions} pulls={pulls} />}
             />
+          <Route path="/about" element={<AboutPage />} />
           <Route path="/*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
