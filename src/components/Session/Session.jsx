@@ -6,13 +6,13 @@ import {
 import "./Session.scss";
 
 const Session = ({ sessionData }) => {
-  const { num, date, roster, prog_phase, prog_mech, fflogs_link, twitch_links } = sessionData;
+  const { static: staticName, ulti, num, date, roster, prog_phase, prog_mech, fflogs_link, twitch_links } = sessionData;
   const twitchLinksArray = twitch_links.split(", ");
 
   return (
     <li className="session">
       <div className="session__header">
-        <Link to={`/report/${num}`} className="session__title">
+        <Link to={`/${staticName}/${ulti.toLowerCase()}/report/${num}`} className="session__title">
           <h3>Session {num}</h3>
         </Link>
         <p className="session__date">{createReadableDate(date)}</p>
