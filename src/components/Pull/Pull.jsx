@@ -2,7 +2,6 @@ import { useState } from "react";
 import { checkIfProgPointReached } from "../../utils/shared-functions";
 import PullLink from "../PullLink/PullLink";
 import "./Pull.scss";
-// import useMutatePull from "../../hooks/use-mutation.js";
 
 const Pull = ({
   pullData,
@@ -32,17 +31,20 @@ const Pull = ({
     updatePull({
       id: pullData.id,
       session_num: pullData.session_num,
+      pull_num_today: pullData.pull_num_today,
+      pull_num_overall: pullData.pull_num_overall,
       phase: phase,
       mech: mech,
-      prog_point_reached: checkIfProgPointReached(progPhase, phase),
       cause: cause,
       players_responsible: playersResponsible,
+      prog_point_reached: checkIfProgPointReached(progPhase, phase),
       log_link: logLink,
       clip_link: clipLink,
       notes: notes,
+      ulti: pullData.ulti,
+      static: pullData.static,
       index: index,
     });
-    // useMutatePull(pullData);
   }
 
   function handleLinkModalData(newLogLink, newClipLink) {

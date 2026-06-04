@@ -15,9 +15,7 @@ const PullDiv = ({
   const [phase, setPhase] = useState(pullData.phase);
   const [mech, setMech] = useState(pullData.mech);
   const [cause, setCause] = useState(pullData.cause);
-  const [playersResponsible, setPlayersResponsible] = useState(
-    pullData.players_responsible
-  );
+  const [playersResponsible, setPlayersResponsible] = useState(pullData.players_responsible);
   const [logLink, setLogLink] = useState(pullData.log_link);
   const [clipLink, setClipLink] = useState(pullData.clip_link);
   const [notes, setNotes] = useState(pullData.notes);
@@ -31,18 +29,22 @@ const PullDiv = ({
       updatePull({
         id: pullData.id,
         session_num: pullData.session_num,
+        pull_num_today: pullData.pull_num_today,
+        pull_num_overall: pullData.pull_num_overall,
         phase: phase,
         mech: mech,
-        prog_point_reached: checkIfProgPointReached(progPhase, phase),
         cause: cause,
         players_responsible: playersResponsible,
+        prog_point_reached: checkIfProgPointReached(progPhase, phase),
         log_link: logLink,
         clip_link: clipLink,
         notes: notes,
+        ulti: pullData.ulti,
+        static: pullData.static,
         index: index,
       });
-    }
-  }
+    };
+  };
 
   return (
     <div className="pull-div">

@@ -46,16 +46,17 @@ const ReportPage = ({ sessions, pulls }) => {
         return () => window.removeEventListener("resize"), handleWindowResize;
     }, [sessionNum]);
 
-    // async function updatePull(pull) {
-    //     delete pull.index;
-    //     pullToUpdate = { ...pull };
-    //     console.log(pull);
-    //     try {
-    //         await axios.put(`${API_URL}/pulls/${pullToUpdate.id}`, pullToUpdate);
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    // }
+    async function updatePull(editedPull) {
+        const originalPull = pulls[editedPull.index]
+        delete editedPull.index;
+        const { error } = await supabase.from("pulls")
+            .update(diff(originalPull, editedPull)) // diff function returns an object with only the properties that don't match
+            .eq("id", originalPull.id);
+        if (error) {
+            console.error("Error updating pull: ", error.message);
+            return;
+        };
+    }
 
     // async function deletePull(pullToDelete) {
     //     try {
@@ -108,9 +109,9 @@ const ReportPage = ({ sessions, pulls }) => {
         setEditMode,
         showEdit,
         allowDelete,
-        // updatePull,
+        updatePull,
         // deletePull,
-        // pullToUpdate,
+        pullToUpdate,
         setPullsArray,
         setSession,
         editSession,
