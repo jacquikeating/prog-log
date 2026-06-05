@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 import { SessionContext, PullsContext, EditContext } from "../../pages/ReportPage/ReportPage.jsx";
-import { getMechAfterProgMech } from "../../utils/shared-functions.js";
+import { getPullsAtProgPoint } from "../../utils/shared-functions.js";
 import PullsTable from "../PullsTable/PullsTable.jsx";
 
 const PullsSection = () => {
@@ -35,30 +35,21 @@ const PullsSection = () => {
     } else {
       setProgPullsOnly(true);
     }
-  }
-
-  function getProgPulls() {
-    const filteredPullsArray = pullsToDisplay.filter(
-      (pull) =>
-        pull.mech === session.prog_mech ||
-        pull.mech === getMechAfterProgMech(session.prog_mech)
-    );
-    return filteredPullsArray;
-  }
+  };
 
   function filterPulls(name) {
     const arrayFilteredByPlayer = [...pullsArray].filter((pull) =>
       pull.players_responsible.includes(name)
     );
     setPullsToDisplay(arrayFilteredByPlayer);
-  }
+  };
 
   return (
     <section className="report__section">
       <div className="report__pulls-heading">
         <h2 className="report__subheading">Pulls ({pulls.length})</h2>
 
-        {/* <label className="report__filter-label" htmlFor="progOnlyCheckbox">
+        <label className="report__filter-label" htmlFor="progOnlyCheckbox">
           <input
             type="checkbox"
             name="progOnlyCheckbox"
@@ -93,14 +84,13 @@ const PullsSection = () => {
             })}
           </select>
           Filter by player
-        </label> */}
+        </label>
       </div>
 
       <PullsTable
-        // pullsArray={
-        //   progPullsOnly ? getProgPulls(pullsToDisplay) : pullsToDisplay
-        // }
-        pullsArray={pullsArray}
+        pullsArray={
+          progPullsOnly ? getPullsAtProgPoint(pullsToDisplay, session.prog_mech) : pullsToDisplay
+        }
         showEdit={showEdit}
         updatePull={updatePull}
         deletePull={deletePull}
