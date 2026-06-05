@@ -44,10 +44,18 @@ const PullsSection = () => {
     setPullsToDisplay(arrayFilteredByPlayer);
   };
 
+  function getPullsCount() {
+    if (pulls.length == pullsToDisplay.length) {
+      return pulls.length;
+    } else {
+      return `${pullsToDisplay.length} of ${pulls.length}`;
+    };
+  };
+
   return (
     <section className="report__section">
       <div className="report__pulls-heading">
-        <h2 className="report__subheading">Pulls ({pulls.length})</h2>
+        <h2 className="report__subheading">Pulls ({getPullsCount()})</h2>
 
         <label className="report__filter-label" htmlFor="progOnlyCheckbox">
           <input
