@@ -1,3 +1,5 @@
+import { flatUmadMechs, flatFruMechs } from "./static-values.js"
+
 export function createReadableDate(date) {
   const dateWithTime = date + "T17:00:00Z"; // 9 PM in UTC
   const readableDate = new Date(dateWithTime).toLocaleString("en-US", {
@@ -8,7 +10,7 @@ export function createReadableDate(date) {
   const suffix = numSuffix(readableDate);
   const dateWithSuffix = `${readableDate}${suffix}`;
   return dateWithSuffix;
-}
+};
 
 export function numSuffix(number) {
   const lastNumeral = number.slice(-1);
@@ -21,8 +23,8 @@ export function numSuffix(number) {
     return "rd";
   } else {
     return "th";
-  }
-}
+  };
+};
 
 export const findStrugglePhase = (pullsArray) => {
   const tallyObject = pullsArray.reduce((accumulatedObject, thisPull) => {
@@ -65,7 +67,7 @@ export const findStruggleMech = (pullsArray) => {
         return thisItem;
       } else {
         return currentHighest;
-      }
+      };
     },
     [null, 0]
   );
@@ -96,11 +98,11 @@ export function findGoldStars(pullsArray, playersArray) {
 
   if (goldStars.length === 0) {
     return "None";
-  }
+  };
 
   goldStars = goldStars.join(", ");
   return goldStars;
-}
+};
 
 export function getTextColour(progPoint, phase) {
   let targetMech = progPoint;
@@ -117,9 +119,9 @@ export function getTextColour(progPoint, phase) {
       return "newphase";
     } else {
       return "null";
-    }
-  }
-}
+    };
+  };
+};
 
 export function checkIfProgPointReached(progPhase, wipePhase) {
   let cleanupPhase = progPhase - 1;
@@ -134,41 +136,19 @@ export function checkIfProgPointReached(progPhase, wipePhase) {
     return "newphase";
   } else {
     return null;
-  }
-}
+  };
+};
 
 export function checkIfEmptyLink(link) {
   if (!link) {
     return "empty-link";
   }
-}
+};
 
 export function getMechAfterProgMech(progMech) {
-  const mechsList = [
-    "P1 Opener",
-    "Utopian Sky",
-    "Fall of Faith",
-    "Towers",
-    "P1 Enrage",
-    "Diamond Dust",
-    "Mirrors",
-    "Light Rampant",
-    "P2 Enrage",
-    "Intermission",
-    "Ultimate Relativity",
-    "Apocalypse",
-    "P3 Enrage",
-    "Darklit Dragonsong",
-    "Crystallize Time",
-    "P4 Enrage",
-    "Fulgent Blade",
-    "Paradise Regained",
-    "Polarizing Strikes",
-    "P5 Enrage",
-  ];
   const progMechIndex = mechsList.indexOf(progMech);
   return mechsList[progMechIndex + 1];
-}
+};
 
 export function convertMSToMinSec(ms) {
   const date = new Date(ms);
@@ -176,14 +156,35 @@ export function convertMSToMinSec(ms) {
   let secs = date.getSeconds().toString();
   if (secs.length == 1) {
     secs = "0" + secs;
-  }
+  };
   return `${mins}:${secs}`;
-}
+};
+
+function isAtProgIndex(pull, progMech) {
+  let mechsArray;
+
+  if (pull.ulti.toLowerCase() == "umad") {
+    mechsArray = flatUmadMechs;
+  } else if (pull.ulti.toLowerCase() == "fru") {
+    mechsArray = flatFruMechs;
+  } else {
+    return "N/A";
+  };
+
+  const progMechIndex = mechsArray.indexOf(progMech);
+  const pullMechIndex = mechsArray.indexOf(pull.mech);
+
+  if (pullMechIndex < progMechIndex) {
+    return false;
+  } else {
+    return true;
+  };
+};
 
 export function getPullsAtProgPoint(pulls, lastSession) {
-  return pulls.filter((pull) => pull.mech == lastSession.prog_mech).length;
-}
+  return pulls.filter((pull) => isAtProgIndex(pull, lastSession.prog_mech)).length;
+};
 
 export function getClearsNum(pulls) {
   return pulls.filter((pull) => pull.mech == "Clear").length;
-}
+};
