@@ -5,7 +5,7 @@ const EditLinkModal = ({ logLink, clipLink, handleLinkModalData }) => {
     <div className="link-modal">
       <label className="link-modal__label">
         <img
-          src="https://i.imgur.com/NzRUemQ.png"
+          src="/50_twitch.png"
           alt="Twitch"
           className="link-modal__icon"
         />
@@ -20,7 +20,7 @@ const EditLinkModal = ({ logLink, clipLink, handleLinkModalData }) => {
 
       <label className="link-modal__label">
         <img
-          src="https://i.imgur.com/asZe3Wu.png"
+          src="/50_fflogs.png"
           alt="FFLogs"
           className="link-modal__icon"
         />

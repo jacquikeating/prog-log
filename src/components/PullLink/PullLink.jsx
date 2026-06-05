@@ -19,7 +19,7 @@ const PullLink = ({ logLink, clipLink, editMode, handleLinkModalData }) => {
           rel="noreferrer"
         >
           <img
-            src="https://i.imgur.com/WUA83tW.png"
+            src="/50_fflogs.png"
             className="pull-link__icon"
           />
         </a>
@@ -35,7 +35,7 @@ const PullLink = ({ logLink, clipLink, editMode, handleLinkModalData }) => {
           rel="noreferrer"
         >
           <img
-            src="https://i.imgur.com/HRxy3mm.png"
+            src="/50_twitch.png"
             className="pull-link__icon"
           />
         </a>

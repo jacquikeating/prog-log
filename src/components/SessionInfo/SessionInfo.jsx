@@ -34,7 +34,7 @@ const SessionInfo = () => {
           target="_blank"
           rel="noreferrer"
         >
-          <img src="https://i.imgur.com/asZe3Wu.png" className="report__icon" />
+          <img src="/25_fflogs.png" className="report__icon" />
           Logs
         </a>
         <>
@@ -51,7 +51,7 @@ const SessionInfo = () => {
                     key={index}
                   >
                     <img
-                      src="https://i.imgur.com/NzRUemQ.png"
+                      src="/25_twitch.png"
                       className="session__icon"
                       key={index}
                     />
@@ -72,7 +72,7 @@ const SessionInfo = () => {
                 rel="noreferrer"
               >
                 <img
-                  src="https://i.imgur.com/NzRUemQ.png"
+                  src="/25_twitch.png"
                   className="session__icon"
                 />
                 VOD

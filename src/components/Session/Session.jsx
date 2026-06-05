@@ -33,7 +33,7 @@ const Session = ({ sessionData }) => {
           rel="noreferrer"
         >
           <img
-            src="https://i.imgur.com/asZe3Wu.png"
+            src="/25_fflogs.png"
             className="session__icon"
           />
           Logs
@@ -51,7 +51,7 @@ const Session = ({ sessionData }) => {
                   rel="noreferrer"
                 >
                   <img
-                    src="https://i.imgur.com/NzRUemQ.png"
+                    src="/25_twitch.png"
                     className="session__icon"
                     key={index}
                   />
@@ -70,7 +70,7 @@ const Session = ({ sessionData }) => {
               rel="noreferrer"
             >
               <img
-                src="https://i.imgur.com/NzRUemQ.png"
+                src="/25_twitch.png"
                 className="session__icon"
               />
               VOD
