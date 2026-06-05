@@ -145,11 +145,6 @@ export function checkIfEmptyLink(link) {
   }
 };
 
-export function getMechAfterProgMech(progMech) {
-  const progMechIndex = mechsList.indexOf(progMech);
-  return mechsList[progMechIndex + 1];
-};
-
 export function convertMSToMinSec(ms) {
   const date = new Date(ms);
   const mins = date.getMinutes();
@@ -181,8 +176,8 @@ function isAtProgIndex(pull, progMech) {
   };
 };
 
-export function getPullsAtProgPoint(pulls, lastSession) {
-  return pulls.filter((pull) => isAtProgIndex(pull, lastSession.prog_mech)).length;
+export function getPullsAtProgPoint(pulls, progMech) {
+  return pulls.filter((pull) => isAtProgIndex(pull, progMech));
 };
 
 export function getClearsNum(pulls) {
