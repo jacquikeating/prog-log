@@ -17,7 +17,8 @@ function App() {
   const [pulls, setPulls] = useState([]);
 
   async function fetchSessions() {
-    const { error, data } = await supabase.from("sessions").select("*");
+    const { error, data } = await supabase.from("sessions").select("*")
+      .order("num", { ascending: false });
     // Query filter for future reference:
     /* const { error, data } = await supabase.from("sessions")
         .select("*")
@@ -33,7 +34,8 @@ function App() {
   }
 
   async function fetchPulls() {
-    const { error, data } = await supabase.from("pulls").select("*");
+    const { error, data } = await supabase.from("pulls").select("*")
+      .order("pull_num_overall", { ascending: true });
     if (error) { 
       console.error("Error fetching pulls: ", error.message);
       setError(error.message);
