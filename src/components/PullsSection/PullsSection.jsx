@@ -21,10 +21,12 @@ const PullsSection = () => {
   const { width, breakpoint, pulls, isPending } = pullsCtx;
 
   const [progPullsOnly, setProgPullsOnly] = useState(false);
-  const [pullsToDisplay, setPullsToDisplay] = useState(pulls);
+  const [thisSessionsPulls, setThisSessionsPulls] = useState([]);
+  const [pullsToDisplay, setPullsToDisplay] = useState([]);
 
   useEffect(() => {
     if (!isPending) {
+      setThisSessionsPulls(pulls.filter((pull) => pull.session_num == sessionNum));
       setPullsToDisplay(pulls.filter((pull) => pull.session_num == sessionNum));
     }
   }, [isPending]);
@@ -45,10 +47,10 @@ const PullsSection = () => {
   };
 
   function getPullsCount() {
-    if (pulls.length == pullsToDisplay.length) {
-      return pulls.length;
+    if (thisSessionsPulls.length == pullsToDisplay.length) {
+      return thisSessionsPulls.length;
     } else {
-      return `${pullsToDisplay.length} of ${pulls.length}`;
+      return `${pullsToDisplay.length} of ${thisSessionsPulls.length}`;
     };
   };
 
