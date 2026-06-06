@@ -17,14 +17,9 @@ function App() {
   const [pulls, setPulls] = useState([]);
 
   async function fetchSessions() {
-    const { error, data } = await supabase.from("sessions").select("*")
-      .order("num", { ascending: false });
-    // Query filter for future reference:
-    /* const { error, data } = await supabase.from("sessions")
-        .select("*")
-        .match({ static: "Wall is Safe", ulti: "umad" })
-        .order("num", { ascending: false });
-    */
+    const { error, data } = await supabase.from("sessions").select("*").order("num", { ascending: false });
+    //  // Query filter for future reference:
+    //  .match({ static: "Wall is Safe", ulti: "umad" })
     if (error) { 
       console.error("Error fetching sessions: ", error.message);
       setError(error.message);
@@ -73,10 +68,10 @@ function App() {
         <Routes>
           <Route 
             path="/" 
-            element={<OverviewPage sessions={[...sessions].reverse()} pulls={pulls} />}
+            element={<OverviewPage sessions={sessions} pulls={pulls} />}
           />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/add" element={<AddDataPage sessions={[...sessions].reverse()} />} />
+          <Route path="/add" element={<AddDataPage sessions={sessions} />} />
           <Route path="/admin" element={<AdminPage />} />
           <Route
               path="/report/:sessionNum"
