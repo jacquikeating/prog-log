@@ -27,23 +27,24 @@ const Pull = ({
   const index = pullData.index;
 
   function editRow() {
-    setEditMode(!editMode);
-    updatePull({
-      session_num: pullData.session_num,
-      pull_num_today: pullData.pull_num_today,
-      pull_num_overall: pullData.pull_num_overall,
-      phase: phase,
-      mech: mech,
-      cause: cause,
-      players_responsible: playersResponsible,
-      prog_point_reached: checkIfProgPointReached(progPhase, phase),
-      log_link: logLink,
-      clip_link: clipLink,
-      notes: notes,
-      ulti: pullData.ulti,
-      static: pullData.static,
-      index: index,
-    });
+      updatePull({
+        id: pullData.id,
+        session_num: pullData.session_num,
+        pull_num_today: pullData.pull_num_today,
+        pull_num_overall: pullData.pull_num_overall,
+        phase: phase,
+        mech: mech,
+        cause: cause,
+        players_responsible: playersResponsible,
+        prog_point_reached: checkIfProgPointReached(progPhase, phase),
+        log_link: logLink,
+        clip_link: clipLink,
+        notes: notes,
+        ulti: pullData.ulti,
+        static: pullData.static,
+        index: index,
+      });
+    setEditMode(false);
   }
 
   function handleLinkModalData(newLogLink, newClipLink) {
@@ -152,13 +153,16 @@ const Pull = ({
       {showEdit ? (
         <td key={`${index}-edit`} className="pull__cell pull__cell--edit">
           <div className="pull__cell-container">
-            <button className="pull__button" onClick={editRow}>
-              {!editMode ? (
-                <i className="fa-regular fa-pen-to-square"></i>
-              ) : (
+            {editMode ? (
+              <button className="pull__button" onClick={editRow}>
                 <i className="fa-solid fa-check pull__save"></i>
-              )}
             </button>
+            ) : (
+              <button className="pull__button" onClick={() => setEditMode(true)}>
+                <i className="fa-regular fa-pen-to-square"></i>
+            </button>
+            )}
+            
             {allowDelete ? (
               <button
                 className="pull__button"

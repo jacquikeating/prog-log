@@ -47,10 +47,11 @@ const ReportPage = ({ sessions, pulls }) => {
     }, [sessionNum]);
 
     async function updatePull(editedPull) {
-        const originalPull = pulls[editedPull.index]
+        const originalPull = pullsArray[editedPull.index];
         delete editedPull.index;
+        const editedProperties = diff(originalPull, editedPull); // diff function returns an object with only the properties that don't match
         const { error } = await supabase.from("pulls")
-            .update(diff(originalPull, editedPull)) // diff function returns an object with only the properties that don't match
+            .update(editedProperties) 
             .eq("id", originalPull.id);
         if (error) {
             console.error("Error updating pull: ", error.message);
