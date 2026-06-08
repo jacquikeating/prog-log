@@ -7,7 +7,7 @@ import NewPullForm from "../../components/NewPullForm/NewPullForm";
 import PullsTable from "../../components/PullsTable/PullsTable";
 import "./AddDataPage.scss";
 
-const AddDataPage = ({ sessions }) => {
+const AddDataPage = ({ sessions, prevPulls }) => {
     const [sessionInProgress, setSessionInProgress] = useState(false);
     const [sessionData, setSessionData] = useState({});
     const [lastSession, setLastSession] = useState(null);
@@ -80,7 +80,13 @@ const AddDataPage = ({ sessions }) => {
     }
 
     function handleSubmit() {
-        let existingPullsCount = Number(localStorage.getItem("existingPullsCount")) || 0;
+        function getPullsCount() {
+            const filteredPrevPulls = prevPulls.filter((pull) => 
+                pull.ulti == sessionData.ulti && pull.static == sessionData.static
+            );
+            filteredPrevPulls.sort((a, b) => b.pull_num_overall - a.pull_num_overall)
+            return filteredPrevPulls[0].pull_num_overall
+        };
 
         function preparePullsForBackend() {
             const copyArray = [...pullsArray];
@@ -88,10 +94,10 @@ const AddDataPage = ({ sessions }) => {
                 {
                     ...pull,
                     pull_num_today: Number(index + 1),
-                    pull_num_overall: Number(index + 1) + existingPullsCount,
+                    pull_num_overall: Number(index + 1) + getPullsCount(),
                 }));
-                return numberedPulls;
-            };
+            return numberedPulls;
+        };
 
         const preparedPulls = preparePullsForBackend();
        
@@ -103,8 +109,6 @@ const AddDataPage = ({ sessions }) => {
         };
 
         insertPulls();
-        const lastPullNumOverall = pullsArray[pullsArray.length - 1].pull_num_overall;
-        localStorage.setItem("existingPullsCount", lastPullNumOverall);
         navigator.clipboard.writeText(localStorage.getItem("pullsFromNewSession"));
         localStorage.removeItem("pullsFromNewSession");
         localStorage.removeItem("sessionInProgress");

@@ -71,7 +71,7 @@ function App() {
             element={<OverviewPage sessions={sessions} pulls={pulls} />}
           />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/add" element={<AddDataPage sessions={sessions} />} />
+          <Route path="/add" element={<AddDataPage sessions={sessions} prevPulls={pulls} />} />
           <Route path="/admin" element={<AdminPage />} />
           <Route
               path="/report/:sessionNum"
