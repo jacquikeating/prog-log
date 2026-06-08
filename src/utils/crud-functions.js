@@ -7,15 +7,15 @@ export async function insertPulls(pullsToInsert){
     };
 };
 
-export function addPulls(prevPulls, sessionData, pullsArray) {
+export function getPullsCount(prevPulls, sessionData) {
+    const filteredPrevPulls = prevPulls.filter((pull) => 
+        pull.ulti == sessionData.ulti && pull.static == sessionData.static
+    );
+    filteredPrevPulls.sort((a, b) => b.pull_num_overall - a.pull_num_overall)
+    return filteredPrevPulls[0].pull_num_overall
+};
 
-    function getPullsCount() {
-        const filteredPrevPulls = prevPulls.filter((pull) => 
-            pull.ulti == sessionData.ulti && pull.static == sessionData.static
-        );
-        filteredPrevPulls.sort((a, b) => b.pull_num_overall - a.pull_num_overall)
-        return filteredPrevPulls[0].pull_num_overall
-    };
+export function addPulls(prevPulls, sessionData, pullsArray) {
 
     function preparePullsForBackend() {
         const copyArray = [...pullsArray];
@@ -23,7 +23,7 @@ export function addPulls(prevPulls, sessionData, pullsArray) {
             {
                 ...pull,
                 pull_num_today: Number(index + 1),
-                pull_num_overall: Number(index + 1) + getPullsCount(),
+                pull_num_overall: Number(index + 1) + getPullsCount(prevPulls, sessionData),
             }));
         return numberedPulls;
     };
