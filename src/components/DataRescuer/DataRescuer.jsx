@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { supabase } from "../../supabase-client";
-import { addPulls } from "../../utils/crud-functions.js";
+import { getPullsCount, insertPulls } from "../../utils/crud-functions.js";
 import { useNavigate } from 'react-router-dom';
 import "./DataRescuer.scss";
 
 const DataRescuer = ({ sessions, prevPulls }) => {
-    const [pastedPulls, setPastedPulls] = useState(null);
-    const [existingPullsCount, setExistingPullsCount] = useState(Number(localStorage.getItem("existingPullsCount")) || 0)
+    // NOTE TO SELF: Update with ulti/static filtering when that feature is implemented.
+    
+    const [pastedPulls, setPastedPulls] = useState("");
+    const [prevPullsCount, setPrevPullsCount] = useState(getPullsCount(prevPulls, sessions[0]));
     const navigate = useNavigate();
 
     function prepRescuedData() {
@@ -23,30 +25,23 @@ const DataRescuer = ({ sessions, prevPulls }) => {
                     delete pull.session_id
                 }
                 pull.pull_num_today = Number(index + 1),
-                pull.pull_num_overall = Number(index + 1) + existingPullsCount,
-                pull.static = "wall-is-safe", // Replace as necessary
-                pull.ulti = "umad" // Replace as necessary
+                pull.pull_num_overall = Number(index + 1) + prevPullsCount
             });
 
         // Confirm data looks correct before attempting to reupload. That's why this is a separate function!
+        const examplePull = [...prevPulls][0];
+        delete examplePull.id;
+        console.log(`Here's an example pull for comparison:`);
+        console.log(examplePull);
+        console.log(`And here's what your new pulls look like:`)
         console.log(rescuedData);
         return rescuedData;
     }
 
     function uploadRescuedData(preparedRescuedPulls) {
-        // This is a modified copy of AddDataPage's handleSubmit().
-            async function insertPulls(){
-                const {error} = await supabase.from("pulls").insert(preparedRescuedPulls);
-                if (error) { 
-                    console.error("Error adding pulls: ", error);
-                }
-            }
-
-            insertPulls();
-            const lastPullNumOverall = preparedRescuedPulls[preparedRescuedPulls.length - 1].pull_num_overall;
-            localStorage.setItem("existingPullsCount", lastPullNumOverall);
-            navigator.clipboard.writeText(preparedRescuedPulls);
-            navigate(`/report/${preparedRescuedPulls[0].session_num}`);
+        insertPulls(preparedRescuedPulls);
+        navigator.clipboard.writeText(preparedRescuedPulls);
+        navigate(`/report/${preparedRescuedPulls[0].session_num}`);
     }
 
     return (
@@ -63,12 +58,12 @@ const DataRescuer = ({ sessions, prevPulls }) => {
             <div className="data-rescuer__step">
                 <h3>Step 2: Confirm existing pulls count</h3>
                 <p>Let's double-check that the overall pulls count (BEFORE adding these) is correct. If it looks good, skip on ahead. If not, manually change it here.</p>
-                <input className="data-rescuer__num-input" type="number" value={existingPullsCount} onChange={(e) => setExistingPullsCount(e.target.value)}></input>
+                <input className="data-rescuer__num-input" type="number" value={prevPullsCount} onChange={(e) => setExistingPullsCount(e.target.value)}></input>
             </div>
             
             <div className="data-rescuer__step">
                 <h3>Step 3: Process data</h3>
-                <p>Because something probably went wrong the first time, we have two separate functions to process the data and to upload it. Open your console and confirm the data-processing fairies are doing their job right.</p>
+                <p>Because something probably went wrong the first time, we have two separate functions to process the data and to upload it. Open your console and confirm the data-processing fairies are doing their job right. If all the properties match, you're good to go.</p>
                 <button onClick={prepRescuedData}>
                     Prep data for upload
                 </button>
