@@ -1,10 +1,10 @@
 import DataRescuer from "../../components/DataRescuer/DataRescuer";
 
-const AdminPage = () => {
+const AdminPage = ({ sessions, prevPulls }) => {
     return (
         <main className="admin-page">
-            <h1 className="not-found-page__heading">Admin Dashboard</h1>
-            <DataRescuer />
+            <h1 className="admin-page__heading">Admin Dashboard</h1>
+            <DataRescuer sessions={sessions} prevPulls={pulls} />
         </main>
     );
 };

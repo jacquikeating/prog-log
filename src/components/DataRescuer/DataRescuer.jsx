@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { supabase } from "../../supabase-client";
+import { addPulls } from "../../utils/crud-functions.js";
 import { useNavigate } from 'react-router-dom';
 
-const DataRescuer = () => {
+const DataRescuer = ({ sessions, prevPulls }) => {
     const [pastedPulls, setPastedPulls] = useState(null);
     const [existingPullsCount, setExistingPullsCount] = useState(Number(localStorage.getItem("existingPullsCount")) || 0)
     const navigate = useNavigate();
