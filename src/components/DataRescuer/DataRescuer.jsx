@@ -2,6 +2,7 @@ import { useState } from "react";
 import { supabase } from "../../supabase-client";
 import { addPulls } from "../../utils/crud-functions.js";
 import { useNavigate } from 'react-router-dom';
+import "./DataRescuer.scss";
 
 const DataRescuer = ({ sessions, prevPulls }) => {
     const [pastedPulls, setPastedPulls] = useState(null);
@@ -49,19 +50,20 @@ const DataRescuer = ({ sessions, prevPulls }) => {
     }
 
     return (
-        <section>
+        <section className="data-rescuer">
             <h2>Reupload Pulls Data</h2>
-            <p>Had an error when uploading pulls? Don't worry! An array of pulls data should have automatically saved to your clipboard.</p>
+            <p>Had an error when uploading pulls? Don't worry, it's fixable!</p>
             
             <div className="data-rescuer__step">
                 <h3>Step 1: Paste clipboard data</h3>
+                <p>On your original attempt to upload pulls, an array of data should have automatically saved to your clipboard. Drop it in here.</p>
                 <textarea className="data-rescuer__textarea" value={pastedPulls} onChange={(e) => setPastedPulls(e.target.value)}></textarea>
             </div>
            
             <div className="data-rescuer__step">
                 <h3>Step 2: Confirm existing pulls count</h3>
                 <p>Let's double-check that the overall pulls count (BEFORE adding these) is correct. If it looks good, skip on ahead. If not, manually change it here.</p>
-                <input type="number" value={existingPullsCount} onChange={(e) => setExistingPullsCount(e.target.value)}></input>
+                <input className="data-rescuer__num-input" type="number" value={existingPullsCount} onChange={(e) => setExistingPullsCount(e.target.value)}></input>
             </div>
             
             <div className="data-rescuer__step">
