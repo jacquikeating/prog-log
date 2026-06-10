@@ -6,7 +6,7 @@ const NewSessionForm = ({ lastSession, handleSessionFormData }) => {
     const [staticName, setStaticName] = useState(lastSession.static);
     const [ulti, setUlti] = useState(lastSession.ulti);
     const [num, setNum] = useState(lastSession.num + 1);
-    const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
+    const [date, setDate] = useState(new Intl.DateTimeFormat("en-CA").format());
     const [roster, setRoster] = useState(lastSession.roster);
     const [progPhase, setProgPhase] = useState(lastSession.prog_phase);
     const [progMech, setProgMech] = useState(lastSession.prog_mech);
