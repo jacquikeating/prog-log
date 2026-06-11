@@ -56,6 +56,7 @@ const AddDataPage = ({ sessions, prevPulls }) => {
     function handlePullFormData(newPull) {
         let insertAt = newPull.indexToInsert;
         delete newPull.indexToInsert;
+        delete newPull.index;
         let copyOfPullsArray = [...pullsArray];
         if (insertAt == 0) {
             copyOfPullsArray.push(newPull);
