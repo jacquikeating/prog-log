@@ -21,6 +21,7 @@ const PullsSection = () => {
   const { width, breakpoint, pulls, isPending } = pullsCtx;
 
   const [progPullsOnly, setProgPullsOnly] = useState(false);
+  const [playerToFilter, setPlayerToFilter] = useState("");
   const [thisSessionsPulls, setThisSessionsPulls] = useState([]);
   const [pullsToDisplay, setPullsToDisplay] = useState([]);
 
@@ -31,19 +32,33 @@ const PullsSection = () => {
     }
   }, [isPending]);
 
+  useEffect(() => {
+    if (playerToFilter.length > 0) {
+      const arrayFilteredByPlayer = [...pullsArray].filter((pull) =>
+        pull.players_responsible.includes(playerToFilter)
+      );
+
+      if (progPullsOnly) {
+        setPullsToDisplay(getPullsAtProgPoint(arrayFilteredByPlayer, session.prog_mech));
+      } else {
+        setPullsToDisplay(arrayFilteredByPlayer);
+      }
+    } else {
+      if (progPullsOnly) {
+        setPullsToDisplay(getPullsAtProgPoint(thisSessionsPulls, session.prog_mech));
+      } else {
+        setPullsToDisplay(thisSessionsPulls);
+      }
+      
+    }
+  }, [thisSessionsPulls, progPullsOnly, playerToFilter]);
+
   function handleCheckbox() {
     if (progPullsOnly) {
       setProgPullsOnly(false);
     } else {
       setProgPullsOnly(true);
     }
-  };
-
-  function filterPulls(name) {
-    const arrayFilteredByPlayer = [...pullsArray].filter((pull) =>
-      pull.players_responsible.includes(name)
-    );
-    setPullsToDisplay(arrayFilteredByPlayer);
   };
 
   function getPullsCount() {
@@ -77,7 +92,7 @@ const PullsSection = () => {
             id="playerSelect"
             className="report__filter-input"
             onChange={(e) => {
-              filterPulls(e.target.value);
+              setPlayerToFilter(e.target.value);
             }}
           >
             <option value={""}>--</option>
@@ -98,9 +113,7 @@ const PullsSection = () => {
       </div>
 
       <PullsTable
-        pullsArray={
-          progPullsOnly ? getPullsAtProgPoint(pullsToDisplay, session.prog_mech) : pullsToDisplay
-        }
+        pullsArray={pullsToDisplay}
         showEdit={showEdit}
         updatePull={updatePull}
         deletePull={deletePull}
