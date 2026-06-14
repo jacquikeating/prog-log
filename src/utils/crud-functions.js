@@ -18,7 +18,7 @@ export function getPullsCount(prevPulls, sessionData) {
 export function addPulls(prevPulls, sessionData, pullsArray) {
 
     function preparePullsForBackend() {
-        const copyArray = [...pullsArray];
+        const copyArray = pullsArray.map(({ index, ...rest }) => rest);
         const numberedPulls = copyArray.map((pull, index) => (
             {
                 ...pull,
