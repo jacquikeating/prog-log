@@ -6,6 +6,7 @@ const SignupForm = ({}) => {
         e.preventDefault();
         console.log("Form submitted");
     }
+    
     return (
         <div className="signup">
             <h2 className="signup__heading">Signup</h2>
