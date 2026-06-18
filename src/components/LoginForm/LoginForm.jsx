@@ -15,7 +15,7 @@ const LoginForm = ({}) => {
                     <input 
                         type="email"
                         name="email" 
-                        className="login__text-input"
+                        className="login__text-input"e
                     />
                 </label>
                 
