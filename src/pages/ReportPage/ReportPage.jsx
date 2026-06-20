@@ -130,7 +130,7 @@ const ReportPage = ({ sessions, pulls }) => {
                             {!editMode ? <SessionInfo /> : <SessionInfoEdit />}
                             <PullsContext.Provider value={{ pullsCtx }}>
                                 <PullsSection />
-                                <button onClick={addPulls}>Add pulls</button>
+                                {/* <button onClick={addPulls}>Add pulls</button> */}
                             </PullsContext.Provider>
                         </>
                     ) : (
