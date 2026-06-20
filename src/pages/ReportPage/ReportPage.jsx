@@ -1,4 +1,5 @@
 import { useState, useEffect, createContext } from "react";
+import { useNavigate } from 'react-router-dom';
 import { useParams } from "react-router-dom";
 import { supabase } from "../../supabase-client";
 import { diff } from 'deep-object-diff';
@@ -25,6 +26,7 @@ const ReportPage = ({ sessions, pulls }) => {
     // const { isAuthenticated, user } = useAuth0();
     let role = "none";
     let pullToUpdate = {};
+    const navigate = useNavigate();
 
     useEffect(() => {
         setPullsArray(pulls.filter((pull) => pull.session_num == sessionNum));
@@ -87,6 +89,11 @@ const ReportPage = ({ sessions, pulls }) => {
             updateSession();
             setEditMode(false);
         };
+    };
+
+    function addPulls() {
+        localStorage.setItem("sessionInProgress", JSON.stringify(session));
+        navigate("/add");
     };
 
     const sessionCtx = {
