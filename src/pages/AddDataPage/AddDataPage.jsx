@@ -82,7 +82,7 @@ const AddDataPage = ({ sessions, prevPulls }) => {
     }
 
     function handleSubmit() {
-        addPulls(prevPulls, sessionData, pullsArray);
+        addPulls(prevPulls, sessionData, [...pullsArray]);
         navigate(`/report/${sessionData.num}`);
     }
 
