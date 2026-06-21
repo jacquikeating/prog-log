@@ -30,7 +30,7 @@ const DataRescuer = ({ sessions, prevPulls }) => {
 
         // Confirm data looks correct before attempting to reupload. That's why this is a separate function!
         const examplePull = [...prevPulls][0];
-        delete examplePull.id;
+        delete examplePull.id; // Not showing this since id column needs to be absent from new data (auto-incremented in DB)
         console.log(`Here's an example pull for comparison:`);
         console.log(examplePull);
         console.log(`And here's what your new pulls look like:`)
