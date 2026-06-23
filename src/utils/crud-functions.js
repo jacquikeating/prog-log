@@ -32,6 +32,7 @@ export function addPulls(prevPulls, sessionData, pullsArray) {
     pullsArray.forEach((pull, index) => {
         delete pull.index
         delete pull.indexToInsert
+        delete pull.id
         pull.pull_num_today = Number(index + 1),
         pull.pull_num_overall = Number(index + 1) + prevPullsCount
     });
