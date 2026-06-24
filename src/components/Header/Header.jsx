@@ -51,6 +51,13 @@ const Header = ({ latestSession }) => {
           </ul>
         </div>
         <div className="nav__group nav__group--secondary">
+          <ul className="nav__list">
+            <li className="nav__list-item">
+              <p className="nav__link">
+                Login
+              </p>
+            </li>
+          </ul>
         </div>
       </nav>
     </header>
