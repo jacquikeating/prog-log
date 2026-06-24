@@ -8,25 +8,24 @@ const LoginForm = ({}) => {
     
     return (
         <div className="login">
-            <h2 className="login__heading">Signup</h2>
+            {/* <h2 className="login__heading">Login</h2> */}
             <form className="login__form" onSubmit={handleSubmit}>
-                <label>
-                    Email
+                <label for="email" className="login__label">Email</label>
                     <input 
                         type="email"
                         name="email" 
-                        className="login__text-input"e
+                        className="login__text-input"
+                        placeholder="Email"
                     />
-                </label>
                 
-                <label>
-                    Password
+                <label for="password" className="login__label">Password</label>
                     <input 
                         type="password"
                         name="password" 
                         className="login__text-input"
+                        placeholder="Password"
                     />
-                </label>
+                
                 <button type="submit" className="login__submit">Submit</button>
             </form>
         </div>
