@@ -1,8 +1,11 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import SelectStaticUlti from "../../components/SelectStaticUlti/SelectStaticUlti";
 import "./Header.scss";
 
 const Header = ({ latestSession }) => {
+  const [loginOpen, setLoginOpen] = useState(false);
+
   return (
     <header className="header">
       <nav className="nav">
@@ -53,7 +56,7 @@ const Header = ({ latestSession }) => {
         <div className="nav__group nav__group--secondary">
           <ul className="nav__list">
             <li className="nav__list-item">
-              <p className="nav__link">
+              <p className="nav__link" onClick={() => setLoginOpen(true)} onMouseEnter={() => setLoginOpen(true)}>
                 Login
               </p>
             </li>
