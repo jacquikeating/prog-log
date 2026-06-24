@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { supabase } from "./supabase-client";
 import Header from "./components/Header/Header";
 import AboutPage from "./pages/AboutPage/AboutPage";
+import AccountPage from "./pages/AccountPage/AccountPage";
 import AddDataPage from "./pages/AddDataPage/AddDataPage";
 import AdminPage from "./pages/AdminPage/AdminPage";
 import OverviewPage from "./pages/OverviewPage/OverviewPage";
@@ -71,6 +72,7 @@ function App() {
             element={<OverviewPage sessions={sessions} pulls={pulls} />}
           />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/account" element={<AccountPage />} />
           <Route path="/add" element={<AddDataPage sessions={sessions} prevPulls={pulls} />} />
           <Route path="/admin" element={<AdminPage sessions={sessions} prevPulls={pulls} />} />
           <Route
