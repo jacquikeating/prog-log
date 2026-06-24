@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import LoginForm from "../LoginForm/LoginForm";
 import SelectStaticUlti from "../../components/SelectStaticUlti/SelectStaticUlti";
 import "./Header.scss";
 
@@ -62,6 +63,7 @@ const Header = ({ latestSession }) => {
             </li>
           </ul>
         </div>
+        {loginOpen && <LoginForm />}
       </nav>
     </header>
   );
