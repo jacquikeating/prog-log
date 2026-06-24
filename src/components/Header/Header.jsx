@@ -54,7 +54,7 @@ const Header = ({ latestSession }) => {
             )} */}
           </ul>
         </div>
-        <div className="nav__group nav__group--secondary">
+        {/* <div className="nav__group nav__group--secondary">
           <ul className="nav__list">
             <li className="nav__list-item">
               <p className="nav__link" onClick={() => setLoginOpen(true)} onMouseEnter={() => setLoginOpen(true)}>
@@ -62,8 +62,8 @@ const Header = ({ latestSession }) => {
               </p>
             </li>
           </ul>
-        </div>
-        {loginOpen && <LoginForm />}
+          {loginOpen && <LoginForm />}
+        </div> */}
       </nav>
     </header>
   );
