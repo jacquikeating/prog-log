@@ -28,6 +28,7 @@ const Pull = ({
 
   function editRow() {
       updatePull({
+        id: pullData.id,
         session_num: pullData.session_num,
         pull_num_today: pullData.pull_num_today,
         pull_num_overall: pullData.pull_num_overall,
