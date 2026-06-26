@@ -6,7 +6,7 @@ import "./SignupPage.scss";
 const SignupPage = () => {
     return (
         <main className="signup">
-            <h1>Create an Account</h1>
+            <h1 className="signup__heading">Create an Account</h1>
             <SignupForm />
         </main>
     )

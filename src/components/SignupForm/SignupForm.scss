@@ -1,3 +1,41 @@
 @use "/src/styles/__variables" as *;
 @use "/src/styles/__mixins" as *;
 
+.signup-form {
+    margin-top: 1.5rem;
+    color: $text-light;
+    border: 1px solid $borders;
+    background: $bg-mid;
+    padding: 2.5rem 3rem;
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+
+    &__section {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    &__label {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.25rem;
+        font-size: 1.1rem;
+    }
+
+    &__text-input {
+        @include input;
+        height: 2.5rem;
+        width: 20rem;
+    }
+
+    &__submit {
+        @include button;
+        margin-top: 1rem;
+    }
+}
