@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import LoginForm from "../../components/LoginForm/LoginForm";
-import "./AccountPage.scss";
+import "./LoginPage.scss";
 
-const AccountPage = () => {
+const LoginPage = () => {
     return (
         <main>
-            <h1>Account</h1>
+            <h1>Login</h1>
             <LoginForm />
             <button>Create an account</button>
         </main>
     )
 };
 
-export default AccountPage;
+export default LoginPage;

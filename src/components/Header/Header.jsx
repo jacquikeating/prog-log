@@ -54,8 +54,8 @@ const Header = ({ latestSession }) => {
         <div className="nav__group nav__group--secondary">
           <ul className="nav__list">
             <li className="nav__list-item">
-              <Link to="/account" className="nav__link">
-                Account
+              <Link to="/login" className="nav__link">
+                Login
               </Link>
             </li>
           </ul>
