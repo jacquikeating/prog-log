@@ -7,24 +7,26 @@ const LoginForm = ({}) => {
     }
     
     return (
-        <form className="login__form" onSubmit={handleSubmit}>
-            <label for="email" className="login__label">Email</label>
+        <form className="login-form" onSubmit={handleSubmit}>
+            <label for="email" className="login-form__label">Email
                 <input 
                     type="email"
                     name="email" 
-                    className="login__text-input"
-                    placeholder="Email"
+                    className="login-form__text-input"
                 />
+            </label>
+                
             
-            <label for="password" className="login__label">Password</label>
+            <label for="password" className="login-form__label">Password
                 <input 
                     type="password"
                     name="password" 
-                    className="login__text-input"
-                    placeholder="Password"
+                    className="login-form__text-input"
                 />
+            </label>
+                
             
-            <button type="submit" className="login__submit">Submit</button>
+            <button type="submit" className="login-form__submit">Submit</button>
         </form>
     )
 };

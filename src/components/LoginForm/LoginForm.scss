@@ -1,36 +1,30 @@
 @use "/src/styles/__variables" as *;
 @use "/src/styles/__mixins" as *;
 
-.login {
-    border: 1px solid $borders;
+.login-form {
+    margin-top: 10vh;
     color: $text-light;
-    background: $bg-extralight;
-    padding: 10px;
+    border: 1px solid $borders;
+    background: $bg-mid;
+    padding: 2.5rem 2rem;
     border-radius: 2px;
-    max-width: 370px;
-
-    &__form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
 
     &__label {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border: 0;
-    } 
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.25rem;
+        font-size: 1.1rem;
+    }
 
     &__text-input {
-        width: 150px;
-        height: 1.5rem;
+        @include input;
+        height: 2.5rem;
+        width: 20rem;
     }
 }
