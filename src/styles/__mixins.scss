@@ -54,4 +54,9 @@
         color: $blue;
         border: 1px solid $blue;
     }
+
+    &:active {
+        color: $purple;
+        border: 1px solid $purple;
+    }
 }
