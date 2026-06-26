@@ -2,17 +2,17 @@
 @use "/src/styles/__mixins" as *;
 
 .login-form {
-    margin-top: 10vh;
+    margin-top: 5vh;
     color: $text-light;
     border: 1px solid $borders;
     background: $bg-mid;
-    padding: 2.5rem 2rem;
+    padding: 2.5rem 3rem;
     border-radius: 2px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 1.75rem;
 
     &__label {
         display: flex;
@@ -26,5 +26,10 @@
         @include input;
         height: 2.5rem;
         width: 20rem;
+    }
+
+    &__submit {
+        @include button;
+        margin-top: 1rem;
     }
 }
