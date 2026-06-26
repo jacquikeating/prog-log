@@ -1,11 +1,8 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import LoginForm from "../LoginForm/LoginForm";
 import SelectStaticUlti from "../../components/SelectStaticUlti/SelectStaticUlti";
 import "./Header.scss";
 
 const Header = ({ latestSession }) => {
-  const [loginOpen, setLoginOpen] = useState(false);
 
   return (
     <header className="header">
@@ -54,16 +51,15 @@ const Header = ({ latestSession }) => {
             )} */}
           </ul>
         </div>
-        {/* <div className="nav__group nav__group--secondary">
+        <div className="nav__group nav__group--secondary">
           <ul className="nav__list">
             <li className="nav__list-item">
-              <p className="nav__link" onClick={() => setLoginOpen(true)} onMouseEnter={() => setLoginOpen(true)}>
-                Login
-              </p>
+              <Link to="/account" className="nav__link">
+                Account
+              </Link>
             </li>
           </ul>
-          {loginOpen && <LoginForm />}
-        </div> */}
+        </div>
       </nav>
     </header>
   );

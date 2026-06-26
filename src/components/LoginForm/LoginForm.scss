@@ -2,15 +2,12 @@
 @use "/src/styles/__mixins" as *;
 
 .login {
-    position: absolute;
-    top: 40px;
-    right: -65px;
     border: 1px solid $borders;
     color: $text-light;
     background: $bg-extralight;
     padding: 10px;
     border-radius: 2px;
-    max-width: 170px;
+    max-width: 370px;
 
     &__form {
         display: flex;
