@@ -1,7 +1,8 @@
 import "./LoginForm.scss";
 
 const LoginForm = ({}) => {
-        function handleSubmit(e) {
+
+    function handleSubmit(e) {
         e.preventDefault();
         console.log("Form submitted");
     }
@@ -16,7 +17,6 @@ const LoginForm = ({}) => {
                 />
             </label>
                 
-            
             <label for="password" className="login-form__label">Password
                 <input 
                     type="password"
@@ -25,8 +25,7 @@ const LoginForm = ({}) => {
                 />
             </label>
                 
-            
-            <button type="submit" className="login-form__submit">Submit</button>
+            <button type="submit" className="login-form__submit">Login</button>
         </form>
     )
 };
