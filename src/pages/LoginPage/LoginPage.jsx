@@ -5,10 +5,10 @@ import "./LoginPage.scss";
 
 const LoginPage = () => {
     return (
-        <main>
+        <main className="login">
             <h1>Login</h1>
             <LoginForm />
-            <button>Create an account</button>
+            <Link className="login__create-acct-link" to="/signup">Create an account</Link>
         </main>
     )
 };

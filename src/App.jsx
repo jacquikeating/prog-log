@@ -9,6 +9,7 @@ import AdminPage from "./pages/AdminPage/AdminPage";
 import OverviewPage from "./pages/OverviewPage/OverviewPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import ReportPage from "./pages/ReportPage/ReportPage";
+import SignupPage from "./pages/SignupPage/SignupPage";
 import "./styles/index.scss";
 
 function App() {
@@ -79,7 +80,7 @@ function App() {
               path="/report/:sessionNum"
               element={<ReportPage sessions={sessions} pulls={pulls} />}
             />
-            
+          <Route path="/signup" element={<SignupPage />} />
           <Route path="/*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
