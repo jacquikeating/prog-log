@@ -2,17 +2,16 @@
 @use "/src/styles/__mixins" as *;
 
 .signup-form {
-    margin-top: 1.5rem;
     color: $text-light;
     border: 1px solid $borders;
     background: $bg-mid;
-    padding: 2.5rem 3rem;
+    padding: 1.5rem 2rem;
     border-radius: 2px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2.5rem;
+    gap: 1rem;
 
     &__section {
         display: flex;
@@ -30,12 +29,21 @@
 
     &__text-input {
         @include input;
-        height: 2.5rem;
+        height: 2rem;
         width: 20rem;
+    }
+
+    &__error {
+        @include sub-text;
+        color: rgb(208, 18, 56);
+    }
+
+    &__error-hidden {
+        @include sub-text;
+        opacity: 0;
     }
 
     &__submit {
         @include button;
-        margin-top: 1rem;
     }
 }
