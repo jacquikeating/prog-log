@@ -17,7 +17,7 @@ export function getPullsCount(prevPulls, sessionData) {
 
 export function addPulls(prevPulls, sessionData, pullsArray) {
     const prevPullsCount = getPullsCount(prevPulls, sessionData);
-    
+
     pullsArray.forEach((pull, index) => {
         delete pull.index
         delete pull.indexToInsert
@@ -30,4 +30,11 @@ export function addPulls(prevPulls, sessionData, pullsArray) {
     navigator.clipboard.writeText(localStorage.getItem("pullsFromNewSession"));
     localStorage.removeItem("pullsFromNewSession");
     localStorage.removeItem("sessionInProgress");
+};
+
+export async function addUserToPlayersTable(newUserData) {
+    const {error} = await supabase.from("players").insert(newUserData);
+        if (error) { 
+            console.error("Error adding pulls: ", error);
+        };
 };
