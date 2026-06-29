@@ -5,6 +5,7 @@ import "./SignupForm.scss";
 
 const SignupForm = ({}) => {
     const [charName, setCharName] = useState("");
+    const [memberOf, setMemberOf] = useState("wall-is-safe"); // Temporarily hardcoded, add a <select> for statics when the platform can support multiple statics
     const [email, setEmail] = useState("");
     const [emailConfirm, setEmailConfirm] = useState("");
     const [emailErr, setEmailErr] = useState(false);
