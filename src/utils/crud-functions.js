@@ -17,18 +17,7 @@ export function getPullsCount(prevPulls, sessionData) {
 
 export function addPulls(prevPulls, sessionData, pullsArray) {
     const prevPullsCount = getPullsCount(prevPulls, sessionData);
-
-    // function preparePullsForBackend() {
-    //     const copyArray = pullsArray.map(({ index, ...rest }) => rest);
-    //     const numberedPulls = copyArray.map((pull, index) => (
-    //         {
-    //             ...pull,
-    //             pull_num_today: Number(index + 1),
-    //             pull_num_overall: Number(index + 1) + prevPullsCount,
-    //         }));
-    //     return numberedPulls;
-    // };
-
+    
     pullsArray.forEach((pull, index) => {
         delete pull.index
         delete pull.indexToInsert
@@ -37,7 +26,6 @@ export function addPulls(prevPulls, sessionData, pullsArray) {
         pull.pull_num_overall = Number(index + 1) + prevPullsCount
     });
 
-    // const preparedPulls = preparePullsForBackend();
     insertPulls(pullsArray);
     navigator.clipboard.writeText(localStorage.getItem("pullsFromNewSession"));
     localStorage.removeItem("pullsFromNewSession");
