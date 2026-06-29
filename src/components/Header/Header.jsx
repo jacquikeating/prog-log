@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import SelectStaticUlti from "../../components/SelectStaticUlti/SelectStaticUlti";
 import "./Header.scss";
 
-const Header = ({ latestSession }) => {
+const Header = ({ latestSession, loginData }) => {
 
   return (
     <header className="header">
@@ -54,9 +54,15 @@ const Header = ({ latestSession }) => {
         <div className="nav__group nav__group--secondary">
           <ul className="nav__list">
             <li className="nav__list-item">
-              <Link to="/login" className="nav__link">
-                Login
-              </Link>
+              {loginData ? (
+                <Link to="/account" className="nav__link">
+                  Account
+                </Link>
+              ) : (
+                <Link to="/login" className="nav__link">
+                  Login
+                </Link>
+              )}
             </li>
           </ul>
         </div>
