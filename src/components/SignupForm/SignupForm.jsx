@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../../supabase-client";
+import { addUserToPlayersTable } from "../../utils/crud-functions";
 import "./SignupForm.scss";
 
 const SignupForm = ({}) => {
@@ -14,10 +15,26 @@ const SignupForm = ({}) => {
     const [passwordErr, setPasswordErr] = useState(false);
 
     async function createAccount() {
-        const { error } = await supabase.auth.signUp({ email, password });
+        const { data, error } = await supabase.auth.signUp({
+            email, 
+            password,
+            options: {
+                data: {
+                    character_name: charName,
+                    member_of: memberOf 
+                },
+            },
+        });
         if (error) {
             console.error('Error signing up: ', error);
-        }
+        } else {
+            const playerData = {
+                user_id: data.user.id,
+                name: charName,
+                member_of: memberOf
+            };
+            addUserToPlayersTable(playerData);
+        };
     };
 
     function handleSubmit(e) {
