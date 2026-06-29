@@ -6,12 +6,22 @@ import "./LoginForm.scss";
 const LoginForm = ({}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    
+    const navigate = useNavigate();
+
+    async function login() {
+        const { error } = await supabase.auth.signInWithPassword({ email, password });
+            if (error) {
+                console.error(`Error logging in: ${error.message}`);
+            } else {
+                navigate("/");
+            };
+    };
+
     function handleSubmit(e) {
         e.preventDefault();
-        console.log("Form submitted");
-    }
-    
+        login();
+    };
+
     return (
         <form className="login-form" onSubmit={handleSubmit}>
            <label htmlFor="email" className="login-form__label">
