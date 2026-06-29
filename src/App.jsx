@@ -3,9 +3,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { supabase } from "./supabase-client";
 import Header from "./components/Header/Header";
 import AboutPage from "./pages/AboutPage/AboutPage";
-import LoginPage from "./pages/LoginPage/LoginPage";
+import AccountPage from "./pages/AccountPage/AccountPage";
 import AddDataPage from "./pages/AddDataPage/AddDataPage";
 import AdminPage from "./pages/AdminPage/AdminPage";
+import LoginPage from "./pages/LoginPage/LoginPage";
 import OverviewPage from "./pages/OverviewPage/OverviewPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import ReportPage from "./pages/ReportPage/ReportPage";
@@ -81,6 +82,7 @@ function App() {
             element={<OverviewPage sessions={sessions} pulls={pulls} />}
           />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/account" element={<AccountPage loginData={loginData} />} />
           <Route path="/add" element={<AddDataPage sessions={sessions} prevPulls={pulls} />} />
           <Route path="/admin" element={<AdminPage sessions={sessions} prevPulls={pulls} />} />
           <Route path="/login" element={<LoginPage />} />
