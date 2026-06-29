@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import { supabase } from "../../supabase-client";
 import "./AccountPage.scss";
 
 const AccountPage = ({ loginData }) => {
+    const navigate = useNavigate();
     let user = "";
 
     if (loginData.session) {
@@ -11,6 +13,7 @@ const AccountPage = ({ loginData }) => {
 
     async function logout() {
         await supabase.auth.signOut();
+        navigate("/");
     };
 
     return (
@@ -20,10 +23,10 @@ const AccountPage = ({ loginData }) => {
                 {loginData.session ? (
                     <>
                         <p>Logged in as: {user.email}</p>
-                    <p className="account__not-signed-in">You are not signed in.</p>
+                        <button className="account__logout-btn" onClick={logout}>Logout</button>
                     </>
                 ) : (
-                    <p>You are not signed in.</p>
+                    <p className="account__not-signed-in">You are not signed in.</p>
                 )}
             </section>    
         </main>
