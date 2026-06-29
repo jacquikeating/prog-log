@@ -14,11 +14,14 @@ const AccountPage = ({ loginData }) => {
     };
 
     return (
-        <main>
-            <h1>Account</h1>
-            <section>
+        <main className="account">
+            <h1 className="account__heading">Account</h1>
+            <section className="account__section">
                 {loginData.session ? (
-                    <button onClick={logout}>Logout</button>
+                    <>
+                        <p>Logged in as: {user.email}</p>
+                    <p className="account__not-signed-in">You are not signed in.</p>
+                    </>
                 ) : (
                     <p>You are not signed in.</p>
                 )}
