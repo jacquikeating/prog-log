@@ -28,8 +28,8 @@ function App() {
       setError(error.message);
     } else {
       setSessions(data);
-    }
-  }
+    };
+  };
 
   async function fetchPulls() {
     const { error, data } = await supabase.from("pulls").select("*")
@@ -61,7 +61,7 @@ function App() {
         <p>Loading...</p>
       </main>
     )
-  }
+  };
 
   if (error) {
     return (
@@ -69,12 +69,12 @@ function App() {
         <p>Error loading data: {error}</p>
       </main>
     )
-  }
+  };
 
   if (sessions.length > 0) {
     return (
       <BrowserRouter>
-        <Header latestSession={sessions.length} />
+        <Header latestSession={sessions.length} loginData={loginData} />
         <Routes>
           <Route 
             path="/" 
@@ -93,7 +93,7 @@ function App() {
         </Routes>
       </BrowserRouter>
     );
-  }
-}
+  };
+};
 
 export default App;
