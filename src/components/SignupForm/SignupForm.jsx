@@ -12,8 +12,10 @@ const SignupForm = ({}) => {
     const [passwordErr, setPasswordErr] = useState(false);
 
     async function createAccount() {
-        // await supabase.auth.signUp()
-        console.log("Form submitted");
+        const { error } = await supabase.auth.signUp({ email, password });
+        if (error) {
+            console.error('Error signing up: ', error);
+        }
     };
 
     function handleSubmit(e) {
