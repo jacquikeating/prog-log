@@ -41,7 +41,7 @@ const SignupForm = ({}) => {
 
             <form className="signup-form" onSubmit={handleSubmit}>
                 <div className="signup-form__section">
-                    <label for="email" className="signup-form__label">
+                    <label htmlFor="email" className="signup-form__label">
                         Email
                         <input 
                             type="email"
@@ -49,9 +49,10 @@ const SignupForm = ({}) => {
                             className="signup-form__text-input"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                            required
                         />
                     </label>
-                    <label for="email-confirm" className="signup-form__label">
+                    <label htmlFor="email-confirm" className="signup-form__label">
                         Confirm Email
                         <input 
                             type="email"
@@ -59,6 +60,7 @@ const SignupForm = ({}) => {
                             className="signup-form__text-input"
                             value={emailConfirm}
                             onChange={(e) => setEmailConfirm(e.target.value)}
+                            required
                         />
                     </label>
                     <p className={emailErr ? "signup-form__error" : "signup-form__error-hidden"}>
@@ -66,7 +68,7 @@ const SignupForm = ({}) => {
                     </p>
                 </div>
                 <div className="signup-form__section">
-                    <label for="password" className="signup-form__label">
+                    <label htmlFor="password" className="signup-form__label">
                         Password
                         <input 
                             type="password"
@@ -74,9 +76,10 @@ const SignupForm = ({}) => {
                             className="signup-form__text-input"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
+                            required
                         />
                     </label>
-                    <label for="password-confirm" className="signup-form__label">
+                    <label htmlFor="password-confirm" className="signup-form__label">
                         Confirm Password
                         <input 
                             type="password"
@@ -84,6 +87,7 @@ const SignupForm = ({}) => {
                             className="signup-form__text-input"
                             value={passwordConfirm}
                             onChange={(e) => setPasswordConfirm(e.target.value)}
+                            required
                         />
                     </label>
                     <p className={passwordErr ? "signup-form__error" : "signup-form__error-hidden"}>
