@@ -17,6 +17,7 @@ function App() {
   const [error, setError] = useState(null);
   const [sessions, setSessions] = useState([]);
   const [pulls, setPulls] = useState([]);
+  const [loginData, setLoginData] = useState(null);
 
   async function fetchSessions() {
     const { error, data } = await supabase.from("sessions").select("*").order("num", { ascending: false });
@@ -39,12 +40,19 @@ function App() {
     } else {
       setPulls(data);
       setLoading(false);
-    }
-  }
+    };
+  };
+
+  async function checkLogin() {
+    const currentLogin = await supabase.auth.getSession();
+    setLoginData(currentLogin.data);
+    console.log(currentLogin.data.session);
+  };
 
   useEffect(() => {
     fetchSessions();
     fetchPulls();
+    checkLogin();
   }, []);
 
   if (loading) {
