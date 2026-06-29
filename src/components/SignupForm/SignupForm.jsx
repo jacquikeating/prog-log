@@ -4,6 +4,7 @@ import { supabase } from "../../supabase-client";
 import "./SignupForm.scss";
 
 const SignupForm = ({}) => {
+    const [charName, setCharName] = useState("");
     const [email, setEmail] = useState("");
     const [emailConfirm, setEmailConfirm] = useState("");
     const [emailErr, setEmailErr] = useState(false);
@@ -42,6 +43,22 @@ const SignupForm = ({}) => {
     return (
 
             <form className="signup-form" onSubmit={handleSubmit}>
+                <div className="signup-form__section">
+                    <label htmlFor="username" className="signup-form__label">
+                        Character Name
+                        <input 
+                            type="text"
+                            name="username" 
+                            className="signup-form__text-input"
+                            value={charName}
+                            onChange={(e) => setCharName(e.target.value)}
+                            required
+                        />
+                    </label>
+                    <p className="signup-form__error-hidden">
+                        placeholder
+                    </p>
+                </div>
                 <div className="signup-form__section">
                     <label htmlFor="email" className="signup-form__label">
                         Email
