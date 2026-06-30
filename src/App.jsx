@@ -18,7 +18,7 @@ function App() {
   const [error, setError] = useState(null);
   const [sessions, setSessions] = useState([]);
   const [pulls, setPulls] = useState([]);
-  const [loginData, setLoginData] = useState(null);
+  const [user, setUser] = useState(null);
 
   async function fetchSessions() {
     const { error, data } = await supabase.from("sessions").select("*").order("num", { ascending: false });
@@ -49,7 +49,7 @@ function App() {
 
     if (currentLogin.data.session) {
       let sessionData = currentLogin.data.session;
-      let currentUser = {
+      let userData = {
         id: sessionData.user.id,
         name: "",
         member_of: "",
@@ -63,10 +63,10 @@ function App() {
           console.error(error);
           setError(error.message);
         } else {
-          currentUser.name = data[0].name;
-          currentUser.member_of = data[0].member_of;
-          currentUser.permissions = data[0].permissions;
-          setLoginData(currentUser);
+          userData.name = data[0].name;
+          userData.member_of = data[0].member_of;
+          userData.permissions = data[0].permissions;
+          setUser(userData);
         };
     };
   };
@@ -96,20 +96,20 @@ function App() {
   if (sessions.length > 0) {
     return (
       <BrowserRouter>
-        <Header latestSession={sessions.length} loginData={loginData} />
+        <Header latestSession={sessions.length} user={user} />
         <Routes>
           <Route 
             path="/" 
             element={<OverviewPage sessions={sessions} pulls={pulls} />}
           />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/account" element={<AccountPage loginData={loginData} />} />
+          <Route path="/account" element={<AccountPage user={user} />} />
           <Route path="/add" element={<AddDataPage sessions={sessions} prevPulls={pulls} />} />
           <Route path="/admin" element={<AdminPage sessions={sessions} prevPulls={pulls} />} />
           <Route path="/login" element={<LoginPage />} />
           <Route
               path="/report/:sessionNum"
-              element={<ReportPage sessions={sessions} pulls={pulls} />}
+              element={<ReportPage sessions={sessions} pulls={pulls} user={user} />}
             />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/*" element={<NotFoundPage />} />

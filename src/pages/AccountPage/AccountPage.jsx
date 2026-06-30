@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "../../supabase-client";
 import "./AccountPage.scss";
 
-const AccountPage = ({ loginData }) => {
+const AccountPage = ({ user }) => {
     const navigate = useNavigate();
 
     async function logout() {
@@ -14,9 +14,9 @@ const AccountPage = ({ loginData }) => {
         <main className="account">
             <h1 className="account__heading">Account</h1>
             <section className="account__section">
-                {loginData ? (
+                {user ? (
                     <>
-                        <p>Logged in as: {loginData.name}</p>
+                        <p>Logged in as: {user.name}</p>
                         <button className="account__logout-btn" onClick={logout}>Logout</button>
                     </>
                 ) : (
