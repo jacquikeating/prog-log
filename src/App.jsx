@@ -46,8 +46,29 @@ function App() {
 
   async function checkLogin() {
     const currentLogin = await supabase.auth.getSession();
-    setLoginData(currentLogin.data);
-    console.log(currentLogin.data.session);
+
+    if (currentLogin.data.session) {
+      let sessionData = currentLogin.data.session;
+      let currentUser = {
+        id: sessionData.user.id,
+        name: "",
+        member_of: "",
+        permissions: ""
+      };
+        
+      const { data, error } = await supabase.from("players")
+        .select("*")
+        .eq('user_id', sessionData.user.id);
+        if (error) {
+          console.error(error);
+          setError(error.message);
+        } else {
+          currentUser.name = data[0].name;
+          currentUser.member_of = data[0].member_of;
+          currentUser.permissions = data[0].permissions;
+          setLoginData(currentUser);
+        };
+    };
   };
 
   useEffect(() => {
