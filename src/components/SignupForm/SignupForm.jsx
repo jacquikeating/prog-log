@@ -13,6 +13,7 @@ const SignupForm = ({}) => {
     const [password, setPassword] = useState("");
     const [passwordConfirm, setPasswordConfirm] = useState("");
     const [passwordErr, setPasswordErr] = useState(false);
+    const navigate = useNavigate();
 
     async function createAccount() {
         const { data, error } = await supabase.auth.signUp({
@@ -34,6 +35,7 @@ const SignupForm = ({}) => {
                 member_of: memberOf
             };
             addUserToPlayersTable(playerData);
+            navigate("/account");
         };
     };
 
