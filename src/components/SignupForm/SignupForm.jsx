@@ -13,6 +13,7 @@ const SignupForm = ({}) => {
     const [password, setPassword] = useState("");
     const [passwordConfirm, setPasswordConfirm] = useState("");
     const [passwordErr, setPasswordErr] = useState(false);
+    const [signupError, setSignupError] = useState(null);
     const navigate = useNavigate();
 
     async function createAccount() {
@@ -28,6 +29,7 @@ const SignupForm = ({}) => {
         });
         if (error) {
             console.error('Error signing up: ', error);
+            setSignupError(error.message);
         } else {
             const playerData = {
                 user_id: data.user.id,
@@ -133,6 +135,7 @@ const SignupForm = ({}) => {
                         Error: Passwords do not match
                     </p>
                 </div>
+                {signupError && <p className="signup-form__error">ERROR: {signupError}</p>}
                 <button type="submit" className="signup-form__submit">Sign Up</button>
             </form>
     )
