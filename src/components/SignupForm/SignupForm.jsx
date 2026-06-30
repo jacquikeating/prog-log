@@ -9,10 +9,10 @@ const SignupForm = ({}) => {
     const [memberOf, setMemberOf] = useState("wall-is-safe"); // Temporarily hardcoded, add a <select> for statics when the platform can support multiple statics
     const [email, setEmail] = useState("");
     const [emailConfirm, setEmailConfirm] = useState("");
-    const [emailErr, setEmailErr] = useState(false);
+    const [emailMatch, setEmailMatch] = useState(null);
     const [password, setPassword] = useState("");
     const [passwordConfirm, setPasswordConfirm] = useState("");
-    const [passwordErr, setPasswordErr] = useState(false);
+    const [passwordMatch, setPasswordMatch] = useState(null);
     const [signupError, setSignupError] = useState(null);
     const navigate = useNavigate();
 
@@ -43,21 +43,15 @@ const SignupForm = ({}) => {
 
     function handleSubmit(e) {
         e.preventDefault();
-        
-        if (email != emailConfirm) {
-            setEmailErr(true);
+        let doEmailsMatch = email == emailConfirm;
+        let doPasswordsMatch = password == passwordConfirm;
+        setEmailMatch(doEmailsMatch);
+        setPasswordMatch(doPasswordsMatch);
+        setSignupError(null);
+
+        if (!doEmailsMatch || !doPasswordsMatch) {
             return;
-        };
-        if (emailErr == true && email == emailConfirm) {
-            setEmailErr(false);
-        };
-        if (password != passwordConfirm) {
-            setPasswordErr(true);
-            return;
-        };
-        if (passwordErr == true && password == passwordConfirm) {
-            setPasswordErr(false);
-        };
+        }
 
         createAccount();
     };
@@ -77,9 +71,6 @@ const SignupForm = ({}) => {
                             required
                         />
                     </label>
-                    <p className="signup-form__error-hidden">
-                        placeholder
-                    </p>
                 </div>
                 <div className="signup-form__section">
                     <label htmlFor="email" className="signup-form__label">
@@ -104,9 +95,7 @@ const SignupForm = ({}) => {
                             required
                         />
                     </label>
-                    <p className={emailErr ? "signup-form__error" : "signup-form__error-hidden"}>
-                        Error: Email addresses do not match
-                    </p>
+                    {emailMatch == false && <p className="signup-form__error">ERROR: Email addresses do not match</p>}
                 </div>
                 <div className="signup-form__section">
                     <label htmlFor="password" className="signup-form__label">
@@ -131,9 +120,7 @@ const SignupForm = ({}) => {
                             required
                         />
                     </label>
-                    <p className={passwordErr ? "signup-form__error" : "signup-form__error-hidden"}>
-                        Error: Passwords do not match
-                    </p>
+                    {passwordMatch == false && <p className="signup-form__error">ERROR: Passwords do not match</p>}
                 </div>
                 {signupError && <p className="signup-form__error">ERROR: {signupError}</p>}
                 <button type="submit" className="signup-form__submit">Sign Up</button>
