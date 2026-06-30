@@ -13,40 +13,38 @@ const SessionContext = createContext();
 const PullsContext = createContext();
 const EditContext = createContext();
 
-const ReportPage = ({ sessions, pulls }) => {
+const ReportPage = ({ sessions, pulls, user }) => {
     const { sessionNum } = useParams();
     const originalSession = sessions.find((session) => session.num == sessionNum);
     const [session, setSession] = useState(originalSession);
     const [pullsArray, setPullsArray] = useState(pulls);
     const [editMode, setEditMode] = useState(false);
-    const [showEdit, setShowEdit] = useState(true);
+    const [showEdit, setShowEdit] = useState(false);
     const [allowDelete, setAllowDelete] = useState(false);
     const [width, setWidth] = useState(window.innerWidth);
     const breakpoint = 1040;
-    // const { isAuthenticated, user } = useAuth0();
-    let role = "none";
     let pullToUpdate = {};
     const navigate = useNavigate();
 
     useEffect(() => {
         setPullsArray(pulls.filter((pull) => pull.session_num == sessionNum));
+        if (user?.member_of == session.static) {
+            if (user.member_of == session.static) {
+                if (user.permissions == "admin") {
+                    setShowEdit(true);
+                    setAllowDelete(true);
+                } else if (user.permissions == "member") {
+                    setShowEdit(true);
+                };
+            };
+        };
     }, []);
 
     useEffect(() => {
-        // if (isAuthenticated) {
-        //     role = user["https://wall-is-safe.netlify.app/roles"][0];
-        // }
-        // if (role === "admin") {
-        //     setShowEdit(true);
-        //     setAllowDelete(true);
-        // } else if (role === "static") {
-        //     setShowEdit(true);
-        // }
-
         const handleWindowResize = () => setWidth(window.innerWidth);
         window.addEventListener("resize", handleWindowResize);
         return () => window.removeEventListener("resize"), handleWindowResize;
-    }, [sessionNum]);
+    }, []);
 
     async function updatePull(editedPull) {
         const originalPull = pulls.find((pull) => pull.id == editedPull.id);
