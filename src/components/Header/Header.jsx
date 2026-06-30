@@ -54,7 +54,7 @@ const Header = ({ latestSession, loginData }) => {
         <div className="nav__group nav__group--secondary">
           <ul className="nav__list">
             <li className="nav__list-item">
-              {loginData.session ? (
+              {loginData ? (
                 <Link to="/account" className="nav__link">
                   Account
                 </Link>
