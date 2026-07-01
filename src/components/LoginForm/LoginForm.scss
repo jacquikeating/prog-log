@@ -28,8 +28,13 @@
         width: 20rem;
     }
 
+    &__error {
+        @include sub-text;
+        color: rgb(208, 18, 56);
+    }
+
     &__submit {
         @include button;
-        margin-top: 1rem;
+        margin-top: 0.5rem;
     }
 }

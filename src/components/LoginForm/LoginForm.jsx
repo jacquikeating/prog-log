@@ -6,12 +6,14 @@ import "./LoginForm.scss";
 const LoginForm = ({}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [loginError, setLoginError] = useState(null);
     const navigate = useNavigate();
 
     async function login() {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
             if (error) {
                 console.error(`Error logging in: ${error.message}`);
+                setLoginError(error.message);
             } else {
                 navigate("/");
             };
@@ -46,7 +48,7 @@ const LoginForm = ({}) => {
                     required
                 />
             </label>
-                
+            {loginError && <p className="login-form__error">ERROR: {loginError}</p>}
             <button type="submit" className="login-form__submit">Login</button>
         </form>
     )
