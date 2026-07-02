@@ -15,9 +15,9 @@ const EditContext = createContext();
 
 const ReportPage = ({ sessions, pulls, user }) => {
     const { sessionNum } = useParams();
-    const originalSession = sessions.find((session) => session.num == sessionNum);
+    const [originalSession, setOriginalSession] = useState(sessions.find((session) => session.num == sessionNum));
     const [session, setSession] = useState(originalSession);
-    const [pullsArray, setPullsArray] = useState(pulls);
+    const [pullsArray, setPullsArray] = useState([]);
     const [editMode, setEditMode] = useState(false);
     const [showEdit, setShowEdit] = useState(false);
     const [allowDelete, setAllowDelete] = useState(false);
@@ -27,6 +27,9 @@ const ReportPage = ({ sessions, pulls, user }) => {
     const navigate = useNavigate();
 
     useEffect(() => {
+        const thisSession = sessions.find((session) => session.num == sessionNum);
+        setSession(thisSession);
+        setOriginalSession(thisSession);
         setPullsArray(pulls.filter((pull) => pull.session_num == sessionNum));
         if (user?.member_of == session.static) {
             if (user.member_of == session.static) {
@@ -38,7 +41,7 @@ const ReportPage = ({ sessions, pulls, user }) => {
                 };
             };
         };
-    }, []);
+    }, [sessionNum]);
 
     useEffect(() => {
         const handleWindowResize = () => setWidth(window.innerWidth);
