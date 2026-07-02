@@ -1,12 +1,14 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import { supabase } from "../../supabase-client";
 import "./AccountPage.scss";
 
-const AccountPage = ({ user }) => {
+const AccountPage = () => {
+    const { user, setUser } = useOutletContext();
     const navigate = useNavigate();
 
     async function logout() {
         await supabase.auth.signOut();
+        setUser(null);
         navigate("/");
     };
 
