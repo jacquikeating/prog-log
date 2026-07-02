@@ -3,21 +3,43 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "../../supabase-client";
 import "./LoginForm.scss";
 
-const LoginForm = ({}) => {
+const LoginForm = ({ setUser }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loginError, setLoginError] = useState(null);
     const navigate = useNavigate();
 
     async function login() {
-        const { error } = await supabase.auth.signInWithPassword({ email, password });
+        const { data, error } = await supabase.auth.signInWithPassword({ email, password });
             if (error) {
                 console.error(`Error logging in: ${error.message}`);
                 setLoginError(error.message);
             } else {
+                setUserData(data);
                 navigate("/");
             };
     };
+
+    async function setUserData(loginData) {
+        let sessionData = loginData.session;
+        let userData = {
+            id: sessionData.user.id
+        };
+            
+        const { data: playerData, error } = await supabase.from("players")
+            .select("*")
+            .eq('user_id', sessionData.user.id)
+            .single();
+            if (error) {
+                console.error(error);
+                setError(error.message);
+            } else {
+                userData.name = playerData.name;
+                userData.member_of = playerData.member_of;
+                userData.permissions = playerData.permissions;
+                setUser(userData);
+            };
+    }
 
     function handleSubmit(e) {
         e.preventDefault();
