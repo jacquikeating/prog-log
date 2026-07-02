@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { supabase } from "./supabase-client";
-import Header from "./components/Header/Header";
+import Layout from "./components/Layout/Layout";
 import AboutPage from "./pages/AboutPage/AboutPage";
 import AccountPage from "./pages/AccountPage/AccountPage";
 import AddDataPage from "./pages/AddDataPage/AddDataPage";
@@ -96,23 +96,23 @@ function App() {
   if (sessions.length > 0) {
     return (
       <BrowserRouter>
-        <Header latestSession={sessions.length} user={user} />
+        {/* <Header latestSession={sessions.length} user={user} /> */}
         <Routes>
-          <Route 
-            path="/" 
-            element={<OverviewPage sessions={sessions} pulls={pulls} />}
-          />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/account" element={<AccountPage user={user} />} />
-          <Route path="/add" element={<AddDataPage sessions={sessions} prevPulls={pulls} />} />
-          <Route path="/admin" element={<AdminPage sessions={sessions} prevPulls={pulls} />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route
-              path="/report/:sessionNum"
-              element={<ReportPage sessions={sessions} pulls={pulls} user={user} />}
-            />
-          <Route path="/signup" element={<SignupPage />} />
-          <Route path="/*" element={<NotFoundPage />} />
+          <Route path="/" element={<Layout sessions={sessions} pulls={pulls} user={user} setUser={setUser} />}>
+            <Route index element={<OverviewPage sessions={sessions} pulls={pulls} />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/account" element={<AccountPage />} />
+            <Route path="/add" element={<AddDataPage sessions={sessions} prevPulls={pulls} />} />
+            <Route path="/admin" element={<AdminPage sessions={sessions} prevPulls={pulls} />} />
+            <Route path="/login" element={<LoginPage setUser={setUser} />} />
+            <Route
+                path="/report/:sessionNum"
+                element={<ReportPage sessions={sessions} pulls={pulls} user={user} />}
+              />
+            <Route path="/signup" element={<SignupPage />} />
+            <Route path="/*" element={<NotFoundPage />} />
+          </Route>
+          
         </Routes>
       </BrowserRouter>
     );
