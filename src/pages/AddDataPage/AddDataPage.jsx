@@ -9,7 +9,7 @@ import PullsTable from "../../components/PullsTable/PullsTable";
 import "./AddDataPage.scss";
 
 const AddDataPage = () => {
-    const { sessions, pulls: prevPulls } = useOutletContext();
+    const { sessions, pulls: prevPulls, user } = useOutletContext();
     const [sessionInProgress, setSessionInProgress] = useState(false);
     const [sessionData, setSessionData] = useState({});
     const [lastSession, setLastSession] = useState(null);
@@ -101,6 +101,15 @@ const AddDataPage = () => {
 
         deleteSession();
         navigate("/");
+    };
+
+    if (user?.permissions != "admin") {
+        return (
+            <main className="add-data">
+                <h1 className="add-data__heading">Add Data</h1>
+                <p>ERROR: You must have admin privileges to view this page.</p>
+            </main>
+        );
     };
 
     return (
