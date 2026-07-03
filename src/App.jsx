@@ -96,23 +96,18 @@ function App() {
   if (sessions.length > 0) {
     return (
       <BrowserRouter>
-        {/* <Header latestSession={sessions.length} user={user} /> */}
         <Routes>
           <Route path="/" element={<Layout sessions={sessions} pulls={pulls} user={user} setUser={setUser} />}>
-            <Route index element={<OverviewPage sessions={sessions} pulls={pulls} />} />
+            <Route index element={<OverviewPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/account" element={<AccountPage />} />
-            <Route path="/add" element={<AddDataPage sessions={sessions} prevPulls={pulls} />} />
-            <Route path="/admin" element={<AdminPage sessions={sessions} prevPulls={pulls} />} />
-            <Route path="/login" element={<LoginPage setUser={setUser} />} />
-            <Route
-                path="/report/:sessionNum"
-                element={<ReportPage sessions={sessions} pulls={pulls} user={user} />}
-              />
+            <Route path="/add" element={<AddDataPage />} />
+            <Route path="/admin" element={<AdminPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/report/:sessionNum" element={<ReportPage />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/*" element={<NotFoundPage />} />
           </Route>
-          
         </Routes>
       </BrowserRouter>
     );

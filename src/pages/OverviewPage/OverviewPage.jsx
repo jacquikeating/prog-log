@@ -1,8 +1,11 @@
+import { useOutletContext } from "react-router-dom";
 import OverviewStats from "../../components/OverviewStats/OverviewStats.jsx";
 import PhaseBreakdownTable from "../../components/PhaseBreakdownTable/PhaseBreakdownTable";
 import SessionsList from "../../components/SessionsList/SessionsList";
 
-const OverviewPage = ({ sessions, pulls }) => {
+const OverviewPage = () => {
+    const { sessions, pulls } = useOutletContext();
+
     return (
         <main className="overview-page">
             <h1 className="overview-page__title">Overview</h1>

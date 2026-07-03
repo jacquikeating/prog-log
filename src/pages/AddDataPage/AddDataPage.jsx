@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useOutletContext } from 'react-router-dom';
 import { supabase } from "../../supabase-client";
 import { addPulls } from "../../utils/crud-functions.js";
 import { createReadableDate } from "../../utils/shared-functions.js";
@@ -8,7 +8,8 @@ import NewPullForm from "../../components/NewPullForm/NewPullForm";
 import PullsTable from "../../components/PullsTable/PullsTable";
 import "./AddDataPage.scss";
 
-const AddDataPage = ({ sessions, prevPulls }) => {
+const AddDataPage = () => {
+    const { sessions, pulls: prevPulls } = useOutletContext();
     const [sessionInProgress, setSessionInProgress] = useState(false);
     const [sessionData, setSessionData] = useState({});
     const [lastSession, setLastSession] = useState(null);

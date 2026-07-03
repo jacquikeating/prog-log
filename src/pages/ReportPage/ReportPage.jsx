@@ -1,6 +1,5 @@
 import { useState, useEffect, createContext } from "react";
-import { useNavigate } from 'react-router-dom';
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams, useOutletContext } from 'react-router-dom';
 import { supabase } from "../../supabase-client";
 import { diff } from 'deep-object-diff';
 // import { useAuth0 } from "@auth0/auth0-react";
@@ -13,7 +12,8 @@ const SessionContext = createContext();
 const PullsContext = createContext();
 const EditContext = createContext();
 
-const ReportPage = ({ sessions, pulls, user }) => {
+const ReportPage = () => {
+    const { sessions, pulls, user } = useOutletContext();
     const { sessionNum } = useParams();
     const [originalSession, setOriginalSession] = useState(sessions.find((session) => session.num == sessionNum));
     const [session, setSession] = useState(originalSession);
