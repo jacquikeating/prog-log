@@ -40,15 +40,22 @@ const Header = ({ latestSession, user }) => {
             </li> */}
               {/* <SelectStaticUlti /> */}
 
-            {/* {role === "admin" ? (
-              <li className="nav__list-item">
-                <Link to="/add-data" className="nav__link">
-                  Add Data
-                </Link>
-              </li>
+            {user?.permissions === "admin" ? (
+              <>
+                <li className="nav__list-item">
+                  <Link to="/add" className="nav__link">
+                    Add Data
+                  </Link>
+                </li>
+                <li className="nav__list-item">
+                  <Link to="/admin" className="nav__link">
+                    Admin
+                  </Link>
+                </li>
+              </>
             ) : (
               ""
-            )} */}
+            )}
           </ul>
         </div>
         <div className="nav__group nav__group--secondary">
