@@ -17,11 +17,11 @@ const Pull = ({
   const [phase, setPhase] = useState(pullData.phase);
   const [mech, setMech] = useState(pullData.mech);
   const [cause, setCause] = useState(pullData.cause);
-  const [playersResponsible, setPlayersResponsible] = useState(
-    pullData.players_responsible
-  );
+  const [playersResponsible, setPlayersResponsible] = useState(pullData.players_responsible);
   const [logLink, setLogLink] = useState(pullData.log_link);
   const [clipLink, setClipLink] = useState(pullData.clip_link);
+  const [imgLink, setImgLink] = useState(pullData.img_link);
+  const [ytLink, setYtLink] = useState(pullData.yt_link);
   const [notes, setNotes] = useState(pullData.notes);
 
   const index = pullData.index;
@@ -39,6 +39,8 @@ const Pull = ({
         prog_point_reached: checkIfProgPointReached(progPhase, phase),
         log_link: logLink,
         clip_link: clipLink,
+        img_link: imgLink,
+        yt_link: ytLink,
         notes: notes,
         ulti: pullData.ulti,
         static: pullData.static,
