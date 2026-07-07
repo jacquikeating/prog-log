@@ -43,7 +43,7 @@ const PullLink = ({ logLink, clipLink, ytLink, imgLink, editMode, handleLinkModa
         ""
       )}
 
-      {ytLink  ? (
+      {ytLink ? (
         <a
           className="pull-link__link"
           href={ytLink}
@@ -59,7 +59,7 @@ const PullLink = ({ logLink, clipLink, ytLink, imgLink, editMode, handleLinkModa
         ""
       )}
 
-      {imgLink  ? (
+      {imgLink ? (
         <a
           className="pull-link__link"
           href={imgLink}

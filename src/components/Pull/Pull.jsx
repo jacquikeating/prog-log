@@ -192,6 +192,8 @@ const Pull = ({
       <PullLink
         logLink={logLink}
         clipLink={clipLink}
+        ytLink={ytLink}
+        imgLink={imgLink}
         editMode={editMode}
         handleLinkModalData={handleLinkModalData}
       />
