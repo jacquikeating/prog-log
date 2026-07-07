@@ -2,12 +2,13 @@
 
 .link-modal {
     position: absolute;
-    top: -90px;
+    top: -150px;
     left: 0px;
     padding: 0.8em 1em 0.3em 1em;
     background-color: $bg-light;
     border: 1px solid $purple;
     border-radius: 2px;
+    z-index: 3;
 
     &__label {
         display: flex;
