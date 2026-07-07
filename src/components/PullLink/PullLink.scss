@@ -16,6 +16,11 @@
     &__icon {
         max-width: 25px;
         max-height: 25px;
+        border-radius: 2px;
+
+        &--img {
+            opacity: 0.65;
+        }
 
         &:hover {
             transform: scale(1.1);
