@@ -2,7 +2,7 @@ import { useState } from "react";
 import EditLinkModal from "../EditLinkModal/EditLinkModal";
 import "./PullLink.scss";
 
-const PullLink = ({ logLink, clipLink, editMode, handleLinkModalData }) => {
+const PullLink = ({ logLink, clipLink, ytLink, imgLink, editMode, handleLinkModalData }) => {
   const [showModal, setShowModal] = useState(false);
 
   function toggleLinkModal() {
@@ -43,6 +43,38 @@ const PullLink = ({ logLink, clipLink, editMode, handleLinkModalData }) => {
         ""
       )}
 
+      {ytLink  ? (
+        <a
+          className="pull-link__link"
+          href={ytLink}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <img
+            src="/yt_icon.png"
+            className="pull-link__icon"
+          />
+        </a>
+      ) : (
+        ""
+      )}
+
+      {imgLink  ? (
+        <a
+          className="pull-link__link"
+          href={imgLink}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <img
+            src="/img_icon.png"
+            className="pull-link__icon"
+          />
+        </a>
+      ) : (
+        ""
+      )}
+
       {!editMode ? (
         ""
       ) : (
@@ -59,6 +91,8 @@ const PullLink = ({ logLink, clipLink, editMode, handleLinkModalData }) => {
         <EditLinkModal
           logLink={logLink}
           clipLink={clipLink}
+          ytLink={ytLink}
+          imgLink={imgLink}
           handleLinkModalData={handleLinkModalData}
         />
       ) : (

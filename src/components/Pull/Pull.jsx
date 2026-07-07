@@ -49,10 +49,17 @@ const Pull = ({
     setEditMode(false);
   }
 
-  function handleLinkModalData(newLogLink, newClipLink) {
-    setLogLink(newLogLink);
-    setClipLink(newClipLink);
-  }
+  function handleLinkModalData(linkType, newLink) {
+    if (linkType == "twitch") {
+      setClipLink(newLink);
+    } else if (linkType == "log") {
+      setLogLink(newLink);
+    } else if (linkType == "yt") {
+      setYtLink(newLink);
+    } else if (linkType == "img") {
+      setImgLink(newLink);
+    };
+  };
 
   return (
     <tr
