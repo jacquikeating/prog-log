@@ -34,9 +34,9 @@ const EditLinkModal = ({ logLink, clipLink, ytLink, imgLink, handleLinkModalData
       </label>
       <label className="link-modal__label">
         <img
-          src="/yt_icon.png"
+          src="/yt_icon.jpg"
           alt="YouTube"
-          className="link-modal__icon"
+          className="link-modal__icon link-modal__icon--yt"
         />
         <input
           id="link-input-yt"

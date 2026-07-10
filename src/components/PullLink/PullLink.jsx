@@ -52,7 +52,7 @@ const PullLink = ({ logLink, clipLink, ytLink, imgLink, editMode, handleLinkModa
         >
           <img
             src="/yt_icon.jpg"
-            className="pull-link__icon"
+            className="pull-link__icon pull-link__icon--yt"
           />
         </a>
       ) : (
@@ -67,8 +67,8 @@ const PullLink = ({ logLink, clipLink, ytLink, imgLink, editMode, handleLinkModa
           rel="noreferrer"
         >
           <img
-            src="/file-image.png"
-            className="pull-link__icon pull-link__icon--img"
+            src="/img_icon.png"
+            className="pull-link__icon"
           />
         </a>
       ) : (
