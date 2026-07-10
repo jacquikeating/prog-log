@@ -73,7 +73,7 @@ const EditLinkModal = ({ logLink, clipLink, ytLink, imgLink, analyzerLink, handl
           id="link-input-analyzer"
           type="text"
           className="link-modal__input"
-          value={logLink}
+          value={analyzerLink}
           onChange={(e) => handleLinkModalData("analyzer", e.target.value)}
         />
       </label>

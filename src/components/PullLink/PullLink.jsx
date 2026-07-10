@@ -83,7 +83,7 @@ const PullLink = ({ logLink, clipLink, ytLink, imgLink, analyzerLink, editMode, 
           rel="noreferrer"
         >
           <img
-            src="/analyzer_icon.jpg"
+            src="/analyzer_icon.png"
             className="pull-link__icon"
           />
         </a>
