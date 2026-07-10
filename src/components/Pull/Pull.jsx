@@ -22,6 +22,7 @@ const Pull = ({
   const [clipLink, setClipLink] = useState(pullData.clip_link);
   const [imgLink, setImgLink] = useState(pullData.img_link);
   const [ytLink, setYtLink] = useState(pullData.yt_link);
+  const [analyzerLink, setAnalyzerLink] = useState(pullData.analyzer_link);
   const [notes, setNotes] = useState(pullData.notes);
 
   const index = pullData.index;
@@ -41,6 +42,7 @@ const Pull = ({
         clip_link: clipLink,
         img_link: imgLink,
         yt_link: ytLink,
+        analyzer_link: analyzerLink,
         notes: notes,
         ulti: pullData.ulti,
         static: pullData.static,
@@ -58,6 +60,8 @@ const Pull = ({
       setYtLink(newLink);
     } else if (linkType == "img") {
       setImgLink(newLink);
+    } else if (linkType == "analyzer") {
+      setAnalyzerLink(newLink);
     };
   };
 
@@ -194,6 +198,7 @@ const Pull = ({
         clipLink={clipLink}
         ytLink={ytLink}
         imgLink={imgLink}
+        analyzerLink={analyzerLink}
         editMode={editMode}
         handleLinkModalData={handleLinkModalData}
       />

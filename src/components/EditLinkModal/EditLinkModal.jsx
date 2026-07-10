@@ -1,6 +1,6 @@
 import "./EditLinkModal.scss";
 
-const EditLinkModal = ({ logLink, clipLink, ytLink, imgLink, handleLinkModalData }) => {
+const EditLinkModal = ({ logLink, clipLink, ytLink, imgLink, analyzerLink, handleLinkModalData }) => {
   return (
     <div className="link-modal">
       <label className="link-modal__label">
@@ -32,6 +32,7 @@ const EditLinkModal = ({ logLink, clipLink, ytLink, imgLink, handleLinkModalData
           onChange={(e) => handleLinkModalData("log", e.target.value)}
         />
       </label>
+
       <label className="link-modal__label">
         <img
           src="/yt_icon.jpg"
@@ -46,6 +47,7 @@ const EditLinkModal = ({ logLink, clipLink, ytLink, imgLink, handleLinkModalData
           onChange={(e) => handleLinkModalData("yt", e.target.value)}
         ></input>
       </label>
+
       <label className="link-modal__label">
         <img
           src="/img_icon.png"
@@ -59,6 +61,21 @@ const EditLinkModal = ({ logLink, clipLink, ytLink, imgLink, handleLinkModalData
           value={imgLink}
           onChange={(e) => handleLinkModalData("img", e.target.value)}
         ></input>
+      </label>
+
+      <label className="link-modal__label">
+        <img
+          src="/analyzer_icon.png"
+          alt="Analyzer"
+          className="link-modal__icon"
+        />
+        <input
+          id="link-input-analyzer"
+          type="text"
+          className="link-modal__input"
+          value={logLink}
+          onChange={(e) => handleLinkModalData("analyzer", e.target.value)}
+        />
       </label>
     </div>
   );
