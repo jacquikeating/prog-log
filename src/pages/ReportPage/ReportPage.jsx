@@ -2,7 +2,6 @@ import { useState, useEffect, createContext } from "react";
 import { useNavigate, useParams, useOutletContext } from 'react-router-dom';
 import { supabase } from "../../supabase-client";
 import { diff } from 'deep-object-diff';
-// import { useAuth0 } from "@auth0/auth0-react";
 import PullsSection from "../../components/PullsSection/PullsSection.jsx";
 import SessionInfo from "../../components/SessionInfo/SessionInfo.jsx";
 import SessionInfoEdit from "../../components/SessionInfo/SessionInfoEdit.jsx";
@@ -32,13 +31,11 @@ const ReportPage = () => {
         setOriginalSession(thisSession);
         setPullsArray(pulls.filter((pull) => pull.session_num == sessionNum));
         if (user?.member_of == session.static) {
-            if (user.member_of == session.static) {
-                if (user.permissions == "admin") {
-                    setShowEdit(true);
-                    setAllowDelete(true);
-                } else if (user.permissions == "member") {
-                    setShowEdit(true);
-                };
+            if (user?.permissions == "admin") {
+                setShowEdit(true);
+                setAllowDelete(true);
+            } else if (user?.permissions == "member") {
+                setShowEdit(true);
             };
         };
     }, [sessionNum]);
@@ -131,7 +128,7 @@ const ReportPage = () => {
                             {!editMode ? <SessionInfo /> : <SessionInfoEdit />}
                             <PullsContext.Provider value={{ pullsCtx }}>
                                 <PullsSection />
-                                {user.permissions == "admin" && <button onClick={addPulls}>Add pulls</button>}
+                                {user?.permissions == "admin" && <button onClick={addPulls}>Add pulls</button>}
                             </PullsContext.Provider>
                         </>
                     ) : (
