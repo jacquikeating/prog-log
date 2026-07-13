@@ -41,6 +41,7 @@ const Session = ({ sessionData }) => {
 
         {twitchLinksArray.length > 1 ? (
           twitchLinksArray.map((vod, index) => {
+            const isYTLink = vod[12] == "y" // Checks first character after 'https://www.' in the URL
             return (
               <div key={index} className="session__twitch-container">
                 <span className="report__divider"> • </span>
@@ -51,7 +52,7 @@ const Session = ({ sessionData }) => {
                   rel="noreferrer"
                 >
                   <img
-                    src="/25_twitch.png"
+                    src={isYTLink ? "yt_icon.jpg" : "/25_twitch.png"}
                     className="session__icon"
                     key={index}
                   />
@@ -70,7 +71,7 @@ const Session = ({ sessionData }) => {
               rel="noreferrer"
             >
               <img
-                src="/25_twitch.png"
+                src={twitch_links[12] == "y" ? "yt_icon.jpg" : "/25_twitch.png"}
                 className="session__icon"
               />
               VOD

@@ -3,6 +3,7 @@ import { SessionContext, EditContext } from "../../pages/ReportPage/ReportPage.j
 import { createReadableDate, checkIfEmptyLink } from "../../utils/shared-functions.js";
 import SessionStats from "./SessionStats.jsx";
 import PhaseBreakdownTable from "../PhaseBreakdownTable/PhaseBreakdownTable";
+import "./SessionInfo.scss";
 
 const SessionInfo = () => {
   const { sessionCtx } = useContext(SessionContext);
@@ -40,6 +41,8 @@ const SessionInfo = () => {
         <>
           {twitchLinksArray.length > 1 ? (
             twitchLinksArray.map((vod, index) => {
+              const isYTLink = vod[12] == "y" // Checks first character after 'https://www.' in the URL
+
               return (
                 <>
                   <span className="report__divider"> • </span>
@@ -51,7 +54,7 @@ const SessionInfo = () => {
                     key={index}
                   >
                     <img
-                      src="/25_twitch.png"
+                      src={isYTLink ? "/yt_icon.jpg" : "/25_twitch.png"}
                       className="session__icon"
                       key={index}
                     />
