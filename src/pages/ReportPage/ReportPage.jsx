@@ -64,8 +64,10 @@ const ReportPage = () => {
         if (error) {
             console.error("Error deleting pull: ", error.message);
             return;
+        } else {
+            setPullsArray([...pullsArray].filter((pull) => pull.id != pullToDelete.id));
         };
-        // TO DO: Add functions to remove from state (unrender from UI) and update other pulls' pull nums
+        // TO DO: Add function to update other pulls' pull nums
     }
 
     function editSession() {
