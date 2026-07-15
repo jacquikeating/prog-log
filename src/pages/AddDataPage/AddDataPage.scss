@@ -1,4 +1,7 @@
-.add-data__button:last-of-type {
-    display: block;
-    margin-top: 50px;
+.add-data {
+    &__delete-btns-container {
+        margin-top: 4rem;
+        display: flex;
+        gap: 0.75rem;
+    }
 }

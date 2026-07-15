@@ -87,7 +87,7 @@ const AddDataPage = () => {
         navigate(`/report/${sessionData.num}`);
     }
 
-    function cancelNewSession() {
+    function cancelNewSession(deleteSessionData) {
         localStorage.removeItem("pullsFromNewSession");
         localStorage.removeItem("sessionInProgress");
 
@@ -99,7 +99,10 @@ const AddDataPage = () => {
             };
         };
 
-        deleteSession();
+        if (deleteSessionData) {
+            deleteSession();
+        }
+
         navigate("/");
     };
 
@@ -165,9 +168,15 @@ const AddDataPage = () => {
                         <button className="add-data__button" onClick={handleSubmit}>
                             Complete Session
                         </button>
-                        <button className="add-data__button" onClick={cancelNewSession}>
-                            Cancel
-                        </button>
+                        <div className="add-data__delete-btns-container">
+                            <button className="add-data__button" onClick={() => cancelNewSession(false)}>
+                                Cancel
+                            </button>
+                            <button className="add-data__button" onClick={() => cancelNewSession(true)}>
+                                Cancel & Delete
+                            </button>
+                        </div>
+                        
                     </section>
                 </>
             )}
