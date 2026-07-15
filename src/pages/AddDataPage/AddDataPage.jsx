@@ -15,6 +15,7 @@ const AddDataPage = () => {
     const [lastSession, setLastSession] = useState(null);
     const lsPullsArray = JSON.parse(localStorage.getItem("pullsFromNewSession"));
     const [pullsArray, setPullsArray] = useState(lsPullsArray || []);
+    const [isNew, setIsNew] = useState(true);
     const navigate = useNavigate();
 
     useEffect(() => {
