@@ -23,6 +23,12 @@ const AddDataPage = () => {
         // IF YES: Restore user's current progress. Render session info, NewPullForm, PullsTable, and submit button.
         // IF NO: Render NewSessionForm. Autofill with data from most recent session, or placeholder values.
         if (lsSessionData) {
+            // Check whether any pulls from this session have been uploaded to the database
+            const pullsInDB = prevPulls.find((pull) => pull.session_num == lsSessionData.num);
+            // If yes, this is not a new session and some functionalities will be different 
+            if (pullsInDB) {
+                setIsNew(false);
+            };
             setSessionData(lsSessionData);
             setSessionInProgress(true); 
         } else { 
