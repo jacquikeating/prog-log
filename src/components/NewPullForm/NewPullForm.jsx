@@ -12,6 +12,9 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
     const [cause, setCause] = useState("");
     const [logLink, setLogLink] = useState("");
     const [clipLink, setClipLink] = useState("");
+    const [ytLink, setYtLink] = useState("");
+    const [analyzerLink, setAnalyzerLink] = useState("");
+    const [imgLink, setImgLink] = useState("");
     const [checkedState, setCheckedState] = useState(new Array(rosterArray.length).fill(false));
     const [responsiblePlayersArray, setResponsiblePlayersArray] = useState([]);
     const [notes, setNotes] = useState("");
@@ -61,6 +64,9 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
             players_responsible: responsiblePlayersArray.join(", "),
             log_link: logLink,
             clip_link: clipLink,
+            yt_link: ytLink,
+            analyzer_link: analyzerLink,
+            img_link: imgLink,
             notes: notes,
             indexToInsert: indexToInsert,
         };
@@ -72,6 +78,9 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
         setNotes("");
         setLogLink("");
         setClipLink("");
+        setYtLink("");
+        setAnalyzerLink("");
+        setImgLink("");
         setIndexToInsert(0);
     }
 
@@ -212,7 +221,7 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
             />
 
             <label className="form__label" htmlFor="clip-link">
-                Clip
+                Twitch Clip
             </label>
             <input
                 className="form__input form__input--text"
@@ -221,6 +230,42 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
                 id="clip-link"
                 value={clipLink}
                 onChange={(e) => {setClipLink(e.target.value)}}
+            />
+
+            <label className="form__label" htmlFor="yt-link">
+                YouTube Clip
+            </label>
+            <input
+                className="form__input form__input--text"
+                type="text"
+                name="yt-link"
+                id="yt-link"
+                value={ytLink}
+                onChange={(e) => {setYtLink(e.target.value)}}
+            />
+
+            <label className="form__label" htmlFor="analyzer-link">
+                Analyzer
+            </label>
+            <input
+                className="form__input form__input--text"
+                type="text"
+                name="analyzer-link"
+                id="analyzer-link"
+                value={analyzerLink}
+                onChange={(e) => {setAnalyzerLink(e.target.value)}}
+            />
+
+            <label className="form__label" htmlFor="img-link">
+                Image
+            </label>
+            <input
+                className="form__input form__input--text"
+                type="text"
+                name="img-link"
+                id="img-link"
+                value={imgLink}
+                onChange={(e) => {setImgLink(e.target.value)}}
             />
 
             <label className="form__label" htmlFor="notes">
