@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useOutletContext } from 'react-router-dom';
 import { supabase } from "../../supabase-client";
-import { addPulls } from "../../utils/crud-functions.js";
+import { addPulls, updateExistingSessionPulls } from "../../utils/crud-functions.js";
 import { createReadableDate } from "../../utils/shared-functions.js";
 import NewSessionForm from "../../components/NewSessionForm/NewSessionForm";
 import NewPullForm from "../../components/NewPullForm/NewPullForm";
@@ -90,9 +90,13 @@ const AddDataPage = () => {
     }
 
     function handleSubmit() {
-        addPulls(prevPulls, sessionData, [...pullsArray]);
+        if (isNew) {
+            addPulls(prevPulls, sessionData, [...pullsArray]);
+        } else {
+            updateExistingSessionPulls(prevPulls, sessionData, [...pullsArray]);
+        }
         navigate(`/report/${sessionData.num}`);
-    }
+    }           
 
     function cancelNewSession(deleteSessionData) {
         localStorage.removeItem("pullsFromNewSession");
