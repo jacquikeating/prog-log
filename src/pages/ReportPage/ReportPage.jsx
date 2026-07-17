@@ -60,14 +60,24 @@ const ReportPage = () => {
     }
 
     async function deletePull(pullToDelete) {
+        const deletedPullNum = pullToDelete.pull_num_overall;
+
         const { error } = await supabase.from("pulls").delete().eq("id", pullToDelete.id);
         if (error) {
             console.error("Error deleting pull: ", error.message);
             return;
         } else {
-            setPullsArray([...pullsArray].filter((pull) => pull.id != pullToDelete.id));
+            const pullsCopy = structuredClone(pulls);
+            const filteredPulls = pullsCopy.filter((pull) => pull.pull_num_overall > deletedPullNum);
+            filteredPulls.forEach((pull, index) => {
+                pull.pull_num_overall = Number(index) + deletedPullNum;
+                if (pull.session_num == pullToDelete.session_num){
+                    pull.pull_num_today--
+                };
+                updatePull(pull);
+            });
+            setPullsArray(filteredPulls.filter((pull) => pull.session_num == sessionNum));
         };
-        // TO DO: Add function to update other pulls' pull nums
     }
 
     function editSession() {
