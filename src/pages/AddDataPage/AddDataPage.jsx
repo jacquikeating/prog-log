@@ -24,9 +24,9 @@ const AddDataPage = () => {
         // IF YES: Restore user's current progress. Render session info, NewPullForm, PullsTable, and submit button.
         // IF NO: Render NewSessionForm. Autofill with data from most recent session, or placeholder values.
         if (lsSessionData) {
-            // Check whether any pulls from this session have been uploaded to the database
+            // Check whether any pulls from this session are in the database.
             const pullsInDB = prevPulls.find((pull) => pull.session_num == lsSessionData.num);
-            // If yes, this is not a new session and some functionalities will be different 
+            // If yes, this is a pre-existing session and some functions will be modified.
             if (pullsInDB) {
                 setIsNew(false);
             };
@@ -48,6 +48,9 @@ const AddDataPage = () => {
                     prog_mech: "Opener",
                     fflogs_link: "",
                     twitch_links: "",
+                    analyzer_link: "",
+                    yt_link: "",
+                    img_link: "",
                     goal: "",
                     notes: ""
                 };
@@ -59,7 +62,7 @@ const AddDataPage = () => {
     function handleSessionFormData(data) {
         setSessionData(data);
         setSessionInProgress(true);
-    }
+    };
 
     function handlePullFormData(newPull) {
         let insertAt = newPull.indexToInsert;
@@ -73,21 +76,21 @@ const AddDataPage = () => {
         };
         setPullsArray(copyOfPullsArray);
         localStorage.setItem("pullsFromNewSession", JSON.stringify(copyOfPullsArray));
-    }
+    };
 
     function updatePull(pullData) {
         let copyOfPullsArray = [...pullsArray];
         copyOfPullsArray[pullData.index] = pullData;
         localStorage.setItem("pullsFromNewSession", JSON.stringify(copyOfPullsArray));
         setPullsArray(copyOfPullsArray);
-    }
+    };
 
     function deletePull(pullData) {
         let copyOfPullsArray = [...pullsArray];
         copyOfPullsArray.splice(pullData.index, 1);
         localStorage.setItem("pullsFromNewSession", JSON.stringify(copyOfPullsArray));
         setPullsArray(copyOfPullsArray);
-    }
+    };
 
     function handleSubmit() {
         if (isNew) {
@@ -96,7 +99,7 @@ const AddDataPage = () => {
             updateExistingSessionPulls(prevPulls, sessionData, [...pullsArray]);
         }
         navigate(`/report/${sessionData.num}`);
-    }           
+    };      
 
     function cancelNewSession(deleteSessionData) {
         localStorage.removeItem("pullsFromNewSession");
@@ -112,7 +115,7 @@ const AddDataPage = () => {
 
         if (deleteSessionData) {
             deleteSession();
-        }
+        };
 
         navigate("/");
     };

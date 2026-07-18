@@ -26,7 +26,7 @@ const AccountPage = () => {
                 )}
             </section>    
         </main>
-    )
+    );
 };
 
 export default AccountPage;

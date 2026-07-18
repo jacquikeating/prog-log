@@ -6,7 +6,7 @@ const SelectStaticUlti = () => {
         <div className="select-static-ulti">
             <p>Static and ulti options go here</p>
         </div>  
-    )
-}
+    );
+};
 
 export default SelectStaticUlti;

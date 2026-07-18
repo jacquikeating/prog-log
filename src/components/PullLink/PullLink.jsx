@@ -7,7 +7,7 @@ const PullLink = ({ logLink, clipLink, ytLink, imgLink, analyzerLink, editMode, 
 
   function toggleLinkModal() {
     setShowModal(!showModal);
-  }
+  };
 
   return (
     <div className="pull-link__cell">

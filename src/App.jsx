@@ -21,9 +21,10 @@ function App() {
   const [user, setUser] = useState(null);
 
   async function fetchSessions() {
-    const { error, data } = await supabase.from("sessions").select("*").order("num", { ascending: false });
-    //  // Query filter for future reference:
-    //  .match({ static: "Wall is Safe", ulti: "umad" })
+    const { error, data } = await supabase.from("sessions")
+      .select("*")
+      .order("num", { ascending: false });
+      //  .match({ static: "Wall is Safe", ulti: "umad" })
     if (error) { 
       console.error("Error fetching sessions: ", error.message);
       setError(error.message);
@@ -33,7 +34,8 @@ function App() {
   };
 
   async function fetchPulls() {
-    const { error, data } = await supabase.from("pulls").select("*")
+    const { error, data } = await supabase.from("pulls")
+      .select("*")
       .order("pull_num_overall", { ascending: true });
     if (error) { 
       console.error("Error fetching pulls: ", error.message);

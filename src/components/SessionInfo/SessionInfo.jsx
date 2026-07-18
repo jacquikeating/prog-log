@@ -10,10 +10,7 @@ const SessionInfo = () => {
   const { session, pullsArray, sessionNum } = sessionCtx;
   const { editCtx } = useContext(EditContext);
   const { editSession, setSession, showEdit } = editCtx;
-
-  const [twitchLinksArray, setTwitchLinksArray] = useState(
-    session.twitch_links.split(", ")
-  );
+  const [twitchLinksArray, setTwitchLinksArray] = useState(session.twitch_links.split(", "));
 
   return (
     <section className="report__section">

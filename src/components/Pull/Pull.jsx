@@ -49,7 +49,7 @@ const Pull = ({
         index: index,
       });
     setEditMode(false);
-  }
+  };
 
   function handleLinkModalData(linkType, newLink) {
     if (linkType == "twitch") {

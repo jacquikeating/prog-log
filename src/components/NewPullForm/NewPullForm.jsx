@@ -25,16 +25,16 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
 
     function handlePhaseChange(e) {
         setSelectedPhase(e.target.value);
-    }
+    };
 
     function handleMechChange(e) {
         setSelectedMech(e.target.value);
-    }
+    };
 
     function handleInsert(e) {
         e.preventDefault();
         setInsertMode(true);
-    }
+    };
 
     const handleCheckboxChange = (position) => {
         const updatedCheckedState = checkedState.map((item, index) =>
@@ -45,8 +45,8 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
         for (let i = 0; i < rosterArray.length; i++) {
             if (updatedCheckedState[i] === true) {
                 responsiblePlayers.push(rosterArray[i]);
-            }
-        }
+            };
+        };
         setResponsiblePlayersArray(responsiblePlayers);
     };
 

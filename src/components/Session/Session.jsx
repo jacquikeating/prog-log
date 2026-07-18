@@ -1,8 +1,5 @@
 import { Link } from "react-router-dom";
-import {
-  createReadableDate,
-  checkIfEmptyLink,
-} from "../../utils/shared-functions.js";
+import { createReadableDate, checkIfEmptyLink } from "../../utils/shared-functions.js";
 import "./Session.scss";
 
 const Session = ({ sessionData }) => {

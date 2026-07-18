@@ -41,7 +41,7 @@ export async function updatePull(pullID, editedProperties) {
         console.error("Error updating pull: ", error.message);
         return;
     };
-}
+};
 
 export function updateExistingSessionPulls(prevPulls, sessionData, pullsArray) {
     const filteredPrevPulls = prevPulls.filter((pull) => pull.session_num != sessionData.num);
@@ -74,7 +74,7 @@ export function updateExistingSessionPulls(prevPulls, sessionData, pullsArray) {
 
 export async function addUserToPlayersTable(newUserData) {
     const {error} = await supabase.from("players").insert(newUserData);
-        if (error) { 
-            console.error("Error adding pulls: ", error);
-        };
+    if (error) { 
+        console.error("Error adding pulls: ", error);
+    };
 };

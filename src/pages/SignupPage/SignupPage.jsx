@@ -9,7 +9,7 @@ const SignupPage = () => {
             <h1 className="signup__heading">Create an Account</h1>
             <SignupForm />
         </main>
-    )
+    );
 };
 
 export default SignupPage;

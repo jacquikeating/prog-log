@@ -1,5 +1,5 @@
 import Picker from "react-mobile-picker";
-import "./ScrollPicker.scss"
+import "./ScrollPicker.scss";
 
 const ScrollPicker = ({ selectedPhase, handlePhaseChange, phaseAndMechOptions, selectedMech, handleMechChange }) => {
 
@@ -49,7 +49,7 @@ const ScrollPicker = ({ selectedPhase, handlePhaseChange, phaseAndMechOptions, s
                 </Picker.Column>
             </Picker>
         </div> 
-    )
-}
+    );
+};
 
 export default ScrollPicker;

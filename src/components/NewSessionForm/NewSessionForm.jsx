@@ -30,13 +30,15 @@ const NewSessionForm = ({ lastSession, handleSessionFormData }) => {
             notes: notes,
         };
 
-        const { data: autoID, error } = await supabase.from("sessions").insert(sessionObj)
-            .select("id").single(); // Get the ID that is auto-generated when the row is inserted into database
+        const { data: autoID, error } = await supabase.from("sessions")
+            .insert(sessionObj)
+            .select("id")
+            .single(); // Get the ID that is auto-generated when the row is inserted into database
         if (error) { 
             console.error("Error adding session: ", error.message);
-        }
+        };
 
-        const sessionWithID = { ...sessionObj, id: autoID.id}
+        const sessionWithID = { ...sessionObj, id: autoID.id};
         handleSessionFormData(sessionWithID);
         localStorage.setItem("sessionInProgress", JSON.stringify(sessionWithID));        
     }

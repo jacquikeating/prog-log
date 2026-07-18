@@ -11,7 +11,7 @@ const LoginPage = () => {
             <LoginForm setUser={setUser} />
             <Link className="login__create-acct-link" to="/signup">Create an account</Link>
         </main>
-    )
+    );
 };
 
 export default LoginPage;

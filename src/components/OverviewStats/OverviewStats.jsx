@@ -7,7 +7,7 @@ const OverviewStats = ({ sessions, pulls }) => {
             <p className="overview-page__info">Total pulls: {pulls.length}</p>
             {sessions[0].prog_mech === "Reclears" ? (
                 <p className="overview-page__info">
-                Total clears: {getClearsNum(pulls)}
+                    Total clears: {getClearsNum(pulls)}
                 </p>
             ) : (
                 <>

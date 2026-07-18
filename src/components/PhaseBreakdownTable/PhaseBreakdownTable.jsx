@@ -2,6 +2,7 @@ import { getTextColour } from "../../utils/shared-functions";
 import "./PhaseBreakdownTable.scss";
 
 const PhaseBreakdownTable = ({ progPhase, pulls }) => {
+  
   function getPhaseBreakdown() {
     let phasesReached = [];
 
@@ -17,7 +18,7 @@ const PhaseBreakdownTable = ({ progPhase, pulls }) => {
     }, {});
 
     return phaseBreakdown;
-  }
+  };
 
   const phaseBreakdown = getPhaseBreakdown();
 
