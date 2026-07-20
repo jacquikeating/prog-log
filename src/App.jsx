@@ -8,6 +8,7 @@ import AddDataPage from "./pages/AddDataPage/AddDataPage";
 import AdminPage from "./pages/AdminPage/AdminPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import OverviewPage from "./pages/OverviewPage/OverviewPage";
+import ProgPointPage from "./pages/ProgPointPage/ProgPointPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import ReportPage from "./pages/ReportPage/ReportPage";
 import SignupPage from "./pages/SignupPage/SignupPage";
@@ -106,6 +107,7 @@ function App() {
             <Route path="/add" element={<AddDataPage />} />
             <Route path="/admin" element={<AdminPage />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/prog-point" element={<ProgPointPage />} />
             <Route path="/report/:sessionNum" element={<ReportPage />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/*" element={<NotFoundPage />} />
