@@ -1,4 +1,5 @@
 import { useOutletContext } from "react-router-dom";
+import PullsTable from "../../components/PullsTable/PullsTable";
 import "./ProgPointPage.scss";
 
 const ProgPointPage = () => {
@@ -7,6 +8,12 @@ const ProgPointPage = () => {
     return (
         <main className="prog-point">
             <h1 className="prog-point__heading">Prog Point: {sessions[0].prog_mech}</h1>
+            <PullsTable
+                pullsArray={pulls.filter((pull) => pull.mech == sessions[0].prog_mech)}
+                showEdit={false}
+                progPhase={sessions[0].prog_phase}
+                allowDelete={false}
+            />
         </main>
     );
 };
