@@ -4,20 +4,25 @@ import "./ProgPointPage.scss";
 
 const ProgPointPage = () => {
     const { sessions, pulls } = useOutletContext();
+    const latestSession = sessions[0];
+    const progMech = latestSession.prog_mech;
+    const progPhase = latestSession.prog_phase;
+    const progPulls = pulls.filter((pull) => pull.mech == progMech);
+    const firstSession = sessions.find((session) => session.num == progPulls[0].session_num)
 
     return (
         <main className="prog-point">
             <h1 className="prog-point__heading">
                 Prog Point: 
-                <span className="prog-point__mech">{sessions[0].prog_mech}</span>
+                <span className="prog-point__mech">{progMech}</span>
             </h1>
             <PullsTable
-                pullsArray={pulls.filter((pull) => pull.mech == sessions[0].prog_mech)}
+                pullsArray={progPulls}
                 showEdit={false}
-                progPhase={sessions[0].prog_phase}
+                progPhase={progPhase}
                 allowDelete={false}
             />
-        </main>
+=        </main>
     );
 };
 
