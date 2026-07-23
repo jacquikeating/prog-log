@@ -37,7 +37,7 @@ const PullsTable = ({
               updatePull={updatePull}
               deletePull={deletePull}
               progPhase={progPhase}
-              key={pull.pull_num_today || index}
+              key={pull.id || index}
               allowDelete={allowDelete}
             />
           );
@@ -80,7 +80,7 @@ const PullsTable = ({
                     updatePull={updatePull}
                     deletePull={deletePull}
                     progPhase={progPhase}
-                    key={pull.pull_num_today || index}
+                    key={pull.id || index}
                     allowDelete={allowDelete}
                   />
                 );
