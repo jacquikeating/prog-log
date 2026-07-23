@@ -7,7 +7,10 @@ const ProgPointPage = () => {
 
     return (
         <main className="prog-point">
-            <h1 className="prog-point__heading">Prog Point: {sessions[0].prog_mech}</h1>
+            <h1 className="prog-point__heading">
+                Prog Point: 
+                <span className="prog-point__mech">{sessions[0].prog_mech}</span>
+            </h1>
             <PullsTable
                 pullsArray={pulls.filter((pull) => pull.mech == sessions[0].prog_mech)}
                 showEdit={false}

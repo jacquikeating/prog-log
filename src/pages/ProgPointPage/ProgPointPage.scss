@@ -1,2 +1,16 @@
 @use "/src/styles/__variables" as *;
 @use "/src/styles/__mixins" as *;
+
+
+.prog-point {
+    &__heading {
+        font-size: 1.5em; 
+    }
+
+    &__mech {
+        margin: 0.1em 0 0.2em;
+        display: block;
+        line-height: 1;
+        font-size: 1.4em;
+    }
+}
