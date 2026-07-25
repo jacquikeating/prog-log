@@ -8,7 +8,9 @@ const ProgPointPage = () => {
     const progMech = latestSession.prog_mech;
     const progPhase = latestSession.prog_phase;
     const progPulls = pulls.filter((pull) => pull.mech == progMech);
-    const firstSession = sessions.find((session) => session.num == progPulls[0].session_num)
+    const firstSession = sessions.find((session) => session.num == progPulls[0].session_num);
+    const bestPull = pulls.find((pull) => pull.id == 675); // temporarily hardcoded
+
     return (
         <main className="prog-point">
             <h1 className="prog-point__heading">
@@ -22,6 +24,16 @@ const ProgPointPage = () => {
                 <p>Progging for {latestSession.num - firstSession.num} sessions</p>
             </section>
             <section>
+                <p>Best pull:</p>
+                <PullsTable
+                    pullsArray={[bestPull]}
+                    showEdit={false}
+                    progPhase={progPhase}
+                    allowDelete={false}
+                />
+            </section>
+            <section>
+                <p>All {progMech} pulls:</p>
                 <PullsTable
                     pullsArray={progPulls}
                     showEdit={false}
