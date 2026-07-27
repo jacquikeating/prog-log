@@ -13,7 +13,7 @@ export const flatFruMechs = fruPhaseAndMechOptions.flat().slice(1);
 export const umadPhaseAndMechOptions = [
     ["N/A"],
     ["Opener", "Graven 1", "Graven 2", "Graven 3", "P1 Enrage"],
-    ["Forsaken", "Trine", "P2 Enrage"],
+    ["Transition", "Forsaken", "Trine", "P2 Enrage"],
     ["Bowels of Agony", "Limit Cut", "Black Hole", "P3 Enrage"],
     ["The Real", "World Race", "Is Clearing"],
     ["Before", "Xeno", "Clears P1"]
