@@ -157,7 +157,7 @@ const AddDataPage = () => {
                         <p>Goal: {sessionData.goal}</p>
                         <p>Notes: {sessionData.notes}</p>
                         <p>FFLogs Link: {sessionData.fflogs_link}</p>
-                        <p>Twitch Links: {sessionData.twitch_links}</p>
+                        <p>Stream Links: {sessionData.twitch_links}</p>
                     </section>
                     <section className="add-data__section">
                         <h2 className="add-data__section-heading">Add a Pull</h2>

@@ -11,7 +11,7 @@ const NewSessionForm = ({ lastSession, handleSessionFormData }) => {
     const [progPhase, setProgPhase] = useState(lastSession.prog_phase);
     const [progMech, setProgMech] = useState(lastSession.prog_mech);
     const [ffLogsLink, setFFLogsLink] = useState("");
-    const [twitchLinks, setTwitchLinks] = useState("");
+    const [streamLinks, setStreamLinks] = useState("");
     const [goal, setGoal] = useState("");
     const [notes, setNotes] = useState("");
 
@@ -24,7 +24,7 @@ const NewSessionForm = ({ lastSession, handleSessionFormData }) => {
             prog_phase: Number(progPhase),
             prog_mech: progMech,
             fflogs_link: ffLogsLink,
-            twitch_links: twitchLinks,
+            twitch_links: streamLinks,
             roster: roster,
             goal: goal,
             notes: notes,
@@ -71,8 +71,8 @@ const NewSessionForm = ({ lastSession, handleSessionFormData }) => {
                     <label className="session-form__label" htmlFor="fflogs-link">
                         FFLogs Link
                     </label>
-                    <label className="session-form__label" htmlFor="twitch-links">
-                        Twitch Links
+                    <label className="session-form__label" htmlFor="stream-links">
+                        Stream Links
                     </label>
                     <label className="session-form__label" htmlFor="goal">
                         Goal
@@ -151,10 +151,10 @@ const NewSessionForm = ({ lastSession, handleSessionFormData }) => {
                     <input
                         className="session-form__input session-form__input--text"
                         type="text"
-                        name="twitch-links"
-                        id="twitch-links"
-                        value={twitchLinks}
-                        onChange={(e) => setTwitchLinks(e.target.value)}
+                        name="stream-links"
+                        id="stream-links"
+                        value={streamLinks}
+                        onChange={(e) => setStreamLinks(e.target.value)}
                     />
                     <input
                         className="session-form__input form__input--text"
