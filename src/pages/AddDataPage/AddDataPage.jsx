@@ -150,7 +150,6 @@ const AddDataPage = () => {
                         {/* <p>Static: {sessionData.static}</p>
                         <p>Ulti: {sessionData.ulti}</p> */}
                         <p>Session #: {sessionData.num}</p>
-                        <p>Database ID: {sessionData.id}</p>
                         <p>Date: {createReadableDate(sessionData.date)}</p>
                         <p>Roster: {sessionData.roster}</p>
                         <p>Prog Point: Phase {sessionData.prog_phase},{" "}{sessionData.prog_mech}</p>
