@@ -38,7 +38,6 @@ const AddDataPage = () => {
                 setLastSession(prevSessions[0]);
             } else {
                 const placeholder = {
-                    id: 0,
                     static: "",
                     ulti: "",
                     num: 0,
