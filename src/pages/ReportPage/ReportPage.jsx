@@ -103,6 +103,7 @@ const ReportPage = () => {
 
     function addPulls() {
         localStorage.setItem("sessionInProgress", JSON.stringify(session));
+        localStorage.setItem("pullsFromNewSession", JSON.stringify(pullsArray));
         navigate("/add");
     };
 
