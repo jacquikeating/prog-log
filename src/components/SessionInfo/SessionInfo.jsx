@@ -91,10 +91,15 @@ const SessionInfo = () => {
 
       <div className="report__extra-info-container">
         <div className="report__extra-info-left">
-          <p className="report__extra-info">
-            <span className="report__extra-info--bold">Goal: </span>
-            {session.goal}
-          </p>
+          {session.goal.length > 0 ? (
+              <p className="report__extra-info">
+                <span className="report__extra-info--bold">Goal: </span>
+                {session.goal}
+              </p>
+            ) : 
+            ("")
+          }
+          
           <p className="report__extra-info">
             <span className="report__extra-info--bold">Roster: </span>
             {session.roster}
