@@ -136,6 +136,12 @@ const ReportPage = () => {
         <SessionContext.Provider value={{ sessionCtx }}>
             <EditContext.Provider value={{ editCtx }}>
                 <main className="report">
+                    {
+                        // type of report // progpointpage is just a variant of reportpage
+                        // component?
+                        // what if for each mechanic
+                        // like pl.com/mech-name
+                    }
                     {session ? (
                         <>
                             {!editMode ? <SessionInfo /> : <SessionInfoEdit />}

@@ -4,6 +4,8 @@ import SignupForm from "../../components/SignupForm/SignupForm";
 import "./SignupPage.scss";
 
 const SignupPage = () => {
+    // no emails
+
     return (
         <main className="signup">
             <h1 className="signup__heading">Create an Account</h1>
