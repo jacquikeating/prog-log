@@ -18,10 +18,17 @@ const SessionStats = () => {
         <span className="report__divider"> • </span>
         {findStruggleMech(pullsArray)}
       </p>
-      <p className="report__extra-info">
-        <span className="report__extra-info--bold">Gold Stars: </span>
-        {findGoldStars(pullsArray, session.roster)}
-      </p>
+      {session.id == 76 ? (
+        <p className="report__extra-info">
+          <span className="report__extra-info--bold">⬆️ Star: </span>
+          Sophia
+        </p>
+      ) : (
+        <p className="report__extra-info">
+          <span className="report__extra-info--bold">Gold Stars: </span>
+          {findGoldStars(pullsArray, session.roster)}
+        </p>
+      )}
     </>
   );
 };
