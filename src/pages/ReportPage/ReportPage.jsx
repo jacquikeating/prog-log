@@ -101,7 +101,7 @@ const ReportPage = () => {
         };
     };
 
-    function addPulls() {
+    function gotoAddDataPage() {
         localStorage.setItem("sessionInProgress", JSON.stringify(session));
         localStorage.setItem("pullsFromNewSession", JSON.stringify(pullsArray));
         navigate("/add");
@@ -147,7 +147,7 @@ const ReportPage = () => {
                             {!editMode ? <SessionInfo /> : <SessionInfoEdit />}
                             <PullsContext.Provider value={{ pullsCtx }}>
                                 <PullsSection />
-                                {user?.permissions == "admin" && <button onClick={addPulls}>Add pulls</button>}
+                                {user?.permissions == "admin" && <button onClick={gotoAddDataPage}>Add pulls</button>}
                             </PullsContext.Provider>
                         </>
                     ) : (
