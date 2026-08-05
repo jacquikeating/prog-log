@@ -15,7 +15,7 @@ export const umadPhaseAndMechOptions = [
     ["Opener", "Graven 1", "Graven 2", "Graven 3", "P1 Enrage"],
     ["Transition", "Forsaken", "Trine", "P2 Enrage"],
     ["Bowels of Agony", "Limit Cut", "Black Hole", "P3 Enrage"],
-    ["The Real", "World Race", "Is Clearing"],
+    ["Grand Crosses", "Flood of Naught", "Short Debuffs", "Long Debuffs", "Mana Release", "P4 Enrage"],
     ["Before", "Xeno", "Clears P1"]
 ];
 
