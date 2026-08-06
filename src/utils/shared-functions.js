@@ -183,3 +183,19 @@ export function getPullsAtProgPoint(pulls, progMech) {
 export function getClearsNum(pulls) {
   return pulls.filter((pull) => pull.mech == "Clear").length;
 };
+
+export function convertToTitleCase(originalString) {
+  const excludedWords = ["a", "and", "as", "at", "by", "for", "from", "in", "is", "nor", "of", "on", "or", "than", "the", "to", "with"]
+  
+  const separatedString = originalString.split("-");
+
+  const capitalizedWords = separatedString.map((word, index) => {
+    if (excludedWords.includes(word) && index != 0) {
+      return word;
+    } else {
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    }
+  })
+  
+  return capitalizedWords.join(" ");
+}
