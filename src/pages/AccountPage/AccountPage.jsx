@@ -1,5 +1,6 @@
 import { useNavigate, useOutletContext } from "react-router-dom";
 import { supabase } from "../../supabase-client";
+import { convertToTitleCase } from "../../utils/shared-functions.js";
 import "./AccountPage.scss";
 
 const AccountPage = () => {
@@ -19,6 +20,7 @@ const AccountPage = () => {
                 {user ? (
                     <>
                         <p>Logged in as: {user.name}</p>
+                        <p>{convertToTitleCase(user.permissions)} of {convertToTitleCase(user.member_of)}</p>
                         <button className="account__logout-btn" onClick={logout}>Logout</button>
                     </>
                 ) : (
