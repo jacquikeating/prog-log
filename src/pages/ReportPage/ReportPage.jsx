@@ -27,11 +27,8 @@ const ReportPage = () => {
     let showPulls = true; // Temporarily hardcoded
 
     useEffect(() => {
-        const thisSession = sessions.find((session) => session.num == sessionNum);
-        setSession(thisSession);
-        setOriginalSession(thisSession);
         setPullsArray(pulls.filter((pull) => pull.session_num == sessionNum));
-        if (user?.member_of == thisSession.static) {
+        if (user?.member_of == session.static) {
             if (user?.permissions == "admin") {
                 setShowEdit(true);
                 setAllowDelete(true);
