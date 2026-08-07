@@ -16,6 +16,7 @@ const ReportPage = () => {
     const { sessionNum } = useParams();
     const [originalSession, setOriginalSession] = useState(sessions.find((session) => session.num == sessionNum));
     const [session, setSession] = useState(originalSession);
+    const [showPulls, setShowPulls] = useState(originalSession.show_pulls);
     const [pullsArray, setPullsArray] = useState([]);
     const [editMode, setEditMode] = useState(false);
     const [showEdit, setShowEdit] = useState(false);
@@ -24,7 +25,6 @@ const ReportPage = () => {
     const breakpoint = 1040;
     let pullToUpdate = {};
     const navigate = useNavigate();
-    let showPulls = true; // Temporarily hardcoded
 
     useEffect(() => {
         setPullsArray(pulls.filter((pull) => pull.session_num == sessionNum));
@@ -143,7 +143,7 @@ const ReportPage = () => {
                     {session ? (
                         <>
                             {!editMode ? <SessionInfo /> : <SessionInfoEdit />}
-                            {!showPulls || pullsArray.length == 0 ? (
+                            {!showPulls && user.permissions != "admin" || pullsArray.length == 0 ? (
                                 <p>No pulls found for this session. Please try again later.</p>
                             ) : (
                                 <PullsContext.Provider value={{ pullsCtx }}>
