@@ -24,6 +24,7 @@ const ReportPage = () => {
     const breakpoint = 1040;
     let pullToUpdate = {};
     const navigate = useNavigate();
+    let showPulls = true; // Temporarily hardcoded
 
     useEffect(() => {
         const thisSession = sessions.find((session) => session.num == sessionNum);
@@ -145,10 +146,14 @@ const ReportPage = () => {
                     {session ? (
                         <>
                             {!editMode ? <SessionInfo /> : <SessionInfoEdit />}
-                            <PullsContext.Provider value={{ pullsCtx }}>
-                                <PullsSection />
-                                {user?.permissions == "admin" && <button onClick={gotoAddDataPage}>Add pulls</button>}
-                            </PullsContext.Provider>
+                            {!showPulls || pullsArray.length == 0 ? (
+                                <p>No pulls found for this session. Please try again later.</p>
+                            ) : (
+                                <PullsContext.Provider value={{ pullsCtx }}>
+                                    <PullsSection />
+                                </PullsContext.Provider>
+                            )}
+                            {user?.permissions == "admin" && <button onClick={gotoAddDataPage}>Add pulls</button>}
                         </>
                     ) : (
                         <p>Could not retrieve data for session #{sessionNum}</p>
