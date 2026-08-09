@@ -144,7 +144,7 @@ const ReportPage = () => {
                         <>
                             {!editMode ? <SessionInfo /> : <SessionInfoEdit />}
                             {!showPulls && user?.permissions != "admin" || pullsArray.length == 0 ? (
-                                <p>No pulls found for this session. Please try again later.</p>
+                                <p>Pulls currently unavailable. Please check again later.</p>
                             ) : (
                                 <PullsContext.Provider value={{ pullsCtx }}>
                                     <PullsSection />
