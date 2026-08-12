@@ -64,15 +64,13 @@ const SessionInfo = () => {
             <>
               <span className="report__divider"> • </span>
               <a
-                className={`session__link ${checkIfEmptyLink(
-                  session.twitch_links
-                )}`}
+                className={`session__link ${checkIfEmptyLink(session.twitch_links)}`}
                 href={session.twitch_links}
                 target="_blank"
                 rel="noreferrer"
               >
                 <img
-                  src="/25_twitch.png"
+                  src={session.twitch_links[12] == "y" ? "/yt_icon.jpg" : "/25_twitch.png"} // Checks first character after 'https://www.' in the URL
                   className="session__icon"
                 />
                 VOD
