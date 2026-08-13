@@ -87,7 +87,7 @@ function App() {
         { event: "*", schema: "public", table: "sessions" }, 
         (payload) => {
           const newSession = payload.new;
-          setSessions((prev) => [...prev, newSession]); 
+          setSessions((prev) => [newSession, ...prev]); 
         }
       ).subscribe((status) => {
         console.log("Subscription status: ", status);
