@@ -16,7 +16,7 @@ const ReportPage = () => {
     const { sessionNum } = useParams();
     const [originalSession, setOriginalSession] = useState(sessions.find((session) => session.num == sessionNum));
     const [session, setSession] = useState(originalSession);
-    const [showPulls, setShowPulls] = useState(originalSession.show_pulls);
+    const [showPulls, setShowPulls] = useState(originalSession?.show_pulls);
     const [pullsArray, setPullsArray] = useState([]);
     const [editMode, setEditMode] = useState(false);
     const [showEdit, setShowEdit] = useState(false);
