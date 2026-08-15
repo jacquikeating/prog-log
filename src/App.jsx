@@ -84,7 +84,7 @@ function App() {
     const sessionsChannel = supabase
       .channel("sessions_subscription")
       .on("postgres_changes", 
-        { event: "*", schema: "public", table: "sessions" }, 
+        { event: "INSERT", schema: "public", table: "sessions" }, 
         (payload) => {
           const newSession = payload.new;
           setSessions((prev) => [newSession, ...prev]); 
