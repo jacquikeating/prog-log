@@ -89,15 +89,32 @@ function App() {
           const newSession = payload.new;
           setSessions((prev) => [newSession, ...prev]); 
         }
-      ).subscribe((status) => {
-        console.log("Subscription status: ", status);
-      });
+      )
+      .subscribe();
 
     return () => {
       supabase.removeChannel(sessionsChannel);
     }
 
   }, [supabase, sessions]);
+
+  useEffect(() => {
+    const pullsChannel = supabase
+      .channel("pulls_subscription")
+      .on("postgres_changes", 
+        { event: "INSERT", schema: "public", table: "pulls" }, 
+        (payload) => {
+          const newPull = payload.new;
+          setPulls((prev) => [...prev, newPull]); 
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(pullsChannel);
+    }
+
+  }, [supabase, pulls]);
 
   if (loading) {
     return (
