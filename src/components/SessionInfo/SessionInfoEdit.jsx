@@ -8,6 +8,7 @@ const SessionInfoEdit = () => {
     const { session, pullsArray } = sessionCtx;
     const { editCtx } = useContext(EditContext);
     const { editSession, setSession } = editCtx;
+    console.log(session)
 
     return (
         <section className="report__section">
@@ -64,18 +65,27 @@ const SessionInfoEdit = () => {
                     }
                     className="report__input"
                 />
-                <>
-                    <input
-                        type="text"
-                        value={session.twitch_links}
-                        onChange={(e) => {
-                            setSession((prevSession) => {
-                                return { ...prevSession, twitch_links: e.target.value };
-                            });
-                        }}
-                        className="report__input"
-                    />
-                </>
+                <input
+                    type="text"
+                    value={session.twitch_links}
+                    onChange={(e) => {
+                        setSession((prevSession) => {
+                            return { ...prevSession, twitch_links: e.target.value };
+                        });
+                    }}
+                    className="report__input"
+                />
+                <span className="report__divider"> • </span>
+                <input
+                    type="checkbox"
+                    checked={session.show_pulls}
+                    onChange={(e) => {
+                        setSession((prevSession) => {
+                            return { ...prevSession, show_pulls: !prevSession.show_pulls };
+                        })
+                    }}
+                />
+                Show pulls    
                 <button className="report__button" onClick={editSession}>
                     <i className="fa-solid fa-check report__save"></i>
                 </button>
