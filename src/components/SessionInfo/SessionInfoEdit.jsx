@@ -8,7 +8,6 @@ const SessionInfoEdit = () => {
     const { session, pullsArray } = sessionCtx;
     const { editCtx } = useContext(EditContext);
     const { editSession, setSession } = editCtx;
-    console.log(session)
 
     return (
         <section className="report__section">
@@ -81,7 +80,7 @@ const SessionInfoEdit = () => {
                     checked={session.show_pulls}
                     onChange={(e) => {
                         setSession((prevSession) => {
-                            return { ...prevSession, show_pulls: !prevSession.show_pulls };
+                            return { ...prevSession, show_pulls: e.target.checked };
                         })
                     }}
                 />
@@ -100,7 +99,7 @@ const SessionInfoEdit = () => {
                             value={session.goal}
                             onChange={(e) =>
                                 setSession((prevSession) => {
-                                return { ...prevSession, goal: e.target.value };
+                                    return { ...prevSession, goal: e.target.value };
                                 })
                             }
                             className="report__input"
@@ -113,7 +112,7 @@ const SessionInfoEdit = () => {
                             value={session.roster}
                             onChange={(e) =>
                                 setSession((prevSession) => {
-                                return { ...prevSession, roster: e.target.value };
+                                    return { ...prevSession, roster: e.target.value };
                                 })
                             }
                             className="report__input"
@@ -133,7 +132,7 @@ const SessionInfoEdit = () => {
                             value={session.notes}
                             onChange={(e) =>
                                 setSession((prevSession) => {
-                                return { ...prevSession, notes: e.target.value };
+                                    return { ...prevSession, notes: e.target.value };
                                 })
                             }
                             className="report__input"

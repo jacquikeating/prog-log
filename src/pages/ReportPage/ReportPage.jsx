@@ -83,14 +83,16 @@ const ReportPage = () => {
             setEditMode(true);
         } else if (editMode == true) {
             const updatedSessionObj = { ...session };
-                        
+            
             async function updateSession() {
                 const { error } = await supabase.from("sessions")
-                    .update(diff(originalSession, updatedSessionObj)) // diff function returns an object with only the properties that don't match
+                    .update(diff(originalSession, updatedSessionObj)) // diff() returns an object with only the properties that don't match
                     .eq("id", session.id);
                 if (error) {
                     console.error("Error updating session: ", error.message);
                     return;
+                } else {
+                    setOriginalSession(updatedSessionObj); // Update originalSession with what was just sent to the DB
                 };
             };
 
