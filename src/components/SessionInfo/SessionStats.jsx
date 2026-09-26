@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { SessionContext } from "../../pages/ReportPage/ReportPage.jsx";
+import { SessionContext, EditContext } from "../../pages/ReportPage/ReportPage.jsx";
 import {
   findGoldStars,
   findStrugglePhase,
@@ -8,7 +8,27 @@ import {
 
 const SessionStats = () => {
   const { sessionCtx } = useContext(SessionContext);
+  const { editCtx } = useContext(EditContext);
   const { session, pullsArray } = sessionCtx;
+  const { user } = editCtx;
+
+  function displayGoldStars() {
+    if (session.id == 76) {
+      return (
+        <p className="report__extra-info">
+          <span className="report__extra-info--bold">⬆️ Star: </span>
+          Sophia
+        </p>
+      );
+    } else {
+      return (
+        <p className="report__extra-info">
+          <span className="report__extra-info--bold">Gold Stars: </span>
+          {findGoldStars(pullsArray, session.roster)}
+        </p>
+      );
+    };
+  };
 
   return (
     <>
@@ -18,17 +38,8 @@ const SessionStats = () => {
         <span className="report__divider"> • </span>
         {findStruggleMech(pullsArray)}
       </p>
-      {session.id == 76 ? (
-        <p className="report__extra-info">
-          <span className="report__extra-info--bold">⬆️ Star: </span>
-          Sophia
-        </p>
-      ) : (
-        <p className="report__extra-info">
-          <span className="report__extra-info--bold">Gold Stars: </span>
-          {findGoldStars(pullsArray, session.roster)}
-        </p>
-      )}
+
+      {session.show_pulls || user.permissions == "admin" && displayGoldStars()}
     </>
   );
 };
