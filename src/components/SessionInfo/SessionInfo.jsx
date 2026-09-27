@@ -9,7 +9,7 @@ const SessionInfo = () => {
   const { sessionCtx } = useContext(SessionContext);
   const { session, pullsArray, sessionNum } = sessionCtx;
   const { editCtx } = useContext(EditContext);
-  const { editSession, setSession, showEdit } = editCtx;
+  const { editSession, setSession, showEdit, user } = editCtx;
   const [twitchLinksArray, setTwitchLinksArray] = useState(session.twitch_links.split(", "));
 
   return (
@@ -79,13 +79,17 @@ const SessionInfo = () => {
           )}
         </>
         {showEdit ? (
-          <button className="report__button" onClick={editSession}>
-            <i className="fa-regular fa-pen-to-square"></i>
-          </button>
-        ) : (
-          ""
-        )}
+            <button className="report__button" onClick={editSession}>
+              <i className="fa-regular fa-pen-to-square"></i>
+            </button>
+          ) : (
+            ""
+          )
+        }
       </p>
+      {user.permissions == "admin" && !session.show_pulls && 
+        <p className="report__admin-warning">⚠️ WARNING: Pulls and gold stars are currently hidden from users.</p> 
+      }
 
       <div className="report__extra-info-container">
         <div className="report__extra-info-left">

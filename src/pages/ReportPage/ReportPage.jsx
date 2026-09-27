@@ -130,7 +130,8 @@ const ReportPage = () => {
         setPullsArray,
         setSession,
         editSession,
-        user
+        user,
+        originalSession
     };
 
     return (

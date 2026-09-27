@@ -7,7 +7,7 @@ const SessionInfoEdit = () => {
     const { sessionCtx } = useContext(SessionContext);
     const { session, pullsArray } = sessionCtx;
     const { editCtx } = useContext(EditContext);
-    const { editSession, setSession } = editCtx;
+    const { editSession, setSession, user, originalSession } = editCtx;
 
     return (
         <section className="report__section">
@@ -89,6 +89,9 @@ const SessionInfoEdit = () => {
                     <i className="fa-solid fa-check report__save"></i>
                 </button>
             </p>
+            {user.permissions == "admin" && !originalSession.show_pulls && 
+                <p className="report__admin-warning">⚠️ WARNING: Pulls and gold stars are currently hidden from users.</p> 
+            }
 
             <div className="report__extra-info-container">
                 <div className="report__extra-info-left">
