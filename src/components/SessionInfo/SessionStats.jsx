@@ -20,13 +20,18 @@ const SessionStats = () => {
           Sophia
         </p>
       );
-    } else {
+    } else if (user.permissions == "admin") {
       return (
         <p className="report__extra-info">
           <span className="report__extra-info--bold">Gold Stars: </span>
           {findGoldStars(pullsArray, session.roster)}
         </p>
       );
+    } else if (session.show_pulls) {
+        <p className="report__extra-info">
+          <span className="report__extra-info--bold">Gold Stars: </span>
+          {findGoldStars(pullsArray, session.roster)}
+        </p>
     };
   };
 
@@ -39,7 +44,7 @@ const SessionStats = () => {
         {findStruggleMech(pullsArray)}
       </p>
 
-      {session.show_pulls || user.permissions == "admin" && displayGoldStars()}
+      {displayGoldStars()}
     </>
   );
 };
