@@ -50,4 +50,11 @@
     &__twitch-container {
         display: flex;
     }
+
+    &--incomplete {
+        * {
+            color: grey!important;
+            filter: grayscale(1);
+        }
+    }
 }

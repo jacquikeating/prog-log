@@ -3,11 +3,12 @@ import { createReadableDate, checkIfEmptyLink } from "../../utils/shared-functio
 import "./Session.scss";
 
 const Session = ({ sessionData }) => {
-  const { num, date, roster, prog_phase, prog_mech, fflogs_link, twitch_links } = sessionData;
+  const { num, date, roster, prog_phase, prog_mech, fflogs_link, twitch_links, show_pulls } = sessionData;
+  console.log(sessionData)
   const twitchLinksArray = twitch_links.split(", ");
 
   return (
-    <li className="session">
+    <li className={show_pulls === true ? ("session") : ("session session--incomplete")}>
       <div className="session__header">
         <Link to={`/report/${num}`} className="session__title">
           <h3>Session {num}</h3>
