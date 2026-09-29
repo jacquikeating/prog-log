@@ -4,7 +4,6 @@ import "./Session.scss";
 
 const Session = ({ sessionData }) => {
   const { num, date, roster, prog_phase, prog_mech, fflogs_link, twitch_links, show_pulls } = sessionData;
-  console.log(sessionData)
   const twitchLinksArray = twitch_links.split(", ");
 
   return (
