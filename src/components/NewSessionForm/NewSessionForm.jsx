@@ -28,6 +28,7 @@ const NewSessionForm = ({ lastSession, handleSessionFormData }) => {
             roster: roster,
             goal: goal,
             notes: notes,
+            show_pulls: false
         };
 
         const { data: autoID, error } = await supabase.from("sessions")
