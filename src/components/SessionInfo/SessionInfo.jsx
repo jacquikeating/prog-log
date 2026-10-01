@@ -87,7 +87,7 @@ const SessionInfo = () => {
           )
         }
       </p>
-      {user.permissions == "admin" && !session.show_pulls && 
+      {user?.permissions == "admin" && !session.show_pulls && 
         <p className="report__admin-warning">⚠️ WARNING: Pulls and gold stars are currently hidden from users.</p> 
       }
 
