@@ -20,7 +20,7 @@ const SessionStats = () => {
           Sophia
         </p>
       );
-    } else if (user.permissions == "admin") {
+    } else if (user?.permissions == "admin") {
       return (
         <p className="report__extra-info">
           <span className="report__extra-info--bold">Gold Stars: </span>
