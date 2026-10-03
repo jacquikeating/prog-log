@@ -148,7 +148,7 @@ const ReportPage = () => {
                         <>
                             {!editMode ? <SessionInfo /> : <SessionInfoEdit />}
                             {!showPulls && user?.permissions != "admin" || pullsArray.length == 0 ? (
-                                <p>Pulls currently unavailable. Please check again later.</p>
+                                <p className="report__pulls-hidden">Pulls currently unavailable. Please check again later.</p>
                             ) : (
                                 <PullsContext.Provider value={{ pullsCtx }}>
                                     <PullsSection />
