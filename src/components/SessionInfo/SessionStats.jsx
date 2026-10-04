@@ -11,6 +11,7 @@ const SessionStats = () => {
   const { editCtx } = useContext(EditContext);
   const { session, pullsArray } = sessionCtx;
   const { user } = editCtx;
+  console.log(session)
 
   function displayGoldStars() {
     if (session.id == 76) {
@@ -28,10 +29,12 @@ const SessionStats = () => {
         </p>
       );
     } else if (session.show_pulls) {
-        <p className="report__extra-info">
+      return (
+         <p className="report__extra-info">
           <span className="report__extra-info--bold">Gold Stars: </span>
           {findGoldStars(pullsArray, session.roster)}
         </p>
+      );
     };
   };
 
