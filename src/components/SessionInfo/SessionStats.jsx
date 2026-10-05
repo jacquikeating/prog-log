@@ -11,7 +11,6 @@ const SessionStats = () => {
   const { editCtx } = useContext(EditContext);
   const { session, pullsArray } = sessionCtx;
   const { user } = editCtx;
-  console.log(session)
 
   function displayGoldStars() {
     if (session.id == 76) {

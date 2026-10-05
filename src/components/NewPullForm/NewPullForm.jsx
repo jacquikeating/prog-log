@@ -189,18 +189,18 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
                     <legend className="form__label">Players Involved</legend>
                     {rosterArray.map((player, index) => {
                         return (
-                        <label className="form__label" htmlFor={player} key={index}>
-                            <input
-                                className="form__checkbox"
-                                type="checkbox"
-                                name={player}
-                                id={player}
-                                value={player}
-                                checked={checkedState[index]}
-                                onChange={() => handleCheckboxChange(index)}
-                            />
-                            {player}
-                        </label>
+                            <label className="form__label" htmlFor={player} key={index}>
+                                <input
+                                    className="form__checkbox"
+                                    type="checkbox"
+                                    name={player}
+                                    id={player}
+                                    value={player}
+                                    checked={checkedState[index]}
+                                    onChange={() => handleCheckboxChange(index)}
+                                />
+                                {player}
+                            </label>
                         );
                     })}
                 </fieldset>
