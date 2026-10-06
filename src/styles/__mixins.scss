@@ -60,3 +60,14 @@
         border: 1px solid $purple;
     }
 }
+
+@mixin checkbox() {
+    display: flex;
+    align-items: center;
+    font-weight: normal;
+
+    input {
+        margin-right: 0.25rem;
+        cursor: pointer;
+    }
+}

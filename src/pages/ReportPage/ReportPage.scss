@@ -116,9 +116,7 @@
         font-size: 0.8em;
     }
 
-    &__pulls-hidden {
-        margin-top: 2rem;
-        font-family: 'Afacad Flux', 'Verdana', sans-serif;
-        font-size: 1.1rem;
+    &__checkbox {
+        @include checkbox;
     }
 }

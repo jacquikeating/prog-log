@@ -75,16 +75,19 @@ const SessionInfoEdit = () => {
                     className="report__input"
                 />
                 <span className="report__divider"> • </span>
-                <input
-                    type="checkbox"
-                    checked={session.show_pulls}
-                    onChange={(e) => {
-                        setSession((prevSession) => {
-                            return { ...prevSession, show_pulls: e.target.checked };
-                        })
-                    }}
-                />
-                Show pulls    
+                <label className="report__checkbox">
+                    <input
+                        type="checkbox"
+                        checked={session.show_pulls}
+                        onChange={(e) => {
+                            setSession((prevSession) => {
+                                return { ...prevSession, show_pulls: e.target.checked };
+                            })
+                        }}
+                     />
+                    Show pulls  
+                </label>
+
                 <button className="report__button" onClick={editSession}>
                     <i className="fa-solid fa-check report__save"></i>
                 </button>
