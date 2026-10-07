@@ -89,7 +89,7 @@ const SessionInfoEdit = () => {
                     Show pulls  
                 </label>
 
-                <Checkbox text="Show pulls" state={session.show_pulls} parent={session} setterFn={setSession} />  
+                <Checkbox text="Show pulls" state={session.show_pulls} parent={session} propertyKey={"show_pulls"} setterFn={setSession} />  
                 <button className="report__button" onClick={editSession}>
                     <i className="fa-solid fa-check report__save"></i>
                 </button>

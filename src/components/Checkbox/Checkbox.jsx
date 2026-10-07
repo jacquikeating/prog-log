@@ -1,17 +1,16 @@
 import "./Checkbox.scss";
 
-const Checkbox = ({ text, state, parent, setterFn }) => {
+const Checkbox = ({ text, state, parent, propertyKey, setterFn }) => {
     return (
         <label>
             <input
                 type="checkbox"
-                // checked={state} // temporarily disabled for testing
+                checked={state}
                 onChange={(e) => {
-                    console.log(`${text} dummy checkbox is now ${e.target.checked ? "checked" : "unchecked"}`);
-                    
                     if (parent && typeof(parent) == "object") {
-                        console.log(`${text} is a property in`, parent);
-                        // call setterFn() to manipulate state
+                        let parentCopy = {...parent}
+                        parentCopy[propertyKey] = e.target.checked
+                        setterFn(parentCopy)
                     };
                 }}
             />
@@ -21,13 +20,6 @@ const Checkbox = ({ text, state, parent, setterFn }) => {
 };
 
 export default Checkbox;
-
-/* Example of an object-altering checkbox
-    onChange={(e) => {
-        setSession((prevSession) => {
-            return { ...prevSession, show_pulls: e.target.checked };
-        })
-*/
 
 /* How checkboxes are handled in NewPullForm (array-altering)
     {rosterArray.map((player, index) => {
