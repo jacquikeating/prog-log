@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { SessionContext, EditContext } from "../../pages/ReportPage/ReportPage.jsx";
 import PhaseBreakdownTable from "../PhaseBreakdownTable/PhaseBreakdownTable";
 import SessionStats from "./SessionStats.jsx";
+import Checkbox from "../Checkbox/Checkbox.jsx";
 
 const SessionInfoEdit = () => {
     const { sessionCtx } = useContext(SessionContext);
@@ -88,6 +89,7 @@ const SessionInfoEdit = () => {
                     Show pulls  
                 </label>
 
+                <Checkbox text="Show pulls" state={session.show_pulls} parent={session} setterFn={setSession} />  
                 <button className="report__button" onClick={editSession}>
                     <i className="fa-solid fa-check report__save"></i>
                 </button>
