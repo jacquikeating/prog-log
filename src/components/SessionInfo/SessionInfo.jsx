@@ -119,9 +119,9 @@ const SessionInfo = () => {
             <div className="report__extra-info">
               <span className="report__extra-info--bold">Notes: </span>
               <ul className="report__list">
-                {session.notes.split(", ").map((note) => {
+                {session.notes.split(", ").map((note, index) => {
                   return (
-                    <li className="report__note" key={note}>
+                    <li className="report__note" key={index}>
                       {note}
                     </li>
                   );

@@ -22,7 +22,7 @@ const SessionInfoEdit = () => {
                     value={session.date}
                     onChange={(e) =>
                         setSession((prevSession) => {
-                        return { ...prevSession, date: e.target.value };
+                            return { ...prevSession, date: e.target.value };
                         })
                     }
                     className="report__input"
@@ -60,7 +60,7 @@ const SessionInfoEdit = () => {
                     value={session.fflogs_link}
                     onChange={(e) =>
                         setSession((prevSession) => {
-                        return { ...prevSession, fflogs_link: e.target.value };
+                            return { ...prevSession, fflogs_link: e.target.value };
                         })
                     }
                     className="report__input"
@@ -76,20 +76,15 @@ const SessionInfoEdit = () => {
                     className="report__input"
                 />
                 <span className="report__divider"> • </span>
-                <label className="report__checkbox">
-                    <input
-                        type="checkbox"
-                        checked={session.show_pulls}
-                        onChange={(e) => {
-                            setSession((prevSession) => {
-                                return { ...prevSession, show_pulls: e.target.checked };
-                            })
-                        }}
-                     />
-                    Show pulls  
-                </label>
 
-                <Checkbox text="Show pulls" state={session.show_pulls} parent={session} propertyKey={"show_pulls"} setterFn={setSession} />  
+                <Checkbox 
+                    text="Show pulls" 
+                    state={session.show_pulls} 
+                    parent={session} 
+                    propertyKey={"show_pulls"} 
+                    setterFn={setSession} 
+                />  
+                
                 <button className="report__button" onClick={editSession}>
                     <i className="fa-solid fa-check report__save"></i>
                 </button>
