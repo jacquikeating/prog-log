@@ -40,6 +40,8 @@ const SessionInfo = () => {
             twitchLinksArray.map((vod, index) => {
               const isYTLink = vod[12] == "y" // Checks first character after 'https://www.' in the URL
 
+              // should make this a div so it can have a key prop and make this warning go away
+              // maybe component?
               return (
                 <>
                   <span className="report__divider"> • </span>
@@ -48,12 +50,10 @@ const SessionInfo = () => {
                     href={vod}
                     target="_blank"
                     rel="noreferrer"
-                    key={index}
                   >
                     <img
                       src={isYTLink ? "/yt_icon.jpg" : "/25_twitch.png"}
                       className="session__icon"
-                      key={index}
                     />
                     VOD {index + 1}
                   </a>
@@ -87,8 +87,16 @@ const SessionInfo = () => {
           )
         }
       </p>
+
       {user?.permissions == "admin" && !session.show_pulls && 
-        <p className="report__admin-warning">⚠️ WARNING: Pulls and gold stars are currently hidden from users.</p> 
+        <p className="report__admin-warning">
+          { pullsArray.length > 0 ? (
+              "⚠️ WARNING: Pulls and gold stars are currently hidden from users."
+            ) :(
+              "⚠️ WARNING: You have not yet added any pulls to this session."
+            )
+          }
+          </p>
       }
 
       <div className="report__extra-info-container">
