@@ -1,18 +1,31 @@
 import "./Checkbox.scss";
 
 const Checkbox = ({ text, state, parent, propertyKey, setterFn }) => {
+
+    function handleCheck(e) {
+        if (parent && typeof(parent) == "object") {
+            toggleObjectProperty(e);
+        } else if (parent && typeof(parent) == "array") {
+            toggleArrayItem(e);
+        };
+    };
+
+    function toggleObjectProperty(e) {
+        let parentCopy = {...parent};
+        parentCopy[propertyKey] = e.target.checked;
+        setterFn(parentCopy);
+    }
+
+    function toggleArrayItem(e) {
+        // Function body goes here
+    }
+
     return (
         <label>
             <input
                 type="checkbox"
                 checked={state}
-                onChange={(e) => {
-                    if (parent && typeof(parent) == "object") {
-                        let parentCopy = {...parent}
-                        parentCopy[propertyKey] = e.target.checked
-                        setterFn(parentCopy)
-                    };
-                }}
+                onChange={(e) => handleCheck(e)}
             />
                 {text}
         </label>
