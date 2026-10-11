@@ -1,17 +1,21 @@
 import "./Checkbox.scss";
 
-const Checkbox = ({ text, state, parent, propertyKey, setterFn, idx }) => {
+const Checkbox = ({ text, state, parent, propertyKey, setterFn, indexString }) => {
+   
+    let index = Number(indexString) || null;
+    /*  When indices are passed through props as a number, 0 evaluates to falsy, causing bugs with the first array item.
+        Workaround: indices are passed as strings, then converted to numbers.  */
 
     function handleCheck(e) {
         if (parent && parent.length > 0) {
-            toggleArrayItem(e);
+            toggleArrayItem();
         } else if (parent && typeof(parent) == "object") {
             toggleObjectProperty(e);
         };
     };
 
-    function toggleArrayItem(e) {
-        setterFn(idx);
+    function toggleArrayItem() {
+        setterFn(index);
     };
 
     function toggleObjectProperty(e) {
@@ -24,7 +28,7 @@ const Checkbox = ({ text, state, parent, propertyKey, setterFn, idx }) => {
         <label>
             <input
                 type="checkbox"
-                checked={idx ? state[idx] : state}
+                checked={indexString ? state[index] : state}
                 onChange={(e) => handleCheck(e)}
             />
                 {text}
@@ -33,36 +37,3 @@ const Checkbox = ({ text, state, parent, propertyKey, setterFn, idx }) => {
 };
 
 export default Checkbox;
-
-/* How checkboxes are handled in NewPullForm (array-altering)
-    {rosterArray.map((player, index) => {
-        return (
-            <label className="form__label" htmlFor={player} key={index}>
-                <input
-                    className="form__checkbox"
-                    type="checkbox"
-                    name={player}
-                    id={player}
-                    value={player}
-                    checked={checkedState[index]}
-                    onChange={() => handleCheckboxChange(index)}
-                />
-                {player}
-            </label>
-        );
-    })};
-
-    const handleCheckboxChange = (position) => {
-        const updatedCheckedState = checkedState.map((item, index) =>
-            index === position ? !item : item
-        );
-        setCheckedState(updatedCheckedState);
-        let responsiblePlayers = [];
-        for (let i = 0; i < rosterArray.length; i++) {
-            if (updatedCheckedState[i] === true) {
-                responsiblePlayers.push(rosterArray[i]);
-            };
-        };
-        setResponsiblePlayersArray(responsiblePlayers);
-    };
-*/
