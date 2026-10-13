@@ -3,6 +3,7 @@ import Picker from "react-mobile-picker";
 import { checkIfProgPointReached } from "../../utils/shared-functions";
 import { getPhaseAndMechOptions } from "../../utils/static-values";
 import ScrollPicker from "../ScrollPicker/ScrollPicker";
+import Checkbox from "../Checkbox/Checkbox";
 import "./NewPullForm.scss";
 
 const NewPullForm = ({ sessionData, handlePullFormData }) => {
@@ -147,7 +148,7 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
                         {phaseAndMechOptions.map((_phase, index) => {
                             if (!index == 0) { 
                                 return (
-                                    <option value={index} className="form__option">
+                                    <option value={index} className="form__option" key={index}>
                                         {index}
                                     </option>
                                 )
@@ -161,7 +162,7 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
                     <select className="form__select" name="mech" id="mech"  onChange={handleMechChange} value={selectedMech}>
                         {phaseAndMechOptions[selectedPhase].map((mech) => {
                             return (
-                                <option value={mech} className="form__option">
+                                <option value={mech} className="form__option" key={mech}>
                                     {mech}
                                 </option>
                             ) 
@@ -187,20 +188,35 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
             {rosterArray.length ? (
                 <fieldset className="form__fieldset">
                     <legend className="form__label">Players Involved</legend>
+                    {/* Replaced with Checkbox component, but keeping old code until fully tested
+                        {rosterArray.map((player, index) => {
+                            return (
+                                <label className="form__label" htmlFor={player} key={index}>
+                                    <input
+                                        className="form__checkbox"
+                                        type="checkbox"
+                                        name={player}
+                                        id={player}
+                                        value={player}
+                                        checked={checkedState[index]}
+                                        onChange={() => handleCheckboxChange(index)}
+                                    />
+                                    {player}
+                                </label>
+                            );
+                        })} 
+                    */}
+
                     {rosterArray.map((player, index) => {
                         return (
-                            <label className="form__label" htmlFor={player} key={index}>
-                                <input
-                                    className="form__checkbox"
-                                    type="checkbox"
-                                    name={player}
-                                    id={player}
-                                    value={player}
-                                    checked={checkedState[index]}
-                                    onChange={() => handleCheckboxChange(index)}
-                                />
-                                {player}
-                            </label>
+                            <Checkbox 
+                                key={index} 
+                                text={player} 
+                                state={checkedState} 
+                                parent={checkedState} 
+                                setterFn={handleCheckboxChange} 
+                                indexString={`${index}`} 
+                            />
                         );
                     })}
                 </fieldset>
