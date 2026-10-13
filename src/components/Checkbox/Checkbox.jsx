@@ -25,14 +25,17 @@ const Checkbox = ({ text, state, parent, propertyKey, setterFn, indexString }) =
     };
 
     return (
-        <label>
-            <input
-                type="checkbox"
-                checked={indexString ? state[index] : state}
-                onChange={(e) => handleCheck(e)}
-            />
-                {text}
-        </label>
+        <div className="checkbox">
+            <label className="checkbox__label">
+                <input
+                    type="checkbox"
+                    className="checkbox__input"
+                    checked={indexString ? state[index] : state}
+                    onChange={(e) => handleCheck(e)}
+                />
+                    {text}
+            </label>
+        </div>
     );
 };
 

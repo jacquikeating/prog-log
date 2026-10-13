@@ -1,2 +1,15 @@
 @use "/src/styles/__variables" as *;
 @use "/src/styles/__mixins" as *;
+
+.checkbox {
+
+    &__label {
+        display: flex;
+        gap: 0.33em;
+        align-items: center;
+    }
+    
+    &__input {
+        cursor: pointer;
+    }
+}
