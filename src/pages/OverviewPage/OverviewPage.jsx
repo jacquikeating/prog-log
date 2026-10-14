@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import OverviewStats from "../../components/OverviewStats/OverviewStats.jsx";
 import PhaseBreakdownTable from "../../components/PhaseBreakdownTable/PhaseBreakdownTable";
@@ -5,6 +6,17 @@ import SessionsList from "../../components/SessionsList/SessionsList";
 
 const OverviewPage = () => {
     const { sessions, pulls } = useOutletContext();
+    const [currentPage, setCurrentPage] = useState(0);
+
+    let startingIndex = 0;
+    if (currentPage > 0) {
+        startingIndex = currentPage * 10;
+    }
+    let endingIndex = startingIndex + 10;
+
+    console.log(startingIndex)
+    console.log(endingIndex)
+    console.log(sessions.slice(startingIndex, endingIndex))
 
     return (
         <main className="overview-page">
