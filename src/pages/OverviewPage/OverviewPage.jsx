@@ -3,6 +3,7 @@ import { useOutletContext } from "react-router-dom";
 import OverviewStats from "../../components/OverviewStats/OverviewStats.jsx";
 import PhaseBreakdownTable from "../../components/PhaseBreakdownTable/PhaseBreakdownTable";
 import SessionsList from "../../components/SessionsList/SessionsList";
+import Pagination from "../../components/Pagination/Pagination";
 
 const OverviewPage = () => {
     const { sessions, pulls } = useOutletContext();
@@ -27,6 +28,11 @@ const OverviewPage = () => {
                 pulls={pulls} 
             />
             <SessionsList sessions={sessions} />
+            {/* <Pagination 
+                totalSessions={sessions.length} 
+                currentPage={currentPage} 
+                setCurrentPage={setCurrentPage}
+            /> */}
         </main>
     );
 };
