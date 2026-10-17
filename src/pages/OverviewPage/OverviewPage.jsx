@@ -14,10 +14,8 @@ const OverviewPage = () => {
         startingIndex = currentPage * 10;
     }
     let endingIndex = startingIndex + 10;
-
-    console.log(startingIndex)
-    console.log(endingIndex)
-    console.log(sessions.slice(startingIndex, endingIndex))
+   
+    let sessionsToShow = sessions.slice(startingIndex, endingIndex);
 
     return (
         <main className="overview-page">
@@ -32,7 +30,10 @@ const OverviewPage = () => {
                 totalSessions={sessions.length} 
                 currentPage={currentPage} 
                 setCurrentPage={setCurrentPage}
-            /> */}
+            />
+            {sessionsToShow.map((session) => {
+                return <p>Session # {session.num}</p>
+            })} */}
         </main>
     );
 };
