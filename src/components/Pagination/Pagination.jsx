@@ -8,10 +8,18 @@ const Pagination = ({ totalSessions, currentPage, setCurrentPage }) => {
     };
 
     return (
-        <div>
-            <p>Total sessions: {totalSessions}. Currently on page {currentPage + 1} of {Math.ceil(totalSessions/10)}.</p>
+        <div className="pagination">
+            {/* <p>Total sessions: {totalSessions}. Currently on page {currentPage + 1} of {Math.ceil(totalSessions/10)}.</p> */}
             {pages.map((page, index) => {
-                return <button key={index} onClick={() => setCurrentPage(page)}>{page + 1}</button>
+                return (
+                    <button 
+                        className={currentPage != page ? "pagination__page-btn" : "pagination__page-btn pagination__page-btn--current"}
+                        key={index} 
+                        onClick={() => setCurrentPage(page)}
+                        >
+                        {page + 1}
+                    </button>
+                );
             })}
         </div>
     );

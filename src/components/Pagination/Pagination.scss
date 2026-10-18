@@ -1,0 +1,31 @@
+@use "/src/styles/__variables" as *;
+@use "/src/styles/__mixins" as *;
+
+.pagination {
+    display: flex;
+    gap: 1.2rem;
+    width: 100%;
+    justify-content: center;
+    margin-top: 2.5rem;
+
+    &__page-btn {
+        width: 3.2rem;
+        height: 2.2rem;
+        font-size: 1.1rem;
+        background: $bg-mid;
+        font-family: $font-display;
+        border: 1px solid $borders;
+        color: $text-mid;
+        opacity: 0.8;
+        transition: all 0.2s ease;
+
+        &--current {
+            opacity: 1;
+            color: $text-light;
+            font-weight: bold;
+        }
+    }
+
+
+
+}
