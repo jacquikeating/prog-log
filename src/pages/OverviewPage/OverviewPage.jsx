@@ -14,7 +14,6 @@ const OverviewPage = () => {
         startingIndex = currentPage * 10;
     }
     let endingIndex = startingIndex + 10;
-   
     let sessionsToShow = sessions.slice(startingIndex, endingIndex);
 
     return (
@@ -25,15 +24,12 @@ const OverviewPage = () => {
                 progPhase={sessions[0].prog_phase}
                 pulls={pulls} 
             />
-            <SessionsList sessions={sessions} />
-            {/* <Pagination 
+            <SessionsList sessions={sessionsToShow} />
+            <Pagination 
                 totalSessions={sessions.length} 
                 currentPage={currentPage} 
                 setCurrentPage={setCurrentPage}
             />
-            {sessionsToShow.map((session) => {
-                return <p>Session # {session.num}</p>
-            })} */}
         </main>
     );
 };
