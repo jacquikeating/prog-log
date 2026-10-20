@@ -7,9 +7,17 @@ const Pagination = ({ totalSessions, currentPage, setCurrentPage }) => {
         pages.push(i);
     };
 
+    function handleArrow(direction){ 
+        if (direction == "left" && currentPage > 0) {
+            setCurrentPage(currentPage - 1);
+        } else if (direction =="right" && currentPage < pages.length - 1) {
+            setCurrentPage(currentPage + 1);
+        };
+    };
+
     return (
         <div className="pagination">
-            {/* <p>Total sessions: {totalSessions}. Currently on page {currentPage + 1} of {Math.ceil(totalSessions/10)}.</p> */}
+            <button className="pagination__arrow" onClick={() => handleArrow("left")}>◀</button>
             {pages.map((page, index) => {
                 return (
                     <button 
@@ -21,6 +29,7 @@ const Pagination = ({ totalSessions, currentPage, setCurrentPage }) => {
                     </button>
                 );
             })}
+            <button className="pagination__arrow" onClick={() => handleArrow("right")}>▶</button>
         </div>
     );
 };

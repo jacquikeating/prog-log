@@ -18,15 +18,31 @@
         color: $text-mid;
         opacity: 0.8;
         transition: all 0.2s ease;
+        cursor: pointer;
+
+        &:hover {
+            opacity: 0.9;
+            border: 1px solid #454545;
+        }
 
         &--current {
             opacity: 1;
             color: $text-light;
             font-weight: bold;
-            border: 2px solid #585858;
+            border: 2px solid #585858!important;
         }
     }
 
+    &__arrow {
+        background: transparent;
+        border: none;
+        color: #454545;
+        cursor: pointer;
+        transition: all 0.2s ease;
 
+        &:hover {
+            color: #696969;
+        }
+    }
 
 }
