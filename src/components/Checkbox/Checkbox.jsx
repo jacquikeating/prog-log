@@ -1,11 +1,7 @@
 import "./Checkbox.scss";
 
-const Checkbox = ({ text, state, parent, propertyKey, setterFn, indexString }) => {
+const Checkbox = ({ text, state, parent, propertyKey, setterFn, index }) => {
    
-    let index = Number(indexString) || null;
-    /*  When indices are passed through props as a number, 0 evaluates to falsy, causing bugs with the first array item.
-        Workaround: indices are passed as strings, then converted to numbers.  */
-
     function handleCheck(e) {
         if (parent && parent.length > 0) {
             toggleArrayItem();
@@ -30,7 +26,7 @@ const Checkbox = ({ text, state, parent, propertyKey, setterFn, indexString }) =
                 <input
                     type="checkbox"
                     className="checkbox__input"
-                    checked={indexString ? state[index] : state}
+                    checked={index ? state[index] : state}
                     onChange={(e) => handleCheck(e)}
                 />
                     {text}

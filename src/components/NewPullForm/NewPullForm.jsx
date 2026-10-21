@@ -8,6 +8,7 @@ import "./NewPullForm.scss";
 
 const NewPullForm = ({ sessionData, handlePullFormData }) => {
     const rosterArray = sessionData.roster.split(", ");
+    rosterArray.unshift(""); // Add an empty string at index 0 to avoid bugs related to passing 0
     const [selectedPhase, setSelectedPhase] = useState(1);
     const [selectedMech, setSelectedMech] = useState("");
     const [cause, setCause] = useState("");
@@ -208,16 +209,18 @@ const NewPullForm = ({ sessionData, handlePullFormData }) => {
                     */}
 
                     {rosterArray.map((player, index) => {
-                        return (
-                            <Checkbox 
-                                key={index} 
-                                text={player} 
-                                state={checkedState} 
-                                parent={checkedState} 
-                                setterFn={handleCheckboxChange} 
-                                indexString={`${index}`} 
-                            />
-                        );
+                        if (index > 0) { // Hide empty string at rosterArray[0]
+                            return (
+                                <Checkbox 
+                                    key={index} 
+                                    text={player} 
+                                    state={checkedState} 
+                                    parent={checkedState} 
+                                    setterFn={handleCheckboxChange} 
+                                    index={index}
+                                />
+                            );
+                        };
                     })}
                 </fieldset>
             ) : (
