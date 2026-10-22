@@ -16,7 +16,7 @@ export const umadPhaseAndMechOptions = [
     ["Transition", "Forsaken", "Trine", "P2 Enrage"],
     ["Bowels of Agony", "Limit Cut", "Black Hole", "Stomp-a-Mole", "P3 Enrage"],
     ["Grand Crosses", "Flood of Naught", "Short Debuffs", "Long Debuffs", "Mana Release", "P4 Enrage"],
-    ["Ultima Repeater", "Chaotic Flood", "Maddening Orchestra", "Celestriad", "Stray Apocalypse", "Forsaken", "P5 Enrage"]
+    ["Fell Forces 1", "Chaotic Flood", "Maddening Orchestra 1", "Fell Forces 2", "Celestriad", "Fell Forces 3", "Stray Apocalypse", "Maddening Orchestra 2", "Fell Forces 4", "Forsaken", "P5 Enrage"]
 ];
 
 export const flatUmadMechs = umadPhaseAndMechOptions.flat().slice(1);
