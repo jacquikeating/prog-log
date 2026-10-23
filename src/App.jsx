@@ -84,17 +84,23 @@ function App() {
     const sessionsChannel = supabase
       .channel("sessions_subscription")
       .on("postgres_changes", 
-        { event: "INSERT", schema: "public", table: "sessions" }, 
+        { event: "*", schema: "public", table: "sessions" }, 
         (payload) => {
-          const newSession = payload.new;
-          setSessions((prev) => [newSession, ...prev]); 
+          const newData = payload.new;
+          if (payload.eventType == "INSERT") {
+            setSessions((prev) => [newData, ...prev]); 
+          } else if (payload.eventType == "UPDATE") {
+            console.log('Updating session...')
+            const updatedSessions = sessions.map(session => (session.id == payload.old.id ? newData : session));
+            setSessions(updatedSessions);
+          };
         }
       )
       .subscribe();
 
     return () => {
       supabase.removeChannel(sessionsChannel);
-    }
+    };
 
   }, [supabase, sessions]);
 
