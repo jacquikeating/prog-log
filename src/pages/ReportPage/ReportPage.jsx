@@ -39,6 +39,11 @@ const ReportPage = () => {
     }, [sessionNum]);
 
     useEffect(() => {
+        // Allows ReportPage to reflect new data from Supabase realtime subscription 
+        setSession(sessions.find((session) => session.num == sessionNum));
+    }, [sessions]);
+
+    useEffect(() => {
         const handleWindowResize = () => setWidth(window.innerWidth);
         window.addEventListener("resize", handleWindowResize);
         return () => window.removeEventListener("resize"), handleWindowResize;
@@ -109,7 +114,9 @@ const ReportPage = () => {
 
     const sessionCtx = {
         session,
+        setSession,
         pullsArray,
+        setPullsArray,
         sessionNum,
     };
 
