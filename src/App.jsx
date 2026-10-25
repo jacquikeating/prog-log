@@ -90,7 +90,6 @@ function App() {
           if (payload.eventType == "INSERT") {
             setSessions((prev) => [newData, ...prev]); 
           } else if (payload.eventType == "UPDATE") {
-            console.log('Updating session...')
             const updatedSessions = sessions.map(session => (session.id == payload.old.id ? newData : session));
             setSessions(updatedSessions);
           };
@@ -108,10 +107,15 @@ function App() {
     const pullsChannel = supabase
       .channel("pulls_subscription")
       .on("postgres_changes", 
-        { event: "INSERT", schema: "public", table: "pulls" }, 
+        { event: "*", schema: "public", table: "pulls" }, 
         (payload) => {
-          const newPull = payload.new;
-          setPulls((prev) => [...prev, newPull]); 
+          const newData = payload.new;
+          if (payload.eventType == "INSERT") {
+            setPulls((prev) => [...prev, newData]); 
+          } else if (payload.eventType == "UPDATE") {
+            const updatedPulls = pulls.map(pull => (pull.id == payload.old.id ? newData : pull));
+            setPulls(updatedPulls);
+          };
         }
       )
       .subscribe();
