@@ -142,7 +142,7 @@ function App() {
     return (
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Layout sessions={sessions} pulls={pulls} user={user} setUser={setUser} />}>
+          <Route path="/" element={<Layout globalStates={{sessions, setSessions, pulls, setPulls, user, setUser}}/>}>
             <Route index element={<OverviewPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/account" element={<AccountPage />} />
