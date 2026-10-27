@@ -12,7 +12,7 @@ const OverviewPage = () => {
     let startingIndex = 0;
     if (currentPage > 0) {
         startingIndex = currentPage * 10;
-    }
+    };
     let endingIndex = startingIndex + 10;
     let sessionsToShow = sessions.slice(startingIndex, endingIndex);
 
@@ -26,7 +26,7 @@ const OverviewPage = () => {
             />
             <SessionsList sessions={sessionsToShow} />
             <Pagination 
-                totalSessions={sessions.length} 
+                sessions={sessions} 
                 currentPage={currentPage} 
                 setCurrentPage={setCurrentPage}
             />
