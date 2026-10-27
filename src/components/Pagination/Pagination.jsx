@@ -3,7 +3,7 @@ import "./Pagination.scss";
 const Pagination = ({ totalSessions, currentPage, setCurrentPage }) => {
 
     let pages = [];
-    for (let i = 0; i <= Math.floor(totalSessions/10); i++) {
+    for (let i = 0; i < Math.ceil(totalSessions/10); i++) {
         pages.push(i);
     };
 
