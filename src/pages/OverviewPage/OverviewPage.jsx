@@ -7,11 +7,11 @@ import Pagination from "../../components/Pagination/Pagination";
 
 const OverviewPage = () => {
     const { sessions, pulls } = useOutletContext();
-    const [currentPage, setCurrentPage] = useState(0);
+    const [currentPage, setCurrentPage] = useState(1);
 
     let startingIndex = 0;
-    if (currentPage > 0) {
-        startingIndex = currentPage * 10;
+    if (currentPage > 1) {
+        startingIndex = (currentPage -1)* 10;
     };
     let endingIndex = startingIndex + 10;
     let sessionsToShow = sessions.slice(startingIndex, endingIndex);
