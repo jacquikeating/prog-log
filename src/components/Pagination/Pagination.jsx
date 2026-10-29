@@ -41,13 +41,16 @@ const Pagination = ({ sessions, currentPage, setCurrentPage }) => {
             <button className="pagination__arrow" onClick={() => handleArrow("left")}>◀</button>
             {pages.map((page, index) => {
                 return (
-                    <button 
-                        className={currentPage != page.pageNum ? "pagination__page-btn" : "pagination__page-btn pagination__page-btn--current"}
-                        key={index} 
-                        onClick={() => setCurrentPage(page.pageNum)}
-                        >
-                        {page.pageNum}
-                    </button>
+                    <div className="pagination__page">
+                        <span className="pagination__tooltip">{`Page ${pages[index].pageNum} contains sessions ${pages[index].firstSession.num} to ${pages[index].lastSession.num}, spanning from ${pages[index].firstDate} to ${pages[index].lastDate}. During this time, we progged from ${pages[index].firstMech} to ${pages[index].lastMech}.`}</span>
+                        <button 
+                            className={currentPage != page.pageNum ? "pagination__page-btn" : "pagination__page-btn pagination__page-btn--current"}
+                            key={index} 
+                            onClick={() => setCurrentPage(page.pageNum)}
+                            >
+                            {page.pageNum}
+                        </button>
+                    </div> 
                 );
             })}
             <button className="pagination__arrow" onClick={() => handleArrow("right")}>▶</button>
