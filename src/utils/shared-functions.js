@@ -12,6 +12,16 @@ export function createReadableDate(date) {
   return dateWithSuffix;
 };
 
+export function createSimplifiedDate(date) {
+  const dateWithTime = date + "T17:00:00Z"; // 9 PM in UTC
+  const simpleDate = new Date(dateWithTime).toLocaleString("en-US", {
+    month: "short",
+    day: "numeric",
+  });
+
+  return simpleDate;
+}
+
 export function numSuffix(number) {
   const lastNumeral = number.slice(-1);
   const last2Numerals = number.slice(-2);
