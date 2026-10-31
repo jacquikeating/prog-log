@@ -1,3 +1,4 @@
+import { createSimplifiedDate } from "../../utils/shared-functions.js";
 import "./Pagination.scss";
 
 const Pagination = ({ sessions, currentPage, setCurrentPage }) => {
@@ -42,7 +43,7 @@ const Pagination = ({ sessions, currentPage, setCurrentPage }) => {
             {pages.map((page, index) => {
                 return (
                     <div className="pagination__page">
-                        <span className="pagination__tooltip">{`Page ${pages[index].pageNum} contains sessions ${pages[index].firstSession.num} to ${pages[index].lastSession.num}, spanning from ${pages[index].firstDate} to ${pages[index].lastDate}. During this time, we progged from ${pages[index].firstMech} to ${pages[index].lastMech}.`}</span>
+                        {/* <p className="pagination__tooltip">{`${createSimplifiedDate(pages[index].firstDate)} to ${createSimplifiedDate(pages[index].lastDate)}`} <br /> {`${pages[index].firstMech} to ${pages[index].lastMech}`}</p> */}
                         <button 
                             className={currentPage != page.pageNum ? "pagination__page-btn" : "pagination__page-btn pagination__page-btn--current"}
                             key={index} 
