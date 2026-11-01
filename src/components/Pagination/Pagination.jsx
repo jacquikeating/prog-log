@@ -5,7 +5,6 @@ const Pagination = ({ sessions, currentPage, setCurrentPage }) => {
 
     let pages = [];
     for (let i = 0; i < Math.ceil(sessions.length/10); i++) {
-        
         let pageData = {
             pageNum: i + 1,
             firstSession: {},
@@ -26,7 +25,6 @@ const Pagination = ({ sessions, currentPage, setCurrentPage }) => {
         pageData.firstDate = pageData.firstSession.date;
 
         pages.push(pageData);
-        console.log(`Page ${pageData.pageNum} contains sessions ${pageData.firstSession.num} to ${pageData.lastSession.num}, spanning from ${pageData.firstDate} to ${pageData.lastDate}. During this time, we progged from ${pageData.firstMech} to ${pageData.lastMech}.`)
     };
 
     function handleArrow(direction){ 
@@ -43,7 +41,7 @@ const Pagination = ({ sessions, currentPage, setCurrentPage }) => {
             {pages.map((page, index) => {
                 return (
                     <div className="pagination__page">
-                        {/* <p className="pagination__tooltip">{`${createSimplifiedDate(pages[index].firstDate)} to ${createSimplifiedDate(pages[index].lastDate)}`} <br /> {`${pages[index].firstMech} to ${pages[index].lastMech}`}</p> */}
+                        <p className="pagination__tooltip">{`${createSimplifiedDate(pages[index].firstDate)} to ${createSimplifiedDate(pages[index].lastDate)}`} <br /> {`${pages[index].firstMech} to ${pages[index].lastMech}`}</p>
                         <button 
                             className={currentPage != page.pageNum ? "pagination__page-btn" : "pagination__page-btn pagination__page-btn--current"}
                             key={index} 

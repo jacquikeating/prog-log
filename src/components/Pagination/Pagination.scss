@@ -6,7 +6,8 @@
     gap: 1.2rem;
     width: 100%;
     justify-content: center;
-    margin-top: 2.5rem;
+    margin-top: 4rem;
+    position: relative;
 
     &__page-btn {
         width: 3.2rem;
@@ -46,7 +47,22 @@
     }
 
     &__tooltip {
-        display: none;
+        position: absolute;
+        visibility: hidden;
+        z-index: 2;
+        top: -55px;
+        pointer-events: none;
+        font-size: 0.95rem;
+        color: $text-light;
+        font-family: $font-display;
+        opacity: 0.9;
     }
 
+    &__page {
+        &:hover {
+            .pagination__tooltip {
+                visibility: visible;
+            }
+        }
+    }
 }
