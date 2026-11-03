@@ -18,7 +18,6 @@ export function createSimplifiedDate(date) {
     month: "short",
     day: "numeric",
   });
-
   return simpleDate;
 }
 
@@ -117,7 +116,6 @@ export function findGoldStars(pullsArray, playersArray) {
 export function getTextColour(progPoint, phase) {
   let targetMech = progPoint;
   let cleanupMech = progPoint - 1;
-
   if (phase > 0) {
     if (phase < cleanupMech) {
       return "old";
@@ -135,7 +133,6 @@ export function getTextColour(progPoint, phase) {
 
 export function checkIfProgPointReached(progPhase, wipePhase) {
   let cleanupPhase = progPhase - 1;
-
   if (wipePhase < cleanupPhase) {
     return "old";
   } else if (wipePhase == cleanupPhase) {
@@ -167,7 +164,6 @@ export function convertMSToMinSec(ms) {
 
 function isAtProgIndex(pull, progMech) {
   let mechsArray;
-
   if (pull.ulti.toLowerCase() == "umad") {
     mechsArray = flatUmadMechs;
   } else if (pull.ulti.toLowerCase() == "fru") {
@@ -175,10 +171,8 @@ function isAtProgIndex(pull, progMech) {
   } else {
     return "N/A";
   };
-
   const progMechIndex = mechsArray.indexOf(progMech);
   const pullMechIndex = mechsArray.indexOf(pull.mech);
-
   if (pullMechIndex < progMechIndex) {
     return false;
   } else {
@@ -196,9 +190,7 @@ export function getClearsNum(pulls) {
 
 export function convertToTitleCase(originalString) {
   const excludedWords = ["a", "and", "as", "at", "by", "for", "from", "in", "is", "nor", "of", "on", "or", "than", "the", "to", "with"]
-  
   const separatedString = originalString.split("-");
-
   const capitalizedWords = separatedString.map((word, index) => {
     if (excludedWords.includes(word) && index != 0) {
       return word;
@@ -206,6 +198,5 @@ export function convertToTitleCase(originalString) {
       return word.charAt(0).toUpperCase() + word.slice(1);
     }
   })
-  
   return capitalizedWords.join(" ");
-}
+};

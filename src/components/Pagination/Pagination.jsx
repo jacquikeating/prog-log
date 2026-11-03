@@ -4,6 +4,7 @@ import "./Pagination.scss";
 const Pagination = ({ sessions, currentPage, setCurrentPage }) => {
 
     let pages = [];
+    
     for (let i = 0; i < Math.ceil(sessions.length/10); i++) {
         let pageData = {
             pageNum: i + 1,
