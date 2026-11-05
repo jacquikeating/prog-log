@@ -9,6 +9,7 @@
     border: 1px solid $purple;
     border-radius: 2px;
     z-index: 3;
+    width: 16.4rem;
 
     &__label {
         display: flex;
@@ -24,6 +25,12 @@
         &--yt {
             border-radius: 3px;
             transform: scale(0.9);
+        }
+    }
+
+    &__input {
+        &--file {
+            max-width: 12.6rem;
         }
     }
 }

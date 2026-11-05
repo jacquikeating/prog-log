@@ -60,7 +60,7 @@ const EditLinkModal = ({ logLink, clipLink, ytLink, imgLink, analyzerLink, handl
           className="link-modal__input"
           value={imgLink}
           onChange={(e) => handleLinkModalData("img", e.target.value)}
-        ></input>
+        ></input> */}
       </label>
 
       <label className="link-modal__label">
