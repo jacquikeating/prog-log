@@ -54,7 +54,13 @@ const EditLinkModal = ({ logLink, clipLink, ytLink, imgLink, analyzerLink, handl
           alt="Image"
           className="link-modal__icon"
         />
-        <input
+        <input 
+          type="file" 
+          className="link-modal__input link-modal__input--file" 
+          accept="image/*"
+          onChange={(e) => handleLinkModalData("img", e.target.files[0])}
+        />
+        {/* <input
           id="link-input-img"
           type="text"
           className="link-modal__input"
