@@ -59,7 +59,7 @@ const Pull = ({
     } else if (linkType == "yt") {
       setYtLink(newLink);
     } else if (linkType == "img") {
-      setImgLink(newLink);
+      uploadImage(newLink);
     } else if (linkType == "analyzer") {
       setAnalyzerLink(newLink);
     };
