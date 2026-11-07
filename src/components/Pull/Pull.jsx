@@ -59,10 +59,16 @@ const Pull = ({
     } else if (linkType == "yt") {
       setYtLink(newLink);
     } else if (linkType == "img") {
-      uploadImage(newLink);
+      setImgLink(newLink);
     } else if (linkType == "analyzer") {
       setAnalyzerLink(newLink);
     };
+  };
+
+  async function uploadImage(file) {
+    const fileName = `${file.name}-${Date.now()}`;
+    console.log(fileName);
+    setImgLink(fileName); // No, this does not create a valid URL. Just a placeholder for temporary development purposes
   };
 
   return (
