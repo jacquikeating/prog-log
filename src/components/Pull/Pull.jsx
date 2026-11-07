@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { supabase } from "../../supabase-client";
 import { checkIfProgPointReached } from "../../utils/shared-functions";
 import PullLink from "../PullLink/PullLink";
 import "./Pull.scss";
@@ -59,7 +60,7 @@ const Pull = ({
     } else if (linkType == "yt") {
       setYtLink(newLink);
     } else if (linkType == "img") {
-      setImgLink(newLink);
+      uploadImage(newLink);
     } else if (linkType == "analyzer") {
       setAnalyzerLink(newLink);
     };
@@ -67,8 +68,24 @@ const Pull = ({
 
   async function uploadImage(file) {
     const fileName = `${file.name}-${Date.now()}`;
-    console.log(fileName);
-    setImgLink(fileName); // No, this does not create a valid URL. Just a placeholder for temporary development purposes
+
+    console.log('Uploading...')
+    const { error } = await supabase.storage
+      .from("screenshots")
+      .upload(fileName, file);
+    
+    if (error) {
+      console.error(`Error uploading image: ${error.message}.`);
+      return;
+    };
+
+    const { data } = await supabase.storage
+      .from("screenshots")
+      .getPublicUrl(fileName);
+
+    console.log(data.publicUrl);
+    setImgLink(data.publicUrl);
+    return data.publicUrl;
   };
 
   return (
