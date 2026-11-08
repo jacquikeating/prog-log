@@ -60,13 +60,20 @@ const Pull = ({
     } else if (linkType == "yt") {
       setYtLink(newLink);
     } else if (linkType == "img") {
-      uploadImage(newLink);
+      if (newLink) {
+        uploadImage(newLink);
+      } else {
+        setImgLink("");
+      };
     } else if (linkType == "analyzer") {
       setAnalyzerLink(newLink);
     };
   };
 
   async function uploadImage(file) {
+    // To do: Don't upload until checkmark is clicked
+    // Fix error messages related to controlled vs. uncontrolled inputs
+     
     const fileName = `${file.name}-${Date.now()}`;
 
     console.log('Uploading...')

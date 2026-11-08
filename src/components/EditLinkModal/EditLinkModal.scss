@@ -9,7 +9,12 @@
     border: 1px solid $purple;
     border-radius: 2px;
     z-index: 3;
-    width: 16.4rem;
+    width: 17rem;
+
+    &__link {
+        display: flex;
+        gap: 0.5em;
+    }
 
     &__label {
         display: flex;
@@ -32,5 +37,12 @@
         &--file {
             max-width: 12.6rem;
         }
+    }
+
+    &__delete-btn {
+        background: transparent;
+        border: none;
+        color: $text-light;
+        height: 20px;
     }
 }
