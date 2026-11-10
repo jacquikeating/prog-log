@@ -22,6 +22,24 @@ const EditLinkModal = ({ logLink, clipLink, ytLink, imgLink, analyzerLink, handl
         </label>
         <button className="link-modal__delete-btn" onClick={() => handleLinkModalData("twitch", "")}>x</button>
       </div>
+
+      <div className="link-modal__link">
+        <label className="link-modal__label">
+          <img
+            src="/yt_icon.jpg"
+            alt="YouTube"
+            className="link-modal__icon link-modal__icon--yt"
+          />
+          <input
+            id="link-input-yt"
+            type="text"
+            className="link-modal__input"
+            value={ytLink}
+            onChange={(e) => handleLinkModalData("yt", e.target.value)}
+          ></input>
+        </label>
+        <button className="link-modal__delete-btn" onClick={() => handleLinkModalData("yt", "")}>x</button>
+      </div>
       
       <div className="link-modal__link">
         <label className="link-modal__label">
@@ -44,17 +62,17 @@ const EditLinkModal = ({ logLink, clipLink, ytLink, imgLink, analyzerLink, handl
       <div className="link-modal__link">
         <label className="link-modal__label">
           <img
-            src="/yt_icon.jpg"
-            alt="YouTube"
-            className="link-modal__icon link-modal__icon--yt"
+            src="/analyzer_icon.png"
+            alt="Analyzer"
+            className="link-modal__icon"
           />
           <input
-            id="link-input-yt"
+            id="link-input-analyzer"
             type="text"
             className="link-modal__input"
-            value={ytLink}
-            onChange={(e) => handleLinkModalData("yt", e.target.value)}
-          ></input>
+            value={analyzerLink}
+            onChange={(e) => handleLinkModalData("analyzer", e.target.value)}
+          />
         </label>
         <button className="link-modal__delete-btn" onClick={() => handleLinkModalData("yt", "")}>x</button>
       </div>
@@ -84,24 +102,6 @@ const EditLinkModal = ({ logLink, clipLink, ytLink, imgLink, analyzerLink, handl
         {imgLink && <button className="link-modal__delete-btn" onClick={() => handleLinkModalData("img", "")}>x</button>}
       </div>
 
-      <div className="link-modal__link">
-        <label className="link-modal__label">
-          <img
-            src="/analyzer_icon.png"
-            alt="Analyzer"
-            className="link-modal__icon"
-          />
-          <input
-            id="link-input-analyzer"
-            type="text"
-            className="link-modal__input"
-            value={analyzerLink}
-            onChange={(e) => handleLinkModalData("analyzer", e.target.value)}
-          />
-        </label>
-        <button className="link-modal__delete-btn" onClick={() => handleLinkModalData("yt", "")}>x</button>
-      </div>
-      
     </div>
   );
 };
