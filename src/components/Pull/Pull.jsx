@@ -25,6 +25,8 @@ const Pull = ({
   const [ytLink, setYtLink] = useState(pullData.yt_link);
   const [analyzerLink, setAnalyzerLink] = useState(pullData.analyzer_link);
   const [notes, setNotes] = useState(pullData.notes);
+  
+  const [pullState, setPullState] = useState(structuredClone(pullData));
 
   const index = pullData.index;
 
@@ -73,7 +75,7 @@ const Pull = ({
   async function uploadImage(file) {
     // To do: Don't upload until checkmark is clicked
     // Fix error messages related to controlled vs. uncontrolled inputs
-     
+
     const fileName = `${file.name}-${Date.now()}`;
 
     console.log('Uploading...')
