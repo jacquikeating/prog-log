@@ -1,6 +1,6 @@
 import "./EditLinkModal.scss";
 
-const EditLinkModal = ({ /* pullState, setPullState, */ logLink, clipLink, ytLink, imgLink, analyzerLink, handleLinkModalData }) => {
+const EditLinkModal = ({ pullState, setPullState, /* logLink, clipLink, ytLink, imgLink, analyzerLink, */ handleLinkModalData }) => {
 
   return (
     <div className="link-modal">
@@ -16,8 +16,8 @@ const EditLinkModal = ({ /* pullState, setPullState, */ logLink, clipLink, ytLin
             id="link-input-twitch"
             type="text"
             className="link-modal__input"
-            // value={pullState.clip_link}
-            value={clipLink}
+            value={pullState.clip_link}
+            // value={clipLink}
             onChange={(e) => handleLinkModalData("twitch", e.target.value)}
           ></input>
         </label>
@@ -35,8 +35,8 @@ const EditLinkModal = ({ /* pullState, setPullState, */ logLink, clipLink, ytLin
             id="link-input-yt"
             type="text"
             className="link-modal__input"
-            // value={pullState.yt_link}
-            value={ytLink}
+            value={pullState.yt_link}
+            // value={ytLink}
             onChange={(e) => handleLinkModalData("yt", e.target.value)}
           ></input>
         </label>
@@ -54,8 +54,8 @@ const EditLinkModal = ({ /* pullState, setPullState, */ logLink, clipLink, ytLin
             id="link-input-fflogs"
             type="text"
             className="link-modal__input"
-            // value={pullState.log_link}
-            value={logLink}
+            value={pullState.log_link}
+            // value={logLink}
             onChange={(e) => handleLinkModalData("log", e.target.value)}
           />
         </label>
@@ -73,8 +73,8 @@ const EditLinkModal = ({ /* pullState, setPullState, */ logLink, clipLink, ytLin
             id="link-input-analyzer"
             type="text"
             className="link-modal__input"
-            // value={pullState.analyzer_link}
-            value={analyzerLink}
+            value={pullState.analyzer_link}
+            // value={analyzerLink}
             onChange={(e) => handleLinkModalData("analyzer", e.target.value)}
           />
         </label>
@@ -88,14 +88,14 @@ const EditLinkModal = ({ /* pullState, setPullState, */ logLink, clipLink, ytLin
             alt="Image"
             className="link-modal__icon"
           />
-          { // pullState.img_link ? (
-          imgLink ? (
+          { pullState.img_link ? (
+          // imgLink ? (
             <input
             id="link-input-img"
             type="text"
             className="link-modal__input"
-            // value={pullState.img_link}
-            value={imgLink}
+            value={pullState.img_link}
+            // value={imgLink}
             onChange={(e) => handleLinkModalData("img", e.target.value)}
           ></input>
           ) : (<input 
@@ -105,7 +105,7 @@ const EditLinkModal = ({ /* pullState, setPullState, */ logLink, clipLink, ytLin
             onChange={(e) => handleLinkModalData("img", e.target.files[0])}
           />)}
         </label>
-        {imgLink /* pullState.img_link */ && <button className="link-modal__delete-btn" onClick={() => handleLinkModalData("img", "")}>x</button>}
+        {/* imgLink */ pullState.img_link && <button className="link-modal__delete-btn" onClick={() => handleLinkModalData("img", "")}>x</button>}
       </div>
 
     </div>

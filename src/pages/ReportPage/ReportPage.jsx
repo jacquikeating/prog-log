@@ -50,6 +50,7 @@ const ReportPage = () => {
     }, []);
 
     async function updatePull(editedPull) {
+        console.log(editedPull)
         const originalPull = pulls.find((pull) => pull.id == editedPull.id);
         delete editedPull.index;
         const editedProperties = diff(originalPull, editedPull); // diff function returns an object with only the properties that don't match

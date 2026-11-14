@@ -14,17 +14,17 @@ const Pull = ({
   allowDelete,
 }) => {
   const [editMode, setEditMode] = useState(false);
-  const [dur, setDur] = useState(pullData.combatTime);
-  const [phase, setPhase] = useState(pullData.phase);
-  const [mech, setMech] = useState(pullData.mech);
-  const [cause, setCause] = useState(pullData.cause);
-  const [playersResponsible, setPlayersResponsible] = useState(pullData.players_responsible);
-  const [logLink, setLogLink] = useState(pullData.log_link);
-  const [clipLink, setClipLink] = useState(pullData.clip_link);
-  const [imgLink, setImgLink] = useState(pullData.img_link);
-  const [ytLink, setYtLink] = useState(pullData.yt_link);
-  const [analyzerLink, setAnalyzerLink] = useState(pullData.analyzer_link);
-  const [notes, setNotes] = useState(pullData.notes);
+  // const [dur, setDur] = useState(pullData.combatTime);
+  // const [phase, setPhase] = useState(pullData.phase);
+  // const [mech, setMech] = useState(pullData.mech);
+  // const [cause, setCause] = useState(pullData.cause);
+  // const [playersResponsible, setPlayersResponsible] = useState(pullData.players_responsible);
+  // const [logLink, setLogLink] = useState(pullData.log_link);
+  // const [clipLink, setClipLink] = useState(pullData.clip_link);
+  // const [imgLink, setImgLink] = useState(pullData.img_link);
+  // const [ytLink, setYtLink] = useState(pullData.yt_link);
+  // const [analyzerLink, setAnalyzerLink] = useState(pullData.analyzer_link);
+  // const [notes, setNotes] = useState(pullData.notes);
   
   const [pullState, setPullState] = useState(structuredClone(pullData));
 
@@ -32,50 +32,50 @@ const Pull = ({
 
   function editRow() {
       updatePull({
-        // pullState, 
-        // prog_point_reached: checkIfProgPointReached(progPhase, pullState.phase)
-        id: pullData.id,
-        session_num: pullData.session_num,
-        pull_num_today: pullData.pull_num_today,
-        pull_num_overall: pullData.pull_num_overall,
-        phase: phase,
-        mech: mech,
-        cause: cause,
-        players_responsible: playersResponsible,
-        prog_point_reached: checkIfProgPointReached(progPhase, phase),
-        log_link: logLink,
-        clip_link: clipLink,
-        img_link: imgLink,
-        yt_link: ytLink,
-        analyzer_link: analyzerLink,
-        notes: notes,
-        ulti: pullData.ulti,
-        static: pullData.static,
-        index: index,
+        ...pullState, 
+        prog_point_reached: checkIfProgPointReached(progPhase, pullState.phase)
+        // id: pullData.id,
+        // session_num: pullData.session_num,
+        // pull_num_today: pullData.pull_num_today,
+        // pull_num_overall: pullData.pull_num_overall,
+        // phase: phase,
+        // mech: mech,
+        // cause: cause,
+        // players_responsible: playersResponsible,
+        // prog_point_reached: checkIfProgPointReached(progPhase, phase),
+        // log_link: logLink,
+        // clip_link: clipLink,
+        // img_link: imgLink,
+        // yt_link: ytLink,
+        // analyzer_link: analyzerLink,
+        // notes: notes,
+        // ulti: pullData.ulti,
+        // static: pullData.static,
+        // index: index,
       });
     setEditMode(false);
   };
 
   function handleLinkModalData(linkType, newLink) {
     if (linkType == "twitch") {
-      // setPullState({ ...pullState, clip_link: newLink })
-      setClipLink(newLink);
+      setPullState({ ...pullState, clip_link: newLink })
+      // setClipLink(newLink);
     } else if (linkType == "log") {
-      // setPullState({ ...pullState, log_link: newLink })
-      setLogLink(newLink);
+      setPullState({ ...pullState, log_link: newLink })
+      // setLogLink(newLink);
     } else if (linkType == "yt") {
-      // setPullState({ ...pullState, yt_link: newLink })
-      setYtLink(newLink);
+      setPullState({ ...pullState, yt_link: newLink })
+      // setYtLink(newLink);
     } else if (linkType == "img") {
       if (newLink) {
         uploadImage(newLink);
       } else {
-        // setPullState({ ...pullState, img_link: "" })
-        setImgLink("");
+        setPullState({ ...pullState, img_link: "" })
+        // setImgLink("");
       };
     } else if (linkType == "analyzer") {
-      // setPullState({ ...pullState, analyzer_link: newLink })
-      setAnalyzerLink(newLink);
+      setPullState({ ...pullState, analyzer_link: newLink })
+      // setAnalyzerLink(newLink);
     };
   };
 
@@ -100,16 +100,16 @@ const Pull = ({
       .getPublicUrl(fileName);
 
     console.log(data.publicUrl);
-    setImgLink(data.publicUrl);
-    // setPullState({ ...pullState, img_link: data.publicUrl })
+    // setImgLink(data.publicUrl);
+    setPullState({ ...pullState, img_link: data.publicUrl })
     return data.publicUrl;
   };
 
   return (
     <tr
       key={`pull-${index}`}
-      // className={pullState.mech === "Clear" ? "pull pull--clear" : "pull"}
-      className={mech === "Clear" ? "pull pull--clear" : "pull"}
+      className={pullState.mech === "Clear" ? "pull pull--clear" : "pull"}
+      // className={mech === "Clear" ? "pull pull--clear" : "pull"}
     >
       <td key={`#${index}`} className="pull__cell pull__cell--num-today">
         {pullNumType === "today"
@@ -118,122 +118,63 @@ const Pull = ({
       </td>
 
       {!editMode ? (
-        // <>
-        //   <td key={`#${index}`} className="pull__cell pull__cell--phase">
-        //     {pullState.phase}
-        //   </td>
-
-        //   <td key={`${index}-mech`} className="pull__cell pull__cell--mech">
-        //     {pullState.mech}
-        //   </td>
-
-        //   <td key={`${index}-cause`} className="pull__cell pull__cell--cause">
-        //     {pullState.cause}
-        //   </td>
-
-        //   <td
-        //     key={`${index}-players`}
-        //     className="pull__cell pull__cell--players"
-        //   >
-        //     {pullState.players_responsible}
-        //   </td>
-
-        //   <td key={`${index}-notes`} className="pull__cell pull__cell--notes">
-        //     {pullState.notes}
-        //   </td>
-        // </>
         <>
           <td key={`#${index}`} className="pull__cell pull__cell--phase">
-            {phase}
+            {pullState.phase}
           </td>
 
           <td key={`${index}-mech`} className="pull__cell pull__cell--mech">
-            {mech}
+            {pullState.mech}
           </td>
 
           <td key={`${index}-cause`} className="pull__cell pull__cell--cause">
-            {cause}
+            {pullState.cause}
           </td>
 
           <td
             key={`${index}-players`}
             className="pull__cell pull__cell--players"
           >
-            {playersResponsible}
+            {pullState.players_responsible}
           </td>
 
           <td key={`${index}-notes`} className="pull__cell pull__cell--notes">
-            {notes}
+            {pullState.notes}
           </td>
         </>
-      ) : (
         // <>
         //   <td key={`#${index}`} className="pull__cell pull__cell--phase">
-        //     <input
-        //       className="pull__input pull_input--number"
-        //       type="number"
-        //       value={pullState.phase}
-        //       onChange={(e) => {
-        //         setPullState({ ...pullState, phase: e.target.value });
-        //       }}
-        //     />
+        //     {phase}
         //   </td>
 
         //   <td key={`${index}-mech`} className="pull__cell pull__cell--mech">
-        //     <input
-        //       className="pull__input"
-        //       type="text"
-        //       value={pullState.mech}
-        //       onChange={(e) => {
-        //         setPullState({ ...pullState, mech: e.target.value });
-        //       }}
-        //     />
+        //     {mech}
         //   </td>
 
         //   <td key={`${index}-cause`} className="pull__cell pull__cell--cause">
-        //     <input
-        //       className="pull__input"
-        //       type="text"
-        //       value={pullState.cause}
-        //       onChange={(e) => {
-        //         setPullState({ ...pullState, cause: e.target.value });
-        //       }}
-        //     />
+        //     {cause}
         //   </td>
 
         //   <td
         //     key={`${index}-players`}
         //     className="pull__cell pull__cell--players"
         //   >
-        //     <input
-        //       className="pull__input"
-        //       type="text"
-        //       value={pullState.players_responsible}
-        //       onChange={(e) => {
-        //         setPullState({ ...pullState, players_responsible: e.target.value });
-        //       }}
-        //     />
+        //     {playersResponsible}
         //   </td>
 
         //   <td key={`${index}-notes`} className="pull__cell pull__cell--notes">
-        //     <input
-        //       className="pull__input"
-        //       type="text"
-        //       value={pullState.notes}
-        //       onChange={(e) => {
-        //         setPullState({ ...pullState, notes: e.target.value });
-        //       }}
-        //     />
+        //     {notes}
         //   </td>
         // </>
+      ) : (
         <>
           <td key={`#${index}`} className="pull__cell pull__cell--phase">
             <input
               className="pull__input pull_input--number"
               type="number"
-              value={phase}
+              value={pullState.phase}
               onChange={(e) => {
-                setPhase(e.target.value);
+                setPullState({ ...pullState, phase: e.target.value });
               }}
             />
           </td>
@@ -242,9 +183,9 @@ const Pull = ({
             <input
               className="pull__input"
               type="text"
-              value={mech}
+              value={pullState.mech}
               onChange={(e) => {
-                setMech(e.target.value);
+                setPullState({ ...pullState, mech: e.target.value });
               }}
             />
           </td>
@@ -253,9 +194,9 @@ const Pull = ({
             <input
               className="pull__input"
               type="text"
-              value={cause}
+              value={pullState.cause}
               onChange={(e) => {
-                setCause(e.target.value);
+                setPullState({ ...pullState, cause: e.target.value });
               }}
             />
           </td>
@@ -267,9 +208,9 @@ const Pull = ({
             <input
               className="pull__input"
               type="text"
-              value={playersResponsible}
+              value={pullState.players_responsible}
               onChange={(e) => {
-                setPlayersResponsible(e.target.value);
+                setPullState({ ...pullState, players_responsible: e.target.value });
               }}
             />
           </td>
@@ -278,13 +219,72 @@ const Pull = ({
             <input
               className="pull__input"
               type="text"
-              value={notes}
+              value={pullState.notes}
               onChange={(e) => {
-                setNotes(e.target.value);
+                setPullState({ ...pullState, notes: e.target.value });
               }}
             />
           </td>
         </>
+        // <>
+        //   <td key={`#${index}`} className="pull__cell pull__cell--phase">
+        //     <input
+        //       className="pull__input pull_input--number"
+        //       type="number"
+        //       value={phase}
+        //       onChange={(e) => {
+        //         setPhase(e.target.value);
+        //       }}
+        //     />
+        //   </td>
+
+        //   <td key={`${index}-mech`} className="pull__cell pull__cell--mech">
+        //     <input
+        //       className="pull__input"
+        //       type="text"
+        //       value={mech}
+        //       onChange={(e) => {
+        //         setMech(e.target.value);
+        //       }}
+        //     />
+        //   </td>
+
+        //   <td key={`${index}-cause`} className="pull__cell pull__cell--cause">
+        //     <input
+        //       className="pull__input"
+        //       type="text"
+        //       value={cause}
+        //       onChange={(e) => {
+        //         setCause(e.target.value);
+        //       }}
+        //     />
+        //   </td>
+
+        //   <td
+        //     key={`${index}-players`}
+        //     className="pull__cell pull__cell--players"
+        //   >
+        //     <input
+        //       className="pull__input"
+        //       type="text"
+        //       value={playersResponsible}
+        //       onChange={(e) => {
+        //         setPlayersResponsible(e.target.value);
+        //       }}
+        //     />
+        //   </td>
+
+        //   <td key={`${index}-notes`} className="pull__cell pull__cell--notes">
+        //     <input
+        //       className="pull__input"
+        //       type="text"
+        //       value={notes}
+        //       onChange={(e) => {
+        //         setNotes(e.target.value);
+        //       }}
+        //     />
+        //   </td>
+        // </>
       )}
 
       {showEdit ? (
@@ -318,13 +318,13 @@ const Pull = ({
         ""
       )}
       <PullLink
-        // pullState={pullState}
-        // setPullState={setPullState}
-        logLink={logLink}
-        clipLink={clipLink}
-        ytLink={ytLink}
-        imgLink={imgLink}
-        analyzerLink={analyzerLink}
+        pullState={pullState}
+        setPullState={setPullState}
+        // logLink={logLink}
+        // clipLink={clipLink}
+        // ytLink={ytLink}
+        // imgLink={imgLink}
+        // analyzerLink={analyzerLink}
         editMode={editMode}
         handleLinkModalData={handleLinkModalData}
       />
