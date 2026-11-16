@@ -16,7 +16,7 @@ const EditLinkModal = ({ pullState, setPullState, handleLinkModalData }) => {
             id="link-input-twitch"
             type="text"
             className="link-modal__input"
-            value={pullState.clip_link}
+            value={pullState.clip_link || ""}
             onChange={(e) => handleLinkModalData("twitch", e.target.value)}
           ></input>
         </label>
@@ -34,7 +34,7 @@ const EditLinkModal = ({ pullState, setPullState, handleLinkModalData }) => {
             id="link-input-yt"
             type="text"
             className="link-modal__input"
-            value={pullState.yt_link}
+            value={pullState.yt_link || ""}
             onChange={(e) => handleLinkModalData("yt", e.target.value)}
           ></input>
         </label>
@@ -52,7 +52,7 @@ const EditLinkModal = ({ pullState, setPullState, handleLinkModalData }) => {
             id="link-input-fflogs"
             type="text"
             className="link-modal__input"
-            value={pullState.log_link}
+            value={pullState.log_link || ""}
             onChange={(e) => handleLinkModalData("log", e.target.value)}
           />
         </label>
@@ -70,7 +70,7 @@ const EditLinkModal = ({ pullState, setPullState, handleLinkModalData }) => {
             id="link-input-analyzer"
             type="text"
             className="link-modal__input"
-            value={pullState.analyzer_link}
+            value={pullState.analyzer_link || ""}
             onChange={(e) => handleLinkModalData("analyzer", e.target.value)}
           />
         </label>
