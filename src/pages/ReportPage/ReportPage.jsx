@@ -50,7 +50,6 @@ const ReportPage = () => {
     }, []);
 
     async function updatePull(editedPull) {
-        console.log(editedPull)
         const originalPull = pulls.find((pull) => pull.id == editedPull.id);
         delete editedPull.index;
         const editedProperties = diff(originalPull, editedPull); // diff function returns an object with only the properties that don't match
@@ -61,7 +60,7 @@ const ReportPage = () => {
             console.error("Error updating pull: ", error.message);
             return;
         };
-    }
+    };
 
     async function deletePull(pullToDelete) {
         const deletedPullNum = pullToDelete.pull_num_overall;
@@ -82,7 +81,7 @@ const ReportPage = () => {
             });
             setPullsArray(filteredPulls.filter((pull) => pull.session_num == sessionNum));
         };
-    }
+    };
 
     function editSession() {
         if (editMode == false) {

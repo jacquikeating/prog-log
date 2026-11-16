@@ -2,7 +2,7 @@ import { useState } from "react";
 import EditLinkModal from "../EditLinkModal/EditLinkModal";
 import "./PullLink.scss";
 
-const PullLink = ({ /* logLink, clipLink, ytLink, imgLink, analyzerLink, */ pullState, setPullState, editMode, handleLinkModalData }) => {
+const PullLink = ({ pullState, setPullState, editMode, handleLinkModalData }) => {
   const [showModal, setShowModal] = useState(false);
 
   function toggleLinkModal() {
@@ -12,11 +12,9 @@ const PullLink = ({ /* logLink, clipLink, ytLink, imgLink, analyzerLink, */ pull
   return (
     <div className="pull-link__cell">
       { pullState.log_link ? (
-      // logLink ? (
         <a
           className="pull-link__link"
           href={pullState.log_link}
-          // href={logLink}
           target="_blank"
           rel="noreferrer"
         >
@@ -30,11 +28,9 @@ const PullLink = ({ /* logLink, clipLink, ytLink, imgLink, analyzerLink, */ pull
       )}
 
       { pullState.clip_link ? (
-      // clipLink  ? (
         <a
           className="pull-link__link"
           href={pullState.clip_link}
-          // href={clipLink}
           target="_blank"
           rel="noreferrer"
         >
@@ -48,11 +44,9 @@ const PullLink = ({ /* logLink, clipLink, ytLink, imgLink, analyzerLink, */ pull
       )}
 
       { pullState.yt_link ? (
-      // ytLink ? (
         <a
           className="pull-link__link"
           href={pullState.yt_link}
-          // href={ytLink}
           target="_blank"
           rel="noreferrer"
         >
@@ -66,11 +60,9 @@ const PullLink = ({ /* logLink, clipLink, ytLink, imgLink, analyzerLink, */ pull
       )}
 
       { pullState.img_link ? (
-      // imgLink ? (
         <a
           className="pull-link__link"
           href={pullState.img_link}
-          // href={imgLink}
           target="_blank"
           rel="noreferrer"
         >
@@ -84,11 +76,9 @@ const PullLink = ({ /* logLink, clipLink, ytLink, imgLink, analyzerLink, */ pull
       )}
 
       { pullState.analyzer_link ? (
-      // analyzerLink ? (
         <a
           className="pull-link__link"
           href={pullState.analyzer_link}
-          // href={analyzerLink}
           target="_blank"
           rel="noreferrer"
         >
@@ -117,11 +107,6 @@ const PullLink = ({ /* logLink, clipLink, ytLink, imgLink, analyzerLink, */ pull
         <EditLinkModal
           pullState={pullState}
           setPullState={setPullState}
-          // logLink={logLink}
-          // clipLink={clipLink}
-          // ytLink={ytLink}
-          // imgLink={imgLink}
-          // analyzerLink={analyzerLink}
           handleLinkModalData={handleLinkModalData}
         />
       ) : (
