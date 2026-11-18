@@ -1,6 +1,49 @@
+import { supabase } from "../../supabase-client";
 import "./EditLinkModal.scss";
 
-const EditLinkModal = ({ pullState, setPullState, handleLinkModalData }) => {
+const EditLinkModal = ({ pullState, setPullState }) => {
+
+  function handleLinkModalData(linkType, newLink) {
+    if (linkType == "twitch") {
+      setPullState({ ...pullState, clip_link: newLink })
+    } else if (linkType == "log") {
+      setPullState({ ...pullState, log_link: newLink })
+    } else if (linkType == "yt") {
+      setPullState({ ...pullState, yt_link: newLink })
+    } else if (linkType == "img") {
+      if (newLink) {
+        uploadImage(newLink);
+      } else {
+        setPullState({ ...pullState, img_link: "" })
+      };
+    } else if (linkType == "analyzer") {
+      setPullState({ ...pullState, analyzer_link: newLink })
+    };
+  };
+
+  async function uploadImage(file) {
+      // To do: Don't upload until checkmark is clicked
+  
+      const fileName = `${file.name}-${Date.now()}`;
+  
+      console.log('Uploading...')
+      const { error } = await supabase.storage
+        .from("screenshots")
+        .upload(fileName, file);
+      
+      if (error) {
+        console.error(`Error uploading image: ${error.message}.`);
+        return;
+      };
+  
+      const { data } = await supabase.storage
+        .from("screenshots")
+        .getPublicUrl(fileName);
+  
+      console.log(data.publicUrl);
+      setPullState({ ...pullState, img_link: data.publicUrl })
+      return data.publicUrl;
+    };
 
   return (
     <div className="link-modal">
@@ -89,13 +132,14 @@ const EditLinkModal = ({ pullState, setPullState, handleLinkModalData }) => {
             id="link-input-img"
             type="text"
             className="link-modal__input"
-            value={pullState.img_link}
+            value={pullState.img_link || ""}
             onChange={(e) => handleLinkModalData("img", e.target.value)}
           ></input>
           ) : (<input 
             type="file" 
             className="link-modal__input link-modal__input--file" 
             accept="image/*"
+            value={pullState.img_link || ""}
             onChange={(e) => handleLinkModalData("img", e.target.files[0])}
           />)}
         </label>

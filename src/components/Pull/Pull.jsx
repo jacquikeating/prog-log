@@ -25,48 +25,6 @@ const Pull = ({
     setEditMode(false);
   };
 
-  function handleLinkModalData(linkType, newLink) {
-    if (linkType == "twitch") {
-      setPullState({ ...pullState, clip_link: newLink })
-    } else if (linkType == "log") {
-      setPullState({ ...pullState, log_link: newLink })
-    } else if (linkType == "yt") {
-      setPullState({ ...pullState, yt_link: newLink })
-    } else if (linkType == "img") {
-      if (newLink) {
-        uploadImage(newLink);
-      } else {
-        setPullState({ ...pullState, img_link: "" })
-      };
-    } else if (linkType == "analyzer") {
-      setPullState({ ...pullState, analyzer_link: newLink })
-    };
-  };
-
-  async function uploadImage(file) {
-    // To do: Don't upload until checkmark is clicked
-
-    const fileName = `${file.name}-${Date.now()}`;
-
-    console.log('Uploading...')
-    const { error } = await supabase.storage
-      .from("screenshots")
-      .upload(fileName, file);
-    
-    if (error) {
-      console.error(`Error uploading image: ${error.message}.`);
-      return;
-    };
-
-    const { data } = await supabase.storage
-      .from("screenshots")
-      .getPublicUrl(fileName);
-
-    console.log(data.publicUrl);
-    setPullState({ ...pullState, img_link: data.publicUrl })
-    return data.publicUrl;
-  };
-
   return (
     <tr
       key={`pull-${index}`}
@@ -199,7 +157,6 @@ const Pull = ({
         pullState={pullState}
         setPullState={setPullState}
         editMode={editMode}
-        handleLinkModalData={handleLinkModalData}
       />
     </tr>
   );

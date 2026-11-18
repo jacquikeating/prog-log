@@ -2,7 +2,7 @@ import { useState } from "react";
 import EditLinkModal from "../EditLinkModal/EditLinkModal";
 import "./PullLink.scss";
 
-const PullLink = ({ pullState, setPullState, editMode, handleLinkModalData }) => {
+const PullLink = ({ pullState, setPullState, editMode }) => {
   const [showModal, setShowModal] = useState(false);
 
   function toggleLinkModal() {
@@ -107,7 +107,6 @@ const PullLink = ({ pullState, setPullState, editMode, handleLinkModalData }) =>
         <EditLinkModal
           pullState={pullState}
           setPullState={setPullState}
-          handleLinkModalData={handleLinkModalData}
         />
       ) : (
         ""
