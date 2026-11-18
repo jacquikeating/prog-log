@@ -163,7 +163,7 @@ const Pull = ({
             />
           </td>
         </>
-      )};
+      )}
 
       {showEdit ? (
         <td key={`${index}-edit`} className="pull__cell pull__cell--edit">
