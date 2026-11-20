@@ -5,10 +5,6 @@ import "./PullLink.scss";
 const PullLink = ({ pullState, setPullState, editMode }) => {
   const [showModal, setShowModal] = useState(false);
 
-  function toggleLinkModal() {
-    setShowModal(!showModal);
-  };
-
   return (
     <div className="pull-link__cell">
       { pullState.log_link ? (
@@ -94,7 +90,7 @@ const PullLink = ({ pullState, setPullState, editMode }) => {
       {!editMode ? (
         ""
       ) : (
-        <button className="pull-link__add-link-btn" onClick={toggleLinkModal}>
+        <button className="pull-link__add-link-btn" onClick={() => setShowModal(!showModal)}>
           {!showModal ? (
             <i className="fa-solid fa-plus"></i>
           ) : (
