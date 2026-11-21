@@ -60,10 +60,10 @@ const EditLinkModal = ({ pullState, setPullState }) => {
             type="text"
             className="link-modal__input"
             value={pullState.clip_link || ""}
-            onChange={(e) => handleLinkModalData("twitch", e.target.value)}
+            onChange={(e) => setPullState({ ...pullState, clip_link: e.target.value })}
           ></input>
         </label>
-        <button className="link-modal__delete-btn" onClick={() => handleLinkModalData("twitch", "")}>x</button>
+        <button className="link-modal__delete-btn" onClick={() => setPullState({ ...pullState, clip_link: "" })}>x</button>
       </div>
 
       <div className="link-modal__link">
@@ -78,10 +78,10 @@ const EditLinkModal = ({ pullState, setPullState }) => {
             type="text"
             className="link-modal__input"
             value={pullState.yt_link || ""}
-            onChange={(e) => handleLinkModalData("yt", e.target.value)}
+            onChange={(e) => setPullState({ ...pullState, yt_link: e.target.value })}
           ></input>
         </label>
-        <button className="link-modal__delete-btn" onClick={() => handleLinkModalData("yt", "")}>x</button>
+        <button className="link-modal__delete-btn" onClick={() => setPullState({ ...pullState, yt_link: "" })}>x</button>
       </div>
       
       <div className="link-modal__link">
@@ -96,10 +96,10 @@ const EditLinkModal = ({ pullState, setPullState }) => {
             type="text"
             className="link-modal__input"
             value={pullState.log_link || ""}
-            onChange={(e) => handleLinkModalData("log", e.target.value)}
+            onChange={(e) => setPullState({ ...pullState, log_link: e.target.value })}
           />
         </label>
-        <button className="link-modal__delete-btn" onClick={() => handleLinkModalData("log", "")}>x</button>
+        <button className="link-modal__delete-btn" onClick={() => setPullState({ ...pullState, log_link: "" })}>x</button>
       </div>
 
       <div className="link-modal__link">
@@ -114,10 +114,10 @@ const EditLinkModal = ({ pullState, setPullState }) => {
             type="text"
             className="link-modal__input"
             value={pullState.analyzer_link || ""}
-            onChange={(e) => handleLinkModalData("analyzer", e.target.value)}
+            onChange={(e) => setPullState({ ...pullState, analyzer_link: e.target.value })}
           />
         </label>
-        <button className="link-modal__delete-btn" onClick={() => handleLinkModalData("yt", "")}>x</button>
+        <button className="link-modal__delete-btn" onClick={() => setPullState({ ...pullState, analyzer_link: "" })}>x</button>
       </div>
 
       <div className="link-modal__link">
