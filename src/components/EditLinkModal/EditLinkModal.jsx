@@ -1,7 +1,7 @@
 import { supabase } from "../../supabase-client";
 import "./EditLinkModal.scss";
 
-const EditLinkModal = ({ pullState, setPullState }) => {
+const EditLinkModal = ({ pullState, setPullState, setImageToUpload }) => {
 
   function handleLinkModalData(linkType, newLink) {
     if (linkType == "twitch") {

@@ -2,7 +2,7 @@ import { useState } from "react";
 import EditLinkModal from "../EditLinkModal/EditLinkModal";
 import "./PullLink.scss";
 
-const PullLink = ({ pullState, setPullState, editMode }) => {
+const PullLink = ({ pullState, setPullState, setImageToUpload, editMode }) => {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -103,6 +103,7 @@ const PullLink = ({ pullState, setPullState, editMode }) => {
         <EditLinkModal
           pullState={pullState}
           setPullState={setPullState}
+          setImageToUpload={setImageToUpload}
         />
       ) : (
         ""

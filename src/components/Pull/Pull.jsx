@@ -15,6 +15,7 @@ const Pull = ({
 }) => {
   const [editMode, setEditMode] = useState(false);
   const [pullState, setPullState] = useState(structuredClone(pullData));
+  const [imageToUpload, setImageToUpload] = useState(null);
   const index = pullData.index;
 
   function editRow() {
@@ -156,6 +157,7 @@ const Pull = ({
       <PullLink
         pullState={pullState}
         setPullState={setPullState}
+        setImageToUpload={setImageToUpload}
         editMode={editMode}
       />
     </tr>
