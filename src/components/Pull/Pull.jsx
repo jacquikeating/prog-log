@@ -18,7 +18,7 @@ const Pull = ({
   const [imageToUpload, setImageToUpload] = useState(null);
   const index = pullData.index;
 
-  function editRow() {
+  function saveChanges() {
       updatePull({
         ...pullState, 
         prog_point_reached: checkIfProgPointReached(progPhase, pullState.phase)
@@ -128,7 +128,7 @@ const Pull = ({
         <td key={`${index}-edit`} className="pull__cell pull__cell--edit">
           <div className="pull__cell-container">
             {editMode ? (
-              <button className="pull__button" onClick={editRow}>
+              <button className="pull__button" onClick={saveChanges}>
                 <i className="fa-solid fa-check pull__save"></i>
             </button>
             ) : (
